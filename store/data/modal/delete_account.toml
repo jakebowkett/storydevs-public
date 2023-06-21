@@ -1,0 +1,13 @@
+
+Name = "delete_account"
+Title = "Delete Account"
+Class = "success"
+Msg = "Are you sure you want to delete your account? This will delete ALL personas associated with this account along with any talent profiles created by them. It cannot be undone."
+    
+[[Button]]
+
+    Text = "Delete"
+    Icon = "delete"
+    Action = "deleteAccount"
+    Dismiss = true
+    Dangerous = true

@@ -1,0 +1,379 @@
+
+{{$form  := index . 0 -}}
+{{$admin := index . 1 -}}
+
+{{- range $form -}}
+
+{{- if not (or .RequestOnly .ServerOnly (and .AdminOnly (not $admin))) -}}
+
+    {{- if .Add -}}
+        <div
+            class="adder grp"
+            data-add="{{.Add}}"
+            {{with .AddMin -}}
+                data-add-min="{{.}}"
+            {{end -}}
+            {{with .Id}}
+                data-id="{{.}}"
+            {{end}}
+            name="{{.Name}}"
+        >
+            {{$last := 2 -}}
+            {{$showRemove := gt (len .Instances) 1 -}}
+            {{range $i, $_ := .Instances}}
+                {{- template "group" squash . (add $i 1) false $showRemove $admin -}}
+                {{- $last = add $i 2 -}}
+            {{else}}
+                {{- template "group" squash . 1 false false $admin -}}
+            {{end}}
+
+            <div
+                class="button{{if eq (len .Instances) .Add}} hidden{{end}}"
+                data-action="addInstance[group]"
+            >
+                {{- template "group" squash . $last true false $admin -}}
+                <div class="msg">
+                    <span>+ Add {{.AddName}}</span>
+                </div>
+            </div>
+        </div>
+    
+    {{- else -}}
+        {{- template "group" squash . 0 false false $admin -}}
+    {{- end -}}
+    
+{{- end -}}
+
+{{- end -}}
+
+
+{{- define "group" -}}
+
+    {{- $g          := index . 0 -}}
+    {{- $num        := index . 1 -}}
+    {{- $disabled   := index . 2 -}}
+    {{- $showRemove := index . 3 -}}
+    {{- $admin      := index . 4 -}}
+    
+    <div
+        {{if $g.Name -}}
+            name="{{$g.Name}}"
+        {{end -}}
+        class="
+            group
+            {{if eq $g.Name "boards" -}}
+                boards
+            {{end -}}
+            {{if $g.Hidden -}}
+                hidden
+            {{end -}}
+        "
+    >
+        {{- if $g.Desc -}}
+            <div class="legend">
+                <div class="icon">
+                    {{- if $disabled -}}
+                        {{- $g.AddIcon -}}
+                    {{- else -}}
+                        {{- $g.Icon -}}
+                    {{- end -}}
+                </div>
+                <h3>
+                    {{- $g.Desc -}}
+                    {{- if $num -}}
+                        <span class="num">{{$num}}</span>
+                    {{- end -}}
+                    {{- with $g.Note -}}
+                        <span class="note">({{.}})</span>
+                    {{- end -}}
+                </h3>
+            </div>
+        {{- end -}}
+        
+        {{- with $g.Context -}}
+            <div class="context">{{.}}</div>
+        {{- end -}}
+        
+        {{- template "fields" squash $g.Field $disabled $admin $num 0 -}}
+        {{- if $g.Add -}}
+            <div
+                class="remove{{if not $showRemove}} hidden{{end}}"
+                data-action="removeInstance[group]"
+            >{{template "small_x.svg"}}</div>
+        {{- end -}}
+    </div>
+{{- end -}}
+
+
+{{- define "fields" -}}
+
+    {{$ff       := index . 0}}
+    {{$disabled := index . 1}}
+    {{$admin    := index . 2}}
+    {{$gIdx     := index . 3}}
+    {{$sgIdx    := index . 4}}
+
+    {{- range $ff -}}
+
+        {{- if not (or .RequestOnly .ServerOnly (and .AdminOnly (not $admin))) -}}
+            {{- if eq .Type "tempfield" -}}
+                <div class="tempfield empty" name="{{.Name}}">
+                    {{if .Text}}
+                        <span>{{.Text}}</span>
+                    {{else}}
+                        <span>{{.Desc}}</span>
+                    {{end}}
+                </div>
+            {{- else -}}
+                {{- if .Wrap -}}
+                    <div class="tempfield" name="{{.Wrap}}">
+                        {{- template "field" squash . $disabled $admin $gIdx $sgIdx -}}
+                    </div>
+                {{- else -}}
+                    {{- template "field" squash . $disabled $admin $gIdx $sgIdx -}}
+                {{- end -}}
+            {{- end -}}
+        {{- end -}}
+    {{- end -}}
+{{- end -}}
+
+
+{{- define "field" -}}
+
+    {{$f        := index . 0}}
+    {{$disabled := index . 1}}
+    {{$admin    := index . 2}}
+    {{$gIdx     := index . 3}}
+    {{$sgIdx    := index . 4}}
+    
+    <div
+        class="
+            field
+            {{if $f.NoGroupFormat -}}
+                no_group_format
+            {{end -}}
+            {{if $f.NoWrap -}}
+                no_wrap
+            {{end -}}
+            {{if $f.Paired -}}
+                paired
+            {{end -}}
+            {{if and $f.Field $f.Disabled -}}
+                {{$disabled = true -}}
+                disabled
+            {{end -}}
+            {{if $f.Hidden -}}
+                hidden
+            {{end -}}
+        "
+        {{with $f.Percent}}
+            style="flex: 0 1 {{.}}%"
+        {{end}}
+        {{with $f.Min -}}
+            data-min="{{.}}"
+        {{end -}}
+        {{with $f.Max -}}
+            data-max="{{.}}"
+        {{end -}}
+        {{with $f.ValueModify}}
+            data-value-modify="{{.}}"
+        {{end}}
+        {{with $f.ValueSet}}
+            data-value-set="{{.}}"
+        {{end}}
+        {{with $f.Validate -}}
+            data-validate="{{list .}}"
+        {{end -}}
+        {{with $f.Name -}}
+            name="{{.}}"
+        {{end -}}
+    >
+        
+        {{if or $f.Desc $f.Note}}
+            <div class="desc">
+                {{- with $f.Desc -}}
+                    <span class="text">{{.}}</span>
+                {{- end -}}
+                {{- with $f.Note -}}
+                    <span class="note">({{.}})</span>
+                {{- end -}}
+            </div>
+        {{end}}
+        
+        {{- with $f.Context -}}
+            <div class="context">{{.}}</div>
+        {{- end -}}
+        
+        <div class="errors error_{{$f.Name}}"></div>
+        
+        {{- if $f.Field -}}
+        
+            {{- if $f.Add -}}
+            
+                <div
+                    class="adder sg"
+                    data-add="{{$f.Add}}"
+                    {{with $f.AddMin -}}
+                        data-add-min="{{.}}"
+                    {{end -}}
+                    {{with $f.Id}}
+                        data-id="{{.}}"
+                    {{end}}
+                    name="{{$f.Name}}"
+                >
+                    {{$last := 1}}
+                    {{$showRemove := gt (len $f.Instances) 1}}
+                    {{range $i, $inst := $f.Instances}}
+                        {{- template "subgroup" squash $inst $showRemove $disabled $admin $gIdx $i -}}
+                        {{$last = add $i 1}}
+                    {{else}}
+                        {{- template "subgroup" squash $f false $disabled $admin $gIdx $sgIdx -}}
+                    {{end}}
+                    
+                    <div
+                        class="button{{if eq (len $f.Instances) $f.Add}} hidden{{end}}"
+                        data-action="addInstance[subgroup]"
+                    >
+                        {{- template "subgroup" squash $f false true $admin $gIdx $last -}}
+                        <div class="msg">+ Add {{$f.AddName}}</div>
+                    </div>
+                    
+                </div>
+            
+            {{- else -}}
+            
+                <div
+                    class="
+                        subgroup
+                        {{if $f.NoGroupFormat -}}
+                            no_group_format
+                        {{end -}}
+                        {{if $f.NoWrap -}}
+                            no_wrap
+                        {{end -}}
+                    "
+                    {{if $f.SubmitSingle -}}
+                        data-submit-single="true"
+                        name="{{$f.Name}}"
+                    {{end -}}
+                >
+                    <div class="body">
+                        {{- template "fields" squash $f.Field $disabled $admin $gIdx $sgIdx -}}
+                    </div>
+                </div>
+            
+            {{- end -}}
+            
+        {{- else -}}
+        
+            {{- if and $f.Add (not (or (eq $f.Type "tagger") (eq $f.Type "keyworder"))) -}}
+                <div
+                    class="adder"
+                    data-add="{{$f.Add}}"
+                    {{with $f.AddMin -}}
+                        data-add-min="{{.}}"
+                    {{end -}}
+                    {{with $f.Id}}
+                        data-id="{{.}}"
+                    {{end}}
+                    name="{{$f.Name}}"
+                >
+                    {{$last := 1}}
+                    {{$showRemove := gt (len $f.Instances) 1}}
+                    {{range $i, $inst := $f.Instances}}
+                        {{- template "instance" squash $inst $i $disabled $showRemove $gIdx $sgIdx -}}
+                        {{$last = add $i 1}}
+                    {{else}}
+                        {{- template "instance" squash $f 0 $disabled false $gIdx $sgIdx -}}
+                    {{end}}
+                    
+                    <div
+                        class="button{{if eq (len $f.Instances) $f.Add}} hidden{{end}}"
+                        data-action="
+                            {{- with $f.OnAdd -}}
+                                {{.}}
+                            {{- else -}}
+                                addInstance[instance]
+                            {{- end -}}
+                        "
+                    >
+                        {{- template "instance" squash $f $last true false $gIdx $sgIdx -}}
+                        <div class="msg">+ Add {{$f.AddName}}</div>
+                    </div>
+                </div>
+            {{- else -}}
+                {{- template "widgets.html" squash $f $disabled $gIdx $sgIdx 0 -}}
+            {{- end -}}
+            
+        {{- end -}}
+        
+        {{- with $f.Help -}}
+            <div class="help">Hint: {{.}}</div>
+        {{- end -}}
+        
+    </div>
+{{end}}
+
+{{- define "instance" -}}
+
+    {{- $f          := index . 0 -}}
+    {{- $i          := index . 1 -}}
+    {{- $disabled   := index . 2 -}}
+    {{- $showRemove := index . 3 -}}
+    {{- $gIdx       := index . 4 -}}
+    {{- $sgIdx      := index . 5 -}}
+
+    <div class="instance">
+        <div class="num">{{alpha $i}}</div>
+        <div class="widget">
+            {{- template "widgets.html" squash $f $disabled $gIdx $sgIdx $i -}}
+        </div>
+        <div
+            class="remove{{if not $showRemove}} hidden{{end}}"
+            data-action="
+                {{- with $f.OnRemove -}}
+                    {{.}}
+                {{- else -}}
+                    removeInstance[instance]
+                {{- end -}}
+            "
+        >{{template "x.svg"}}</div>
+    </div>
+{{- end -}}
+
+{{- define "subgroup" -}}
+
+    {{- $sg         := index . 0 -}}
+    {{- $showRemove := index . 1 -}}
+    {{- $disabled   := index . 2 -}}
+    {{- $admin      := index . 3 -}}
+    {{- $gIdx       := index . 4 -}}
+    {{- $sgIdx      := index . 5 -}}
+    
+    <div
+        class="
+            subgroup
+            {{if $sg.NoGroupFormat -}}
+                no_group_format
+            {{end -}}
+            {{if $sg.NoWrap -}}
+                no_wrap
+            {{end -}}
+            {{if and (not $sg.Add) $sg.Disabled -}}
+                {{$disabled = true -}}
+                disabled
+            {{end -}}
+        "
+    >
+        <div class="num">{{roman (add $sgIdx 1)}}</div>
+        <div class="body">
+            {{- template "fields" squash $sg.Field $disabled $admin $gIdx $sgIdx -}}
+        </div>
+        <div
+            class="remove{{if not $showRemove}} hidden{{end}}"
+            data-action="removeInstance[subgroup]"
+        >
+            {{- template "small_x.svg" -}}
+        </div>
+    </div>
+{{- end -}}

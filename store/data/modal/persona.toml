@@ -1,0 +1,14 @@
+
+Name = "persona"
+Title = "New Persona"
+
+[[Field]]
+    Replace = "handle"
+    
+[[Button]]
+
+    Text = "Create"
+    Icon = "submit"
+    Dest = "persona"
+    Callback = "addPersona"
+    Submit = true

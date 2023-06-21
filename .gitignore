@@ -1,0 +1,10 @@
+*.local
+*.local.*
+!*.local.example
+!*.local.example.*
+cmd/server/server
+store/user/*
+logs
+*.exe
+store/terms
+store/timezone/*.toml

@@ -1,0 +1,11 @@
+
+Name = "register_success"
+Title = "Success"
+Class = "success"
+Msg = "Your email address has been confirmed and you may now log in."
+
+[[Button]]
+
+    Text = "Okay"
+    Icon = "available"
+    Dismiss = true

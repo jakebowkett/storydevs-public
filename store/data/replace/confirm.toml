@@ -1,0 +1,8 @@
+
+[confirm]
+
+    Name = "code"
+    Desc = "Confirmation Code"
+    Context = "Sent to %s"
+    Type = "text"
+    Placeholder = "Paste here..."

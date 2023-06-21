@@ -1,0 +1,164 @@
+
+[[Editor]]
+
+    Name = "basics"
+    Desc = "Basics"
+    Icon = "basics"
+    
+    [[Editor.Field]]
+
+        Replace = "visibility"
+        ServerOnly = true
+        Optional = true
+
+    [[Editor.Field]]
+
+        AdminOnly = true
+        Name = "locked"
+        Desc = "Lock Thread"
+        Type = "bool"
+
+        [[Editor.Field.Value]]
+
+            Name = "lock"
+            Text = "Lock"
+            Icon = "padlock"
+            True = true
+
+        [[Editor.Field.Value]]
+
+            Name = "unlock"
+            Text = "Unlock"
+            Icon = "cancel"
+            Default = true
+
+    [[Editor.Field]]
+
+        AdminOnly = true
+        Name = "pinned"
+        Desc = "Thread Pinning"
+        Type = "bool"
+
+        [[Editor.Field.Value]]
+
+            Name = "pin"
+            Text = "Pin"
+            Icon = "pin"
+            True = true
+
+        [[Editor.Field.Value]]
+
+            Name = "unpin"
+            Text = "Unpin"
+            Icon = "cancel"
+            Default = true
+    
+    [[Editor.Field]]
+
+        Name = "name"
+        Desc = "Title"
+        Type = "text"
+        Max = 128
+    
+    [[Editor.Field]]
+
+        Name = "summary"
+        Desc = "Summary"
+        Context = "This will be the preview in search results. If left empty the body will be used as a preview instead."
+        Type = "textarea"
+        Max = 256
+        Optional = true
+        
+[[Editor]]
+
+    Name = "body"
+    Desc = "Body"
+    Icon = "library/body"
+    
+    [[Editor.Field]]
+    
+        Name = "threadslug"
+        Type = "text"
+        Hidden = true
+        Optional = true
+    
+    [[Editor.Field]]
+    
+        Name = "body"
+        Type = "editor"
+        Max = 150000 # characters
+
+[[Editor]]
+
+    Name = "category"
+    Desc = "Categories"
+    Icon = "library/category"
+    
+    [[Editor.Field]]
+    
+        Name = "category"
+        Type = "checkbox"
+        
+        [[Editor.Field.Value]]
+        
+            Name = "welcome"
+            Text = "Introduce Yourself"
+            Icon = "compensation/volunteer"
+        
+        [[Editor.Field.Value]]
+        
+            Name = "support"
+            Text = "Support / Suggest"
+            Icon = "comments"
+
+        [[Editor.Field.Value]]
+
+            Name = "project"
+            Text = "Project Showcase"
+            Icon = "experience"
+
+        [[Editor.Field.Value]]
+
+            Name = "progress"
+            Text = "Personal Progress"
+            Icon = "available"
+        
+        [[Editor.Field.Value]]
+        
+            Name = "writing"
+            Text = "Writing"
+            Icon = "skill/writing"
+
+        [[Editor.Field.Value]]
+
+            Name = "art"
+            Text = "Art"
+            Icon = "skill/ux"
+        
+        [[Editor.Field.Value]]
+        
+            Name = "audio"
+            Text = "Audio"
+            Icon = "skill/music"
+        
+        [[Editor.Field.Value]]
+        
+            Name = "programming"
+            Text = "Programming"
+            Icon = "skill/programming"
+        
+        [[Editor.Field.Value]]
+        
+            Name = "offtopic"
+            Text = "Off-Topic"
+            Icon = "forums/offtopic"
+        
+[[Editor]]
+
+    Name = "tags"
+    Desc = "Tags"
+    Icon = "tag"
+
+    [[Editor.Field]]
+
+        Replace = "tags"

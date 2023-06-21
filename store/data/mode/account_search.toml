@@ -1,0 +1,182 @@
+
+# To set the value of fields with type info we use Default
+# rather than Text because the latter always refers to user
+# values. While some fields below like email are technically
+# populated with user data, what is meant by "user data" in
+# the context of the search UI refers to search pararmeters
+# chosen by the user, not the origin of data in the UI itself.
+# 
+# Furthermore, the Text field is overridden by any active
+# search pararmeters. If there are none for that field Text
+# wil be an empty string.
+
+[[Search]]
+
+    Name = "account"
+    Desc = "Your Account"
+    Icon = "account"
+
+    [[Search.Field]]
+
+        Desc = "Created"
+        Name = "meta"
+        NoGroupFormat = true
+
+        [[Search.Field.Field]]
+
+            Type = "info"
+            Name = "created"
+            Paired = true
+
+        [[Search.Field.Field]]
+
+            Default = "Delete Account"
+            Type = "button"
+            Name = "delete"
+            Icon = "delete"
+            Dangerous = true
+            Paired = true
+
+            [[Search.Field.Field.Events]]
+
+                Handler = "showConfirmModal"
+                Type = "click"
+                Args = ["delete_account"]
+
+    [[Search.Field]]
+
+        Desc = "Email"
+        Type = "button"
+        Name = "email"
+        Icon = "communication/email"
+        Paired = true
+
+        [[Search.Field.Events]]
+
+            Handler = "showConfirmModal"
+            Type = "click"
+            Args = ["email", "insertEmail"]
+
+    [[Search.Field]]
+
+        Desc = "Password"
+        Type = "button"
+        Name = "password"
+        Default = "●●●●●●●●●●●●"
+        Icon = "login"
+        Paired = true
+
+        [[Search.Field.Events]]
+
+            Handler = "showConfirmModal"
+            Type = "click"
+            Args = ["password"]
+            
+    [[Search.Field]]
+    
+        # NOTE: the .Add field is set by populate.Account
+        Name = "personas"
+        Desc = "Personas"
+        Type = "persona"
+        AddName = "Persona"
+        OnAdd = "showPersona"
+        OnRemove = "deletePersonaPrompt"
+
+[[Search]]
+
+    Name = "persona"
+    Desc = "Active Persona"
+    Icon = "persona"
+    
+    [[Search.Field]]
+    
+        Name = "menu"
+        Type = "menu"
+
+        [[Search.Field.Value]]
+        
+            Name = "settings"
+            Text = "Settings"
+            Href = "/account/settings"
+            Icon = "library/documentation"
+
+        [[Search.Field.Value]]
+            
+            Name = "resources"
+            Text = "Your Resources"
+            Icon = "resources"
+        
+            [[Search.Field.Value.Value]]
+
+                Name = "talent"
+                Text = "Talent Profiles"
+                Href = "/account/talent"
+                Icon = "star"
+
+            # [[Search.Field.Value.Value]]
+
+            #     Name = "library"
+            #     Text = "Library Entries"
+            #     Href = "/account/library"
+            #     Icon = "library/category"
+
+            [[Search.Field.Value.Value]]
+
+                Name = "forums"
+                Text = "Forum Posts"
+                Href = "/account/forums"
+                Icon = "communication/im"
+
+            [[Search.Field.Value.Value]]
+
+                Name = "event"
+                Text = "Scheduled Events"
+                Href = "/account/event"
+                Icon = "library/events"
+                
+        # [[Search.Field.Value]]
+            
+        #     Text = "Collections"
+        #     Icon = "collection"
+            
+        #     [[Search.Field.Value.Value]]
+            
+        #         Text = "Artists I Like"
+        #         Href = "?c=artist-i-like"
+
+        # [[Search.Field.Value]]
+            
+        #     Text = "Manage Personas"
+        #     Href = "account/personas"
+        #     Icon = "account"
+        
+        #     [[Search.Field.Value.Value]]
+            
+        #         Text = "Notifications"
+        
+        #     [[Search.Field.Value.Value]]
+            
+        #         Text = "Privacy / Security"
+        #         Href = "/account/privacy"
+                
+        # [[Search.Field.Value]]
+        
+        #     Text = "Persona Settings"
+        #     Icon = "account"
+            
+        # [[Search.Field.Value]]
+        
+        #     Text = "Messages"
+        #     Icon = "communication/email"
+        
+        #     [[Search.Field.Value.Value]]
+            
+        #         Text = "Inbox"
+        
+        #     [[Search.Field.Value.Value]]
+            
+        #         Text = "Outbox"
+        
+        #     [[Search.Field.Value.Value]]
+            
+        #         Text = "Drafts"

@@ -1,0 +1,7 @@
+
+Name = "settings"
+Title = "Your Account"
+BrowseName = "Browse"
+ResourceName = "Settings"
+ResourcePlural = "Settings"
+ResourceColumn = "Settings"

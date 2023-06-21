@@ -1,0 +1,18 @@
+
+[event_setting]
+
+    Name = "setting"
+    Desc = "Setting"
+    Type = "checkbox"
+    
+    [[event_setting.Value]]
+    
+        Name = "online"
+        Text = "Online Event"
+        Icon = "communication"
+    
+    [[event_setting.Value]]
+    
+        Name = "physical"
+        Text = "Physical Event"
+        Icon = "timezone"

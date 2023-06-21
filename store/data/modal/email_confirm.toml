@@ -1,0 +1,16 @@
+
+Name = "email_confirm"
+Title = "Change Email (2/2)"
+Class = "confirm"
+
+[[Field]]
+
+    Replace = "confirm"
+    
+[[Button]]
+
+    Text = "Confirm"
+    Icon = "submit"
+    Dest = "email/confirm"
+    Callback = "updateEmail"
+    Submit = true

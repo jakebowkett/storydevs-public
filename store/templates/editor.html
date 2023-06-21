@@ -1,0 +1,38 @@
+
+{{- if not (eq .Name "settings") -}}
+    <h4 id="editor_header">
+        {{- if eq .EditorKind "new"}}New {{.ResourceName}}
+        {{- else if eq .EditorKind "edit"}}Editing: {{.Resource.GetName -}}
+        {{- else if eq .EditorKind "reply"}}Re: {{.Resource.GetName -}}{{end -}}
+    </h4>
+{{- end -}}
+
+<form>
+    {{- template "form.html" squash .Editor .IsAdmin -}}
+    <div class="errors error_general"></div>
+    <div id="editor_footer">
+        <button
+            type="button"
+            class="btn submit editor"
+            {{- if eq .EditorKind "edit" -}}
+                data-action="updateResource"
+            {{- else -}}
+                data-action="createResource"
+            {{- end -}}
+        >
+            <span class="text">
+                {{- if eq .Name "settings"}}Save
+                {{- else if eq .EditorKind "new"}}Submit
+                {{- else if eq .EditorKind "edit"}}Update
+                {{- else if eq .EditorKind "reply"}}Reply{{end -}}
+            </span>
+            <span class="icon">
+                {{- if eq .Name "settings" -}}
+                    {{template "save.svg"}}
+                {{- else -}}
+                    {{template "submit.svg"}}
+                {{- end -}}
+            </span>
+        </button>
+    </div>
+</form>

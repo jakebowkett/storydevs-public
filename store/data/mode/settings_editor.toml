@@ -1,0 +1,114 @@
+
+[[Editor]]
+
+    Name = "identity"
+    Desc = "Identity"
+    Href = "identity"
+    Icon = "skill/community"
+    Context = "Change the appearance of this persona."
+    
+    [[Editor.Field]]
+    
+        Replace = "avatar"
+    
+    [[Editor.Field]]
+
+        Replace = "handle"
+            
+    [[Editor.Field]]
+
+        Replace = "name"
+        
+    [[Editor.Field]]
+
+        Replace = "pronouns"
+
+[[Editor]]
+
+    Name = "privacy"
+    Desc = "Privacy"
+    Href = "privacy"
+    Icon = "library/investigation"
+    Context = "Preserve anonymity and control what you share."
+    
+    [[Editor.Field]]
+    
+        Replace = "visibility"
+        Desc = "Persona Visibility"
+        Context = "All resources (profiles, posts, etc) owned by this persona will be affected."
+        
+    # [[Editor.Field]]
+    
+    #     Name = "scrambletext"
+    #     Desc = "Scramble Text"
+    #     Context = "Alter capitalisation, add typos, switch around US and UK English, and so on to assist in masking your typical writing style and preserve your anonymity."
+    #     Type = "bool"
+        
+    #     [[Editor.Field.Value]]
+        
+    #         Name = "yes"
+    #         Text = "Yes"
+    #         Icon = "available"
+    #         True = true
+    #         Default = true
+            
+    #     [[Editor.Field.Value]]
+        
+    #         Name = "no"
+    #         Text = "No"
+    #         Icon = "cancel"
+    
+       
+# [[Editor]]
+
+#     Name = "notifications"
+#     Desc = "Notifications"
+#     Href = "notifications"
+#     Icon = "skill/marketing"
+#     # Context = "Settings for email and site notifications."
+    
+#     [[Editor.Field]]
+        
+#         Name = "emailonpost"
+#         # Desc = "Send an email when people reply to your public posts."
+#         Desc = "Email On Post"
+#         # Context = "Receive emails when someone replies to a public post you've made."
+#         Type = "bool"
+#         Paired = true
+        
+#         [[Editor.Field.Value]]
+        
+#             Name = "yes"
+#             Text = "Yes"
+#             Icon = "available"
+#             True = true
+#             Default = true
+            
+#         [[Editor.Field.Value]]
+        
+#             Name = "no"
+#             Text = "No"
+#             Icon = "cancel"
+        
+#     [[Editor.Field]]
+    
+#         Name = "emailonmsg"
+#         Desc = "Email On Message"
+#         # Desc = "Email On "
+#         # Context = "Receive emails when someone replies in a private conversation."
+#         Type = "bool"
+        
+#         [[Editor.Field.Value]]
+        
+#             Name = "yes"
+#             Text = "Yes"
+#             Icon = "available"
+#             True = true
+#             Default = true
+            
+#         [[Editor.Field.Value]]
+        
+#             Name = "no"
+#             Text = "No"
+#             Icon = "cancel"
+        

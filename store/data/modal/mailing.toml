@@ -1,0 +1,18 @@
+
+Name = "mailing"
+Title = "Subscribe To Mailing List (1/2)"
+Disabled = true
+
+[[Field]]
+
+    Name = "email"
+    Desc = "Email"
+    Type = "text"
+
+[[Button]]
+
+    Text = "Subscribe"
+    Icon = "submit"
+    Dest = "mailing"
+    Submit = true
+    

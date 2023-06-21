@@ -1,0 +1,27 @@
+
+Name = "forgot"
+Title = "Forgot Password (1/2)"
+
+[[Field]]
+
+    Name = "identity"
+    Desc = "Handle / Email"
+    Type = "text"
+
+[[Field]]
+
+    Replace = "newpassword"
+    Name = "new"
+
+[[Field]]
+
+    Name = "confirm"
+    Desc = "Confirm New Password"
+    Type = "password"
+
+[[Button]]
+
+    Dest = "forgot"
+    Text = "Submit"
+    Icon = "submit"
+    Submit = true

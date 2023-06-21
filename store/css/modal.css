@@ -1,0 +1,279 @@
+
+#modal_container {
+    position: absolute;
+    top:    0;
+    bottom: 0;
+    left:   0;
+    right:  0;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 6;
+    
+    transition-duration: 0.25s;
+    transition-property: opacity;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    
+    height: 100%;
+    box-sizing: border-box;
+    
+    padding: 2rem;
+}
+#modal_container.visible {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.modal {
+
+    height: 8rem;
+    
+    background-color: var(--sg-body-bg);
+    box-shadow: 0 0 0.5rem 0 #000;
+
+    width: 48rem;
+    width: 32rem;
+    color: #b8b8b8;
+    font-size: 1rem;
+    padding: 2rem;
+    padding-bottom: 1rem;
+    position: relative;
+    
+    max-height: 100%;
+    box-sizing: border-box;
+    
+    transition-duration: 0.25s;
+    transition-property: height;
+}
+
+.modal .inner {
+    position: absolute;
+    top:    5rem;
+    /*bottom: 2rem;*/
+    bottom: 1rem;
+    left:   2rem;
+    right:  2rem;
+    transform: translateX(0rem);
+}
+
+#modal_hidden {
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.modal > .inner > .scroll.no_scroll > .scrollbar {
+    /*display: none;*/
+    width: 0 !important;
+    pointer-events: none;
+    opacity: 0;
+}
+.modal > .inner > .scroll::before,
+.modal > .inner > .scroll.no_scroll::before {
+    content: none;
+}
+.modal > .inner > .scroll.initialised:not(.no_scroll) > .scroll_inner {
+    right: 1.5rem;
+}
+.modal > .inner > .scroll > .scroll_inner::before,
+.modal > .inner > .scroll > .scroll_inner::after {
+    content: "";
+    position: fixed;
+    z-index: 2;
+    left: 0;
+    right: 0;
+    height: 1.5rem;
+    pointer-events: none;
+}
+.modal > .inner > .scroll >  .scroll_inner::before {
+    top: 0;
+    background: linear-gradient(to top, transparent, var(--sg-body-bg));
+}
+.modal > .inner > .scroll >  .scroll_inner::after {
+    bottom: 0;
+    background: linear-gradient(to bottom, transparent, var(--sg-body-bg));
+}
+.modal form {
+    margin-top: 1rem;
+}
+
+
+.modal > .inner > .scroll::before {
+    border-radius: 0;
+    top:    0;
+    bottom: 0;
+    right:  0;
+}
+.modal > .inner > .scroll::after {
+    content: none;
+}
+.modal > .inner > .scroll > .scrollbar .arrow {
+    display: none;
+}
+.modal > .inner > .scroll > .scrollbar {
+    width: 0.4rem;
+    margin-top: 0.5rem;
+}
+.modal > .inner > .scroll > .scrollbar .track {
+}
+.modal > .inner > .scroll > .scrollbar .track::before {
+    flex: 1 1 100%;
+    background-color: #161616;
+    border-radius: 0;
+}
+.modal > .inner > .scroll > .scrollbar .dragger::before {
+    background-color: #666;
+    border-radius: 0;
+    margin: 0;
+    width: auto;
+}
+
+
+
+.modal > .dismiss {
+    width: 5rem;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top:   0;
+    right: 0;
+    cursor: pointer;
+    border: 1px solid #151515;
+    border-radius: 0 0 0 0.2rem;
+    border-top:   0;
+    border-right: 0;
+    background-color: #2a2a2a;
+    z-index: 300;
+}
+body.hover .modal > .dismiss:not(.selected):hover {
+    background-color: #90304a;
+}
+
+.modal > .dismiss path,
+.modal > .dismiss rect,
+.modal > .dismiss circle,
+.modal > .dismiss ellipse,
+.modal > .dismiss line,
+.modal > .dismiss polyline,
+.modal > .dismiss polygon {
+    fill: #666;
+}
+
+body.hover .modal > .dismiss:not(.selected):hover path,
+body.hover .modal > .dismiss:not(.selected):hover rect,
+body.hover .modal > .dismiss:not(.selected):hover circle,
+body.hover .modal > .dismiss:not(.selected):hover ellipse,
+body.hover .modal > .dismiss:not(.selected):hover line,
+body.hover .modal > .dismiss:not(.selected):hover polyline,
+body.hover .modal > .dismiss:not(.selected):hover polygon {
+    fill: #ccc;
+}
+
+.modal h2 {
+    font-size: 1.7rem;
+    font-style: normal;
+    border-bottom: 1px solid #909090;
+    padding-bottom: 0.5rem;
+    margin-bottom: 2rem;
+}
+
+.modal .field {
+    margin-bottom: 1.5rem;
+    padding-left: 0;
+}
+.modal .meta {
+    flex: 1 1 50%;
+}
+.modal .meta h3 {
+    height: 2rem;
+}
+.modal .meta p {
+    color: #707070;
+    margin: 0;
+    font-size: 1rem;
+    padding-right: 1.5rem;
+}
+.modal .meta a {
+    color: #9a9a9a;
+    display: block;
+    text-align: right;
+    margin-top: 0.5rem;
+}
+.modal .input {
+    flex: 1 1 50%;
+    padding-top: 2rem;
+}
+.modal .input input {
+    width: 100%;
+}
+.modal .errors {
+    font-size: 0.95rem;
+    color: var(--error-col);
+}
+.modal .errors div {
+    margin-bottom: 0.3rem;
+}
+.modal .footer {
+    /*
+        1.5rem on bottom so buttons aren't
+        covered by ::after fade out.
+    */
+    margin-bottom: 1.5rem;
+    margin-top: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row-reverse;
+    row-gap: 1rem;
+}
+.modal .error_general {
+    flex: 0 0 100%;
+}
+.modal .error_general:empty {
+    display: none;
+}
+
+
+/*
+    IMPORTANT: this query appears in other files. Be
+    sure to update it in them as well.
+
+    We assume that all devices incapable of hovering
+    are phones. In practice this will include tablets
+    too. We'll have to address that in the future.
+
+    Some phones mistakenly report that they can hover,
+    such as the Samsung Galaxy 9. Therefore we include
+    a max-width condition as well.
+*/
+@media (hover: none), (max-width: 480px) {
+    .modal {
+        box-shadow: none;
+        padding-top: 4.5rem;
+    }
+    .modal .inner {
+        top: 7.5rem;
+    }
+    .modal > .gutter {
+        position: absolute;
+        top:   0;
+        left:  0;
+        right: 0;
+        height: var(--mobile-header-height);
+        box-sizing: border-box;
+        width: 100%;
+        background-color: #111;
+        display: flex;
+    }
+    .modal > .gutter > .back {
+        text-transform: uppercase;
+        font-size: 1rem;
+        padding-left:  0.5rem;
+        padding-right: 1.5rem;
+        display: flex;
+        align-items: center;
+        font-weight: bold;
+    }
+}

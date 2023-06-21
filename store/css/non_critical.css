@@ -1,0 +1,384 @@
+
+@keyframes scrollToFade {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+
+@keyframes flash {
+    0%   {opacity: 1}
+    25%  {opacity: 1}
+    35%  {opacity: 0}
+    65%  {opacity: 0}
+    75%  {opacity: 1}
+    100% {opacity: 1}
+}
+
+@keyframes revolution {
+    from {
+        transform: rotateZ(0deg);
+    }
+    to {
+        transform: rotateZ(360deg);
+    }
+}
+
+.loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 5rem;
+}
+#editor_footer .loading {
+    margin-top: 0;
+}
+
+/*
+Modals have two different places the
+loading animation can occur.
+*/
+.modal .footer .loading {
+    margin-top: 0;
+}
+.talent #detail .advertised .graphic .inner .loading,
+.modal > .loading {
+    position: absolute;
+    top:    0;
+    bottom: 0;
+    left:   0;
+    right:  0;
+    margin-top: 0;
+}
+.tempfield .loading {
+    margin-top: 0;
+}
+.loading svg {
+    animation: 1s linear infinite revolution;
+}
+.loading path,
+.loading rect,
+.loading circle,
+.loading ellipse,
+.loading line,
+.loading polyline,
+.loading polygon {
+    fill: #606060;
+}
+
+#notification {
+    position: absolute;
+    top:   2.5rem;
+    left:  0;
+    right: 0;
+    margin: 0 auto;
+    box-shadow: 0 0 0.2rem #000;
+    padding: 1.5rem;
+    max-width: 32rem;
+    z-index: 6;
+    transition-duration: 0.2s;
+    transition-property: top, opacity;
+    background-color: #504030;
+}
+#notification.hidden {
+    opacity: 0;
+    top: -5rem;
+}
+#notification .title {
+    /*font-family: var(--serif);*/
+    font-size: 1.6rem;
+    font-size: 1.2rem;
+    /*font-style: italic;*/
+    /*letter-spacing: 0.01rem;*/
+    margin-bottom: 0.3rem;
+    color: #ba8;
+}
+#notification .msg {
+    margin-right: 3rem;
+    font-size: 1.1rem;
+    color: #a97;
+}
+#notification .remove {
+    position: absolute;
+    width:  4rem;
+    height: 4rem;
+    top:   0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+#notification .remove path,
+#notification .remove rect,
+#notification .remove circle,
+#notification .remove ellipse,
+#notification .remove line,
+#notification .remove polyline,
+#notification .remove polygon {
+    fill: #a97;
+}
+body.hover #notification .remove:not(.selected):hover path,
+body.hover #notification .remove:not(.selected):hover rect,
+body.hover #notification .remove:not(.selected):hover circle,
+body.hover #notification .remove:not(.selected):hover ellipse,
+body.hover #notification .remove:not(.selected):hover line,
+body.hover #notification .remove:not(.selected):hover polyline,
+body.hover #notification .remove:not(.selected):hover polygon {
+    fill: #cb9;
+}
+
+
+/*
+    Notification error.
+*/
+#notification.error {
+    background: var(--err-notif-bg);
+}
+#notification.error .title {
+    color: var(--err-notif-title);
+}
+#notification.error .msg {
+    color: var(--err-notif-col);
+}
+#notification.error .remove path,
+#notification.error .remove rect,
+#notification.error .remove circle,
+#notification.error .remove ellipse,
+#notification.error .remove line,
+#notification.error .remove polyline,
+#notification.error .remove polygon {
+    fill: var(--err-notif-col);
+}
+body.hover #notification.error .remove:not(.selected):hover path,
+body.hover #notification.error .remove:not(.selected):hover rect,
+body.hover #notification.error .remove:not(.selected):hover circle,
+body.hover #notification.error .remove:not(.selected):hover ellipse,
+body.hover #notification.error .remove:not(.selected):hover line,
+body.hover #notification.error .remove:not(.selected):hover polyline,
+body.hover #notification.error .remove:not(.selected):hover polygon {
+    fill: var(--err-notif-x);
+}
+
+/*
+    Notification warn.
+*/
+#notification.warn {
+    background: var(--warn-bg);
+}
+#notification.warn .title {
+    color: var(--warn-title);
+}
+#notification.warn .msg {
+    color: var(--warn-col);
+}
+#notification.warn .remove path,
+#notification.warn .remove rect,
+#notification.warn .remove circle,
+#notification.warn .remove ellipse,
+#notification.warn .remove line,
+#notification.warn .remove polyline,
+#notification.warn .remove polygon {
+    fill: var(--warn-col);
+}
+body.hover #notification.warn .remove:not(.selected):hover path,
+body.hover #notification.warn .remove:not(.selected):hover rect,
+body.hover #notification.warn .remove:not(.selected):hover circle,
+body.hover #notification.warn .remove:not(.selected):hover ellipse,
+body.hover #notification.warn .remove:not(.selected):hover line,
+body.hover #notification.warn .remove:not(.selected):hover polyline,
+body.hover #notification.warn .remove:not(.selected):hover polygon {
+    fill: var(--warn-x);
+}
+
+/*
+    Notification info.
+*/
+#notification.info {
+    background: var(--info-bg);
+}
+#notification.info .title {
+    color: var(--info-title);
+}
+#notification.info .msg {
+    color: var(--info-col);
+}
+#notification.info .remove path,
+#notification.info .remove rect,
+#notification.info .remove circle,
+#notification.info .remove ellipse,
+#notification.info .remove line,
+#notification.info .remove polyline,
+#notification.info .remove polygon {
+    fill: var(--info-col);
+}
+body.hover #notification.info .remove:not(.selected):hover path,
+body.hover #notification.info .remove:not(.selected):hover rect,
+body.hover #notification.info .remove:not(.selected):hover circle,
+body.hover #notification.info .remove:not(.selected):hover ellipse,
+body.hover #notification.info .remove:not(.selected):hover line,
+body.hover #notification.info .remove:not(.selected):hover polyline,
+body.hover #notification.info .remove:not(.selected):hover polygon {
+    fill: var(--info-x);
+}
+
+/*
+    Notification success.
+*/
+#notification.success {
+    background: var(--success-bg);
+}
+#notification.success .title {
+    color: var(--success-title);
+}
+#notification.success .msg {
+    color: var(--success-col);
+}
+#notification.success .remove path,
+#notification.success .remove rect,
+#notification.success .remove circle,
+#notification.success .remove ellipse,
+#notification.success .remove line,
+#notification.success .remove polyline,
+#notification.success .remove polygon {
+    fill: var(--success-col);
+}
+body.hover #notification.success .remove:not(.selected):hover path,
+body.hover #notification.success .remove:not(.selected):hover rect,
+body.hover #notification.success .remove:not(.selected):hover circle,
+body.hover #notification.success .remove:not(.selected):hover ellipse,
+body.hover #notification.success .remove:not(.selected):hover line,
+body.hover #notification.success .remove:not(.selected):hover polyline,
+body.hover #notification.success .remove:not(.selected):hover polygon {
+    fill: var(--success-x);
+}
+
+
+
+
+
+
+
+
+
+
+
+#tip {
+    position: absolute;
+    max-width: 14rem;
+    box-shadow: 0 0 0.9rem 0.1rem var(--tip-shadow);
+    box-shadow: 0 0 0.5rem 0.1rem var(--tip-shadow);
+    font-size: 1rem;
+    font-family: var(--sans);
+    font-weight: bold;
+    z-index: 40;
+    pointer-events: none;
+    margin-top: 1.2rem;
+    background-color: var(--tip-bg-col);
+    color: var(--tip-col);
+}
+#tip.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+#tip.delayed {
+    transition-delay: 0.5s;
+}
+#tip .lip {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    top:    0;
+    bottom: 0;
+    left:   0;
+    right:  0;
+}
+#tip .lip::before {
+    box-shadow: 0.05rem 0.05rem 0.5rem 0.1rem var(--tip-shadow);
+    background-color: var(--tip-bg-col);
+    content: "";
+    width:  1rem;
+    height: 1rem;
+    margin-top: -0.5rem;
+    transform: rotate(45deg);
+}
+#tip .text {
+    background-color: var(--tip-bg-col);
+    padding: 0.6rem 1rem;
+    position: relative;
+    z-index: 5;
+}
+#tip.above {
+    margin-top: 0;
+    margin-bottom: 1.2rem;
+}
+#tip.above .lip {
+    align-items: flex-end;
+}
+#tip.above .lip::before {
+    margin-top: 0;
+    margin-bottom: -0.5rem;
+}
+
+
+#full {
+    position: absolute;
+    top:    0;
+    bottom: 0;
+    left:   0;
+    right:  0;
+    z-index: 30;
+    background-color: #000d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#full.hidden {
+    display: none;
+}
+#full .graphic {
+    position: absolute;
+    top:    0;
+    bottom: 0;
+    left:   0;
+    right:  0;
+}
+#full img {
+    width:  100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+}
+
+#full .dismiss {
+    border-radius: 10rem;
+    width:  5rem;
+    height: 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top:   1rem;
+    right: 1rem;
+}
+#full .dismiss path,
+#full .dismiss rect,
+#full .dismiss circle,
+#full .dismiss ellipse,
+#full .dismiss line,
+#full .dismiss polyline,
+#full .dismiss polygon {
+    fill: #aaa;
+}
+body.hover #full .dismiss:not(.selected):hover path,
+body.hover #full .dismiss:not(.selected):hover rect,
+body.hover #full .dismiss:not(.selected):hover circle,
+body.hover #full .dismiss:not(.selected):hover ellipse,
+body.hover #full .dismiss:not(.selected):hover line,
+body.hover #full .dismiss:not(.selected):hover polyline,
+body.hover #full .dismiss:not(.selected):hover polygon {
+    fill: #fff;
+}

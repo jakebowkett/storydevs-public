@@ -1,0 +1,1005 @@
+
+.resource {
+    max-width: 48rem;
+    margin: 0 auto;
+    box-sizing: border-box;
+    padding-top: 1rem;
+}
+.resource:last-child {
+    padding-bottom: 6rem;
+}
+.resource .head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+.resource h2.title {
+    font-size: 2rem;
+    font-style: normal;
+    margin: 0;
+}
+.resource .subhead {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    color: #999;
+}
+.resource .tags {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 0.5rem;
+}
+.resource .tag {
+    background-color: #3a3a3a;
+    padding: 0.4rem 0.6rem;
+    margin-right: 0.5rem;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.03rem;
+    box-shadow: 0 1px 0.1rem #1a1a1a;
+}
+.resource .added-by {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-top: 0.6rem;
+}
+.resource .added-by a {
+    color: var(--link);
+}
+.resource .added-by > span:nth-child(1) {
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    color: #888;
+    margin-right: 0.3rem;
+    margin-bottom: -0.1rem;
+}
+.resource .added-by > *:nth-child(2) {
+    
+}
+.resource .legend {
+    position: static;
+    width: 100%;
+    margin-top: 2rem;
+}
+
+.resource > .items {
+    margin-top: 1rem;
+}
+.info-row {
+    padding-left:   1rem;
+    margin-left:    1.25rem;
+    margin-left:    2rem;
+    display: flex;
+}
+@media (max-width: 1366px) {
+    .info-row {
+        margin-left: 0;
+        padding-left: 0;
+    }
+}
+.info-row[data-action] {
+    cursor: pointer;
+}
+body.hover .info-row[data-action]:not(.selected):hover {
+    background-color: #222;
+}
+.info-row .desc,
+.info-row .value {
+    padding: 0.6rem 0;
+}
+.info-row .desc {
+    padding-top: 0.8rem;
+    /*flex: 0 0 14rem;*/
+    flex: 0 0 11.5rem;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    color: #bbb;
+}
+.info-row .value {
+    flex: 1 1 100%;
+    display: block;
+    color: #909090;
+    position: relative;
+}
+.info-row .value.nowrap {
+    white-space: nowrap;
+    overflow: hidden;
+}
+.info-row .value > .bio {
+    text-align: justify;
+}
+.info-row .value .obf {
+    user-select: none;
+    display: inline-flex;
+}
+.info-row .value .obf:nth-child(even) {
+    overflow: hidden;
+    max-width: 0;
+}
+.info-row .copy {
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    color: #999;
+
+    background-color: var(--col-bg);
+    
+    position: absolute;
+    top:    0;
+    bottom: 0;
+    /*right:  1rem;*/
+    right:  0;
+    padding-right: 0.5rem;
+    display: flex;
+    align-items: center;
+}
+.info-row .copy::before {
+    content: "";
+    background: linear-gradient(to right, transparent, var(--col-bg));
+    position: absolute;
+    top:    0;
+    bottom: 0;
+    left: -2rem;
+    width: 1.5rem;
+}
+.info-row .copy::after {
+    content: "";
+    background-color: var(--col-bg);
+    position: absolute;
+    top:    0;
+    bottom: 0;
+    left: -0.5rem;
+    width: 0.5rem;
+}
+body.hover .info-row:not(.selected):hover .copy {
+    color: #ccc;
+}
+body.hover .info-row[data-action]:not(.selected):hover .copy {
+    background-color: #222;
+}
+body.hover .info-row[data-action]:not(.selected):hover .copy::before {
+    background: linear-gradient(to right, transparent, #222);
+}
+body.hover .info-row[data-action]:not(.selected):hover .copy::after {
+    background-color: #222;
+}
+.info-row .value.copied::after {
+    content: "Copied!";
+    position: absolute;
+    top:    0;
+    bottom: 0;
+    left:   0;
+    right:  2.5rem;
+    display: flex;
+    align-items: center;
+    background-color: var(--col-bg);
+    opacity: 0;
+    margin-top: 0;
+    color: #0c9;
+    animation-name: copied;
+    animation-duration: 1.25s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: 1;
+}
+body.hover .info-row:not(.selected):hover .value.copied::after {
+    background-color: #222;
+}
+@keyframes copied {
+    0% {
+        opacity: 0;
+    }
+    25% {
+        opacity: 1;
+    }
+    75% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+
+.info-row .copy svg {
+    margin-left: 0.5rem;
+}
+.info-row .copy svg > * {
+    fill: #888;
+}
+body.hover .info-row:not(.selected):hover .copy svg > * {
+    fill: #bbb;
+}
+
+.talent #detail .col_inner {
+    max-width: none;
+}
+.talent #detail .advertised {
+    display: flex;
+    flex-direction: column;
+    margin-top: 3.5rem;
+    margin-bottom: 0.5rem;
+    box-shadow: 0 0 0.1rem #000;
+    position: relative;
+}
+.talent #detail .advertised .tabs {
+    position: absolute;
+    bottom: 100%;
+    display: flex;
+    width: 100%;
+}
+.talent #detail .advertised .tabs::after {
+    content: "";
+    position: absolute;
+    left:   0;
+    right:  0;
+    bottom: 0;
+    height: 0.5rem;
+    background-color: #3a3a3a;
+    box-shadow: 0 0 0.1rem #000;
+    border-radius: 0.1rem 0.1rem 0 0;
+}
+.talent #detail .advertised .tabs div {
+    height: 2.5rem;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    background-color: #2a2a2a;
+    border-radius: 0.8rem 0.3rem 0 0;
+    box-shadow: 0 0 0.2rem #000;
+    position: relative;
+    padding: 0 0.6rem;
+}
+.talent #detail .advertised .tabs div * {
+    pointer-events: none;
+}
+body.hover.talent #detail .advertised .tabs div:not(.selected):hover {
+    background-color: #3a3a3a;
+}
+.talent #detail .advertised .tabs div.selected span,
+body.hover.talent #detail .advertised .tabs div:not(.selected):hover span {
+    color: #bbb;
+}
+.talent #detail .advertised .tabs div span {
+    font-size: 0.8rem;
+    letter-spacing: 0.01rem;
+    text-transform: uppercase;
+    color: #999;
+    white-space: nowrap;
+    margin-left: 0.4rem;
+}
+.talent #detail .advertised .tabs div.selected {
+    background-color: #3a3a3a;
+    z-index: 2;
+}
+.talent #detail .advertised .tabs div.selected::after {
+    content: "";
+    position: absolute;
+    left:   0;
+    right:  0;
+    bottom: -0.5rem;
+    background-color: #3a3a3a;
+    height: 0.5rem;
+    z-index: 2;
+}
+.talent #detail .advertised .tabs div:first-child {
+    margin-left: 1rem;
+}
+.talent #detail .advertised .tabs svg > * {
+    fill: #888;
+}
+body.hover.talent #detail .advertised .tabs div:not(.selected):hover svg > *,
+.talent #detail .advertised .tabs div.selected svg > * {
+    fill: #bbb;
+}
+.talent #detail .advertised .portfolio {
+    flex: 1 1 100%;
+    display: flex;
+}
+.talent #detail .advertised .section {
+    flex: 1 1 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+.talent #detail .advertised .section.hidden {
+    display: none;
+}
+.talent #detail .advertised .example {
+    flex: 1 1 75%;
+    background-color: #101010;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    position: relative;
+}
+.talent #detail .advertised .example::after {
+    content: "";
+    position: absolute;
+    top:    0;
+    bottom: 0;
+    left:   0;
+    right:  0;
+    pointer-events: none;
+    border-left:   2px solid #3a3a3a;
+    border-right:  2px solid #3a3a3a;
+    border-bottom: 2px solid #3a3a3a;
+}
+.talent #detail .advertised .graphic {
+    width: 100%;
+    padding-bottom: 56.25%;
+    position: relative;
+    overflow: hidden;
+}
+.talent #detail .advertised .graphic .inner {
+    position: absolute;
+    top:    0;
+    bottom: 0;
+    left:   0;
+    right:  0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.talent #detail .advertised .graphic .inner .loading.hidden {
+    display: none;
+}
+.talent #detail .advertised .graphic img {
+    width: 100%;
+    margin:  0;
+    padding: 0;
+}
+.talent #detail .advertised .graphic img.portrait {
+    width: auto;
+    height: 100%;
+}
+.talent #detail .advertised .graphic .nav {
+    position: absolute;
+    left:   0;
+    right:  0;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    pointer-events: none;
+    overflow: hidden;
+    display: none;
+}
+body:not(.hover).talent #detail .advertised .graphic .nav,
+body.hover.talent #detail .advertised .graphic:not(.selected):hover .nav {
+    display: flex;
+}
+.talent #detail .advertised .graphic .prev,
+.talent #detail .advertised .graphic .next {
+    pointer-events: auto;
+    height: 30%;
+    width:  10%;
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #ddd;
+    background: radial-gradient(#0003 0%, transparent 70%);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.talent #detail .advertised .graphic .prev div,
+.talent #detail .advertised .graphic .next div {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+.talent #detail .advertised .graphic .prev div::before,
+.talent #detail .advertised .graphic .next div::before {
+    content: "";
+    display: block;
+    box-sizing: border-box;
+    width:          100%;
+    padding-bottom: 100%;
+    transform-origin: top right;
+    transform: rotate(-45deg);
+    background-color: #ccc;
+}
+.talent #detail .advertised .graphic .prev div {
+    margin-left: -1.5rem;
+    justify-content: flex-end;
+}
+.talent #detail .advertised .graphic .next div {
+    margin-right: -1.5rem;
+    justify-content: flex-start;
+}
+.talent #detail .advertised .graphic .next div::before {
+    transform-origin: top left;
+    transform: rotate(45deg);
+}
+body.hover.talent #detail .advertised .graphic .prev:not(.selected):hover div::before,
+body.hover.talent #detail .advertised .graphic .next:not(.selected):hover div::before {
+    background-color: #fff;
+}
+.talent #detail .advertised .graphic .prev.hidden,
+.talent #detail .advertised .graphic .next.hidden {
+    pointer-events: none;
+    opacity: 0;
+}
+.talent #detail .advertised .graphic .full {
+    position: absolute;
+    top:    0;
+    bottom: 0;
+    left:   0;
+    right:  0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.talent #detail .advertised .graphic .full.hidden {
+    display: none;
+}
+.talent #detail .advertised .meta {
+    flex: 1 1 14rem;
+    background-color: #2a2a2a;
+    z-index: 1;
+}
+.talent #detail .advertised .meta .inner.hidden {
+    display: none;
+}
+.talent #detail .advertised .meta .title {
+    background-color: #3a3a3a;
+    padding: 0.5rem 1rem;
+    display: flex;
+    flex-direction: column;
+}
+.talent #detail .advertised .meta .title h4 {
+    font-size: 1.3rem;
+    font-style: normal;
+    margin: 0;
+    min-width: 10rem;
+}
+.talent #detail .advertised .meta .title div {
+    font-size: 0.9rem;
+    font-style: italic;
+}
+.talent #detail .advertised .meta .info {
+    padding: 1rem;
+    color: #888;
+    font-size: 1rem;
+}
+.talent #detail .advertised .meta .info p {
+    margin: 0;
+    margin-top: 0.5rem;
+}
+.talent #detail .advertised .meta .info p:first-child {
+    margin-top: 0;
+}
+.talent #detail .advertised .end {
+    background-color: #3a3a3a;
+    height: 1rem;
+}
+.talent #detail .resource .project {
+    margin-top: 2rem;
+    display: flex;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid #333;
+    min-height: 8rem;
+}
+.talent #detail .resource .project:first-child {
+    margin-top: 1rem;
+}
+.talent #detail .resource .project:last-child {
+    border-bottom: 0;
+    padding-bottom: 0;
+}
+
+.talent #detail .resource .project .dates {
+    font-size: 1rem;
+    display: flex;
+    /*align-items: center;*/
+    flex-direction: column;
+    /*justify-content: space-between;*/
+    justify-content: center;
+    margin-right: 1.5rem;
+    margin-left:  0.5rem;
+    
+    color: #c0c0c0;
+}
+.talent #detail .resource .project .dates div {
+    /*flex: 0 0 2rem;*/
+    max-width: 2.5rem;
+    text-align: center;
+
+    letter-spacing: -0.02rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.talent #detail .resource .project .dates div:nth-child(2) {
+    flex: 1 1 100%;
+    /*margin-left: 50%;*/
+    margin-top:    0.3rem;
+    margin-bottom: 0.3rem;
+    border-left: 2px dashed #555;
+}
+.talent #detail .resource .project .body {
+    flex: 1 1 100%;
+}
+.talent #detail .resource .project .title {
+    display: flex;
+    justify-content: space-between;
+}
+.talent #detail .resource .project h4 {
+    font-size: 1.5rem;
+    color: #ccc;
+}
+.talent #detail .resource .project h4 a {
+    text-decoration: none;
+    color: #dbdbdb;
+}
+.talent #detail .resource .project .dev {
+    font-size: 1.05rem;
+    color: #aaa;
+    margin-left: 0.3rem;
+}
+.talent #detail .resource .project .dev a {
+    text-decoration: none;
+    color: #909090;
+}
+.talent #detail .resource .role {
+    margin-top: 1rem;
+    box-sizing: border-box;
+}
+.talent #detail .resource .role:not(:last-child)::after {
+    content: "";
+    display: block;
+    width: 25%;
+    margin: 0 auto;
+    border-bottom: 1px solid #3a3a3a;
+}
+.talent #detail .resource .role h5 {
+    font-family: var(--sans);
+    font-size: 0.9rem;
+    letter-spacing: 0.02rem;
+    text-transform: uppercase;
+    margin: 0;
+    color: #ccc;
+    font-style: normal;
+}
+.talent #detail .resource .role p {
+    margin: 0;
+    margin-top: 0.4rem;
+    color: #999;
+    font-size: 1rem;
+}
+.talent #detail .resource .role ul {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding-top:    0.5rem;
+    padding-bottom: 1rem;
+    box-sizing: border-box;
+}
+.talent #detail .resource .role li {
+    color: #999;
+    margin-bottom: 0.5rem;
+}
+
+@media (hover: none), (max-width: 480px) {
+    
+    .talent #detail .advertised {
+        margin-top: 4.2rem;
+    }
+    
+    .talent #detail .advertised .tabs div {
+        height: 3.2rem;
+        padding: 0 1.5rem;
+    }
+    
+    .talent #detail .tabs .label {
+        display: none;
+    }
+    
+    #detail .resource {
+        padding-left:  1rem;
+        padding-right: 1rem;
+    }
+}
+
+#detail .resource .title {
+    font-size: 2rem;
+    color: #ccc;
+}
+#detail .resource .summary {
+    font-style: italic;
+    font-size: 1rem;
+    margin-top: 0;
+    color: #888;
+}
+.talent #detail .resource .subhead {
+    margin: 1rem 0;
+    display: flex;
+    flex-wrap: wrap;
+}
+.talent #detail .resource .subhead .dates {
+    display: flex;
+    align-items: flex-end;
+}
+#detail .resource .dates {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+#detail .resource .dates .date {
+    display: flex;
+    align-items: center;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+}
+#detail .resource .dates .label {
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 0.02rem;
+    color: #9a9a9a;
+    margin-right: 0.3rem;
+}
+#detail .resource .dates .val {
+    color: #888;
+    font-size: 0.8rem;
+    text-align: right;
+    text-transform: uppercase;
+}
+#detail .resource .dates .created {
+    color: #bbb;
+}
+#detail .resource .subhead .identity {
+    color: #bbb;
+    display: flex;
+    align-items: center;
+    column-gap: 0.2rem;
+}
+#detail .resource .subhead .name {
+    font-weight: bold;
+}
+#detail .resource .subhead .handle {
+    color: #999;
+}
+#detail .resource .subhead .admin {
+    color: var(--col-bg);
+    font-weight: bold;
+    background-color: #c84;
+    padding: 0 0.2rem;
+    text-transform: uppercase;
+    font-size: 0.7rem;
+    margin-right: 0.1rem;
+}
+#detail .resource .subhead .pronouns {
+    font-size: 0.85rem;
+    display: block;
+}
+
+.thread > .locked {
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    column-gap: 0.8rem;
+}
+.thread > .locked .icon {
+    display: flex;
+    width: 1.5rem;
+}
+.thread > .locked .icon svg > * {
+    fill: var(--ctx-col);
+}
+.thread > .locked .text {
+    font-size: 0.9rem;
+    font-style: italic;
+}
+
+.thread .post {
+    margin-top:     1.25rem;
+    padding-bottom: 1.25rem;
+    position: relative;
+}
+.thread .post.hidden {
+    opacity: 0.8;
+}
+.thread .post.hidden::before {
+    content: "";
+    position: absolute;
+    top:    -0.6rem;
+    bottom:    0rem;
+    left:   -0.6rem;
+    right:  -0.6rem;
+    background-color: #fff1;
+    pointer-events: none;
+    border: 2px dashed #777;
+}
+.thread .post.hidden > .info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.8rem;
+    column-gap: 0.5rem;
+}
+.thread .post.hidden > .info .icon {
+    display: flex;
+    width: 1.5rem;
+}
+.thread .post.hidden > .info .icon svg > * {
+    fill: #777;
+}
+.thread .post.hidden > .info .text {
+    font-size: 0.9rem;
+    color: #888;
+    font-style: italic;
+}
+.thread .post.deleted {
+    color: #7a7a7a;
+    background-color: #2a2a2a;
+    padding: 1.2rem;
+}
+.thread .post.deleted + .post {
+    margin-top: 2.5rem;
+}
+.thread .post.scrolled_to::after {
+    content: "";
+    position: absolute;
+    top:    -1rem;
+    bottom: -0.4rem;
+    left:   -1rem;
+    right:  -1rem;
+    background-color: #9604;
+    pointer-events: none;
+    border: 3px solid #da0;
+    animation-name: scrollToFade;
+    animation-duration: 1s;
+    animation-delay: 1s;
+    animation-fill-mode: forwards;
+}
+.thread .post .sect {
+    display: flex;
+}
+.thread .post .avatar {
+    height:   6rem;
+    flex: 0 0 6rem;
+    background-color: #333;
+    position: relative;
+}
+.thread .post .avatar.desktop {
+    margin-right: 1rem;
+}
+.thread .post .avatar.mobile {
+    overflow: hidden;
+    border-radius: 10rem;
+    height:   2.5rem;
+    flex: 0 0 2.5rem;
+    margin-right: 0.5rem;
+}
+.thread .post .avatar img {
+    width:  100%;
+    height: 100%;
+    object-fit: cover;
+}
+.thread .post .avatar:empty::after {
+    content: "?";
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    font-size: 3rem;
+    font-weight: bold;
+    color: #555;
+    top:    0;
+    bottom: 0;
+    left:   0;
+    right:  0;
+}
+.thread .post .avatar.mobile:empty::after {
+    font-size: 1.5rem;
+}
+.thread .post .main {
+    flex: 1 1 100%;
+}
+.thread .post .subhead {
+    border-bottom: 1px solid #777;
+    padding-bottom: 0.25rem;
+    margin-bottom: 0.2rem;
+    align-items: center;
+    justify-content: flex-start;
+}
+.thread .post .subhead .tools {
+    display: flex;
+}
+.thread .post .footer {
+    flex: 0 0 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.thread .post .footer > div {
+    display: flex;
+}
+.thread .post .subhead .btn {
+    height: 2.5rem;
+}
+.thread .post .subhead .btn {
+    min-width: 3.5rem;
+}
+.thread .post .footer div {
+    column-gap: 0.5rem;
+}
+.thread .post .footer .btn {
+    margin-top: 0.5rem;
+    height: auto;
+    min-width: 7.5rem;
+    justify-content: space-between;
+    
+    background-color: transparent !important;
+    padding: 0 0.3rem;
+    margin: 0;
+    min-width: 0;
+}
+.thread .post .footer > div:first-child .btn {
+    margin-left: -0.3rem;
+}
+.thread .post .footer > div:last-child .btn {
+    margin-right: -0.3rem;
+}
+.thread .post .subhead .btn .text,
+.thread .post .footer .btn .text {
+    font-size: 1rem;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    margin-right: 0.4rem;
+}
+.thread .post .subhead .btn .icon,
+.thread .post .footer .btn .icon {
+    padding: 0;
+    margin:  0;
+    width: 1rem;
+}
+.thread .post .subhead .btn.link .icon,
+.thread .post .footer .btn.link .icon {
+    width: 1.4rem;
+}
+.thread .post .footer .btn.dangerous {
+    color: var(--error-col-2);
+}
+.thread .post .footer .btn.dangerous svg > * {
+    fill: var(--error-col);
+}
+body.hover .thread .post .footer .btn.dangerous:not(.selected):hover {
+    color: var(--error-col-3);
+}
+body.hover .thread .post .footer .btn.dangerous:not(.selected):hover svg > * {
+    fill: var(--error-col-3);
+}
+
+.richtext {
+    display: flex;
+    flex-direction: column;
+    color: #b8b8b8;
+}
+.richtext h2 {
+    margin-top: 0;
+}
+.richtext h2:first-child {
+    margin-top: 0;
+    padding-top: 0;
+}
+.richtext p,
+.richtext li,
+.richtext blockquote {
+    font-size: var(--editor-p-size);
+}
+.richtext a {
+    color: #70dcd0;
+}
+
+
+/* Single column view. */
+.thread .post .avatar.desktop {
+    display: none !important;
+}
+.thread .post .avatar.mobile {
+    display: block !important;
+}
+
+/* Dual column view. This query exists in multiple places. */
+@media (min-width: 76rem) {
+
+    .thread .post .avatar.desktop {
+        display: block !important;
+    }
+    .thread .post .avatar.mobile {
+        display: none !important;
+    }
+}
+
+
+
+
+.countdown {
+    color: #b8b8b8;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    max-width: 34rem;
+    padding: 1.25rem;
+    padding-right: calc(2rem + var(--browser-scrollbar-width));
+    padding-bottom: 0;
+    row-gap: 1rem;
+    margin-bottom: 1rem;
+    box-sizing: border-box;
+}
+
+@media (hover: none), (max-width: 480px) {
+    .countdown {
+        padding: 1.5rem 1rem;
+        padding-left: 1.1rem;
+        padding-bottom: 0;
+    }
+}
+
+.countdown h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+.countdown .timer {
+    font-family: var(--serif);
+    font-size: 3.5rem;
+    display: flex;
+    justify-content: center;
+}
+.countdown .timer div {
+    width: 6rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.countdown .timer div::after {
+    font-size: 0.8rem;
+    font-family: var(--sans);
+    text-transform: uppercase;
+    color: #888;
+}
+.countdown .timer div:nth-child(1)::after {
+    content: "Days";
+}
+.countdown .timer div:nth-child(2)::after {
+    content: "Hours";
+}
+.countdown .timer div:nth-child(3)::after {
+    content: "Mins";
+}
+.countdown .timer div:nth-child(4)::after {
+    content: "Secs";
+}
+.countdown .timer.done {
+    animation: flash 1s linear 0s infinite;
+}
+.countdown .weekly,
+.countdown .lasting,
+.countdown .date {
+    font-size: 1rem;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.countdown .label {
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    flex: 0 0 100%;
+    display: flex;
+    justify-content: center;
+    color: #888;
+}
+.countdown .day {
+    margin-right: 0.3rem;
+}
+.countdown .line {
+    width: 10rem;
+    border: 1px solid #444;
+    margin: 0 auto;
+}

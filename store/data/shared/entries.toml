@@ -1,0 +1,84 @@
+
+[[entries]]
+
+    Name = "analysis"
+    Text = "Analysis"
+    Icon = "library/analysis"
+
+[[entries]]
+
+    Name = "history"
+    Text = "History"
+    Icon = "library/history"
+    
+[[entries]]
+
+    Name = "research"
+    Text = "Research"
+    Icon = "library/research"
+
+[[entries]]
+
+    Name = "documentation"
+    Text = "Documentation"
+    Icon = "library/documentation"
+
+[[entries]]
+
+    Name = "education"
+    Text = "Education"
+    Icon = "library/education"
+
+[[entries]]
+
+    Name = "glossary"
+    Text = "Glossary"
+    Icon = "library/glossary"
+    
+[[entries]]
+
+    Name = "interview"
+    Text = "Interview"
+    Icon = "library/interview"
+    
+[[entries]]
+
+    Name = "investigation"
+    Text = "Investigation"
+    Icon = "library/investigation"
+    
+[[entries]]
+
+    Name = "journalism"
+    Text = "Journalism"
+    Icon = "library/news"
+    
+[[entries]]
+
+    Name = "opinion"
+    Text = "Opinion"
+    Icon = "library/opinion"
+    
+[[entries]]
+
+    Name = "press"
+    Text = "Press Release"
+    Icon = "library/promo"
+    
+[[entries]]
+
+    Name = "review"
+    Text = "Reviews"
+    Icon = "library/reviews"
+    
+[[entries]]
+
+    Name = "fiction"
+    Text = "Fiction"
+    Icon = "library/fiction"
+
+[[entries]]
+
+    Name = "storydevs"
+    Text = "StoryDevs"
+    Icon = "library/storydevs"

@@ -1,0 +1,214 @@
+
+# [[skills]]
+
+#     Name = "writing"
+#     Text = "Writing"
+#     Icon = "skill/writing"
+    
+#     [[skills.ValueData]]
+    
+#         Data = "text"
+#         Field = "project.role.skill"
+
+# [[skills]]
+
+#     Name = "editing"
+#     Text = "Editing"
+#     Icon = "skill/editing"
+    
+#     [[skills.ValueData]]
+    
+#         Data = "text"
+#         Field = "project.role.skill"
+
+# [[skills]]
+
+#     Name = "narrative"
+#     Text = "Narrative Design"
+#     Icon = "skill/narrative"
+    
+#     [[skills.ValueData]]
+    
+#         Data = "text"
+#         Field = "project.role.skill"
+
+# [[skills]]
+
+#     Name = "translation"
+#     Text = "Translation"
+#     Icon = "skill/translation"
+    
+#     [[skills.ValueData]]
+    
+#         Data = "text"
+#         Field = "project.role.skill"
+
+[[skills]]
+
+    Name = "character"
+    Text = "Character Art"
+    Icon = "skill/character"
+    
+    [[skills.ValueData]]
+    
+        Data = "image"
+        Field = "project.role.skill"
+
+[[skills]]
+
+    Name = "environment"
+    Text = "Environment Art"
+    Icon = "skill/environment"
+    
+    [[skills.ValueData]]
+    
+        Data = "image"
+        Field = "project.role.skill"
+    
+[[skills]]
+
+    Name = "ui"
+    Text = "UI / UX Design"
+    Icon = "skill/ux"
+    
+    [[skills.ValueData]]
+    
+        Data = "image"
+        Field = "project.role.skill"
+    
+# [[skills]]
+
+#     Name = "music"
+#     Text = "Music"
+#     Icon = "skill/music"
+    
+#     [[skills.ValueData]]
+    
+#         Data = "audio"
+#         Field = "project.role.skill"
+    
+# [[skills]]
+
+#     Name = "sound"
+#     Text = "Sound Design"
+#     Icon = "skill/sound"
+    
+#     [[skills.ValueData]]
+    
+#         Data = "audio"
+#         Field = "project.role.skill"
+
+# [[skills]]
+
+#     Name = "voice"
+#     Text = "Voice Acting"
+#     Icon = "skill/voice"
+    
+#     [[skills.ValueData]]
+    
+#         Data = "audio"
+#         Field = "project.role.skill"
+
+# [[skills]]
+
+#     Name = "programming"
+#     Text = "Programming"
+#     Icon = "skill/programming"
+    
+#     [[skills.ValueData]]
+    
+#         Data = "audio"
+#         Field = "project.role.skill"
+    
+# [[skills]]
+
+#     Name = "directing"
+#     Text = "Directing"
+#     Icon = "skill/directing"
+    
+# [[skills]]
+
+#     Name = "producer"
+#     Text = "Project Mgmt."
+#     Icon = "skill/management"
+    
+# [[skills]]
+
+#     Name = "community"
+#     Text = "Community Mgmt."
+#     Icon = "skill/community"
+    
+# [[skills]]
+
+#     Name = "legal"
+#     Text = "Legal Advice"
+#     Icon = "skill/legal"
+    
+# [[skills]]
+
+#     Name = "financial"
+#     Text = "Financial Advice"
+#     Icon = "skill/financial"
+    
+# [[skills]]
+
+#     Name = "journalism"
+#     Text = "Journalism"
+#     Icon = "skill/journalism"
+    
+#     [[skills.ValueData]]
+    
+#         Data = "text"
+#         Field = "project.role.skill"
+    
+# [[skills]]
+
+#     Name = "reviewing"
+#     Text = "Reviewing"
+#     Icon = "skill/reviewing"
+    
+# [[skills]]
+
+#     Name = "critique"
+#     Text = "Critique"
+#     Icon = "skill/critique"
+    
+# [[skills]]
+
+#     Name = "education"
+#     Text = "Education"
+#     Icon = "skill/education"
+    
+# [[skills]]
+
+#     Name = "marketing"
+#     Text = "Marketing"
+#     Icon = "skill/marketing"
+    
+# [[skills]]
+
+#     Name = "entertainment"
+#     Text = "Entertainment"
+#     Icon = "skill/entertainment"
+    
+# [[skills]]
+
+#     Name = "cosplay"
+#     Text = "Cosplay"
+#     Icon = "skill/cosplay"
+    
+#     [[skills.ValueData]]
+    
+#         Data = "image"
+#         Field = "project.role.skill"
+    
+# [[skills]]
+
+#     Name = "speedrunning"
+#     Text = "Speedrunning"
+#     Icon = "skill/speedrunning"
+    
+#     [[skills.ValueData]]
+    
+#         Data = "video"
+#         Field = "project.role.skill"

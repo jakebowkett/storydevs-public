@@ -1,0 +1,12 @@
+
+Name = "confirm_delete"
+Title = "Delete [resource]"
+Class = "success"
+Msg = "Are you sure you want to delete this [resource]?"
+    
+[[Button]]
+
+    Text = "Delete"
+    Icon = "delete"
+    Action = "deleteResource"
+    Dangerous = true

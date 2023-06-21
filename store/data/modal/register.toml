@@ -1,0 +1,28 @@
+
+Name = "register"
+Title = "Register Account (1/2)"
+
+[[Field]]
+
+    Replace = "handle"
+    
+[[Field]]
+
+    Replace = "pronouns"
+    
+[[Field]]
+
+    Replace = "email"
+
+[[Field]]
+
+    Replace = "newpassword"
+    Desc = "Password"
+
+[[Button]]
+
+    Text = "Register"
+    Icon = "submit"
+    Dest = "register"
+    Submit = true
+    

@@ -1,0 +1,16 @@
+<div
+    id="{{.Name}}"
+    class="col"
+    data-action="colSwipeStart"
+    data-evt="touchstart"
+>
+    <div class="scroll">
+        <div class="col_inner">
+            {{if .Content}}
+                {{.Content}}
+            {{else}}
+                <div class="empty">{{.Empty}}</div>
+            {{end}}
+        </div>
+    </div>
+</div>

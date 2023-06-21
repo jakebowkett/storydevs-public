@@ -1,0 +1,11 @@
+
+Name = "email_success"
+Title = "Success"
+Class = "success"
+Msg = "Your email address has been changed."
+
+[[Button]]
+
+    Text = "Okay"
+    Icon = "available"
+    Dismiss = true

@@ -1,0 +1,264 @@
+
+:root {
+    
+    --font-size-mult: 1;
+
+    /* Link */
+    --link: #70dcd0;
+    
+    /* Error */
+    --error-bg: #301026;
+    --error-col: #ba5a7a;
+    --error-col-2: #ca6a8a;
+    --error-col-3: #ff7aaa;
+    --error-window: #4d2b3b;
+    --error-col-bright: #b07a8a;
+    
+    /* Error Notifcation */
+    --err-notif-x: #e79;
+    --err-notif-title: #d68;
+    --err-notif-col: #c57;
+    --err-notif-bg: #723;
+
+    /* Warning */
+    /*--warn-col: #aa8a5a;*/
+    --warn-x: #cb9;
+    --warn-title: #ba8;
+    --warn-col: #a97;
+    --warn-bg: #543;
+
+    /* Info */
+    --info-x: #acd;
+    --info-title: #9bc;
+    --info-col: #8ab;
+    --info-bg: #357;
+
+    /* Success */
+    --success-x: #7fc;
+    --success-title: #6eb;
+    --success-col: #5da;
+    --success-bg: #284;
+    
+
+    /* Fonts */
+    --sans: "Open Sans", sans-serif;
+    --serif: "Times New Roman", serif;
+    --mono: "Consolas", monospace;
+    
+    /* Scrolls */
+    --browser-scrollbar-width: 16px; /* in chrome, anyway */
+    
+    --scroll-offset: 160px;
+    --scrollbar-width: 40px;
+    --scrollbar-dragger-width: 6px;
+    --scrollbar-arrow-width:  18px;
+    --scrollbar-arrow-height: 2.4rem;
+    
+    --scroll-track-bg: #303030;
+    --scroll-track-bg-hover: #353535;
+    --scroll-track-brd-col: #505050;
+    
+    --scroll-dragger-bg: #7a7a7a;
+    --scroll-dragger-hover-bg: #aaa;
+    --scroll-btn-bg: #7a7a7a;
+    --scroll-btn-hover-bg: #aaa;
+    
+    --scroll-fade-in-duration: 1s;
+    --scroll-fade-out-duration: 0.5s;
+    
+    --scroll-disabled-col: #2a2a2a;
+    
+    /* Mobile */
+    --mobile-header-height: 3rem;
+    --mobile-footer-height: calc(var(--sidebar-logo-height-m) - 1px);
+    
+    /* Header */
+    
+    --header-bg: #000;
+    --header-bg: var(--sidebar-bg);
+    
+    --header-brd-width: 0;
+    --header-brd-col: #2d2d2d;
+    
+    --header-link-col: #c0c0c0;
+    --header-link-selected-col: #fff;
+    
+    /* Pages */
+    --page-bg: #232323;
+    --page-heading-col: #b8b8b8;
+    --page-divider-col: #b8b8b8;
+    --page-para-col: #aaa;
+    --page-para-size:    1rem;
+    --page-heading-size: 2rem;
+    
+    /* Side Bar */
+    --sidebar-bg: #353535;
+    --sidebar-logo-height:   3.5rem;
+    --sidebar-logo-height-m: 4rem;
+
+    --sidebar-logo-aspect: 1.0371;
+    
+    --sidebar-width:      12.5rem;
+    --sidebar-width-neg: -12.5rem;
+    --sidebar-mid:        calc(var(--sidebar-width) / 2);
+
+    --sidebar-label-col: #aaa;
+    
+    --sidebar-right-brd-width: 0;
+    --sidebar-right-brd-col: #454545;
+    
+    --sidebar-top-brd-width: 1px;
+    --sidebar-top-brd-width: 0;
+    --sidebar-top-brd-col: var(--col-bg);
+    --sidebar-top-brd-col: #252525;
+    --sidebar-top-brd-col: var(--sidebar-sect-brd-col);
+    
+    --sidebar-sect-brd-width: 1px;
+    --sidebar-sect-brd-col: #6a6a6a;
+    
+    --sidebar-btn-height: 2.8rem;
+    --sidebar-btn-col: #aaa;
+    --sidebar-btn-icon: #999;
+    
+    --sidebar-btn-hover-bg: #5a5a5a;
+    --sidebar-btn-hover-col: #ddd;
+    --sidebar-btn-hover-icon: #ccc;
+    
+    --sidebar-btn-selected-col: #d0d0d0;
+    --sidebar-btn-selected-bg: var(--col-bg);
+    
+    /* Persona Switcher */
+    --ps-avatar-width:       1.8rem;
+    --ps-avatar-margin: calc(2.7rem / 2);
+    --ps-width: 14rem;
+    
+    /* Columns */
+    --col-bg: #1a1a1a;
+    --col-bg-trans-1: #1a1a1acc;
+    --col-bg-trans-2: #1a1a1a55;
+    --col-brd-col: var(--sidebar-bg);
+    --col-brd-width: 4px;
+    
+    /* Subgroups */
+    --sg-body-bg: #2a2a2a;
+    --sg-btn-bg: #3d3d3d;
+    --sg-body-bg-trans-1: #2a2a2acc;
+    --sg-body-bg-trans-2: #2a2a2a55;
+    --sg-num-bg: var(--btn-bg);
+
+    /* Contextual */
+    --ctx-bg:  #6a4833;
+    --ctx-col: #bb9a80;
+    
+    /* Buttons */
+    --btn-mid:      calc(var(--btn-height) / 2);
+    --btn-height:      3rem;
+    --btn-height-neg: -3rem; /* needed for .menu btns */
+    --submit-height:   3.5rem;
+    
+    --btn-bg: #353535;
+    --btn-col: #a0a0a0;
+    --btn-brd-col: #1a1a1a;
+    --btn-icon-brd-right: 2px;
+    --btn-outline-width: 2px;
+    --btn-outline-col: #999;
+
+    --btn-subgroup-bg: #404040;
+    --btn-subgroup-hover-col: #bbb;
+    --btn-subgroup-hover-bg: #555;
+
+    --btn-danger-bg: #734;
+    --btn-danger-hover-bg: #8a3348;
+    
+    --btn-hover-bg: #4a4a4a;
+    --btn-hover-col: #e1e1e1;
+    --btn-hover-brd-col: #2a2a2a;
+    
+    --btn-sg-brd-col: #2a2a2a;
+    --btn-sg-hover-brd-col: #3a3a3a;
+
+    --checked-col-1: #70cdc0;
+    --checked-col-2: #80ddd0;
+    --checked-col: #a0fdf0;
+    
+    --checked-bg: #20706a;
+    --checked-bg-2: #208a80;
+    --checked-bg-3: #20a09a;
+    
+    --checked-icon-col: #80ece0;
+    --checked-brd-col: #0d5a50;
+    
+    --btn-disabled-bg: #202020;
+    --btn-disabled-col: #404040;
+    
+    /* Range Inputs */
+    --marker-width:      0.6rem;
+    --marker-width-neg: -0.6rem;
+    --marker-brd: 3px;
+    --marker-col: #40aca0;
+    --marker-col-hover: #70dcd0;
+    
+    /* Text Inputs */
+    --tf-height: var(--btn-height);
+
+    --tf-bg: #2a2a2a;
+    --tf-bg-hover: #404040;
+    --tf-icon-bg: var(--tf-bg);
+    
+    --tf-brd-width-neg: -3px;
+    --tf-brd-width:      3px;
+    --tf-brd-col: #666;
+    --tf-hover-brd-col: #aaa;
+    
+    --tf-brd-right-col: var(--btn-brd-col);
+    --tf-icon-brd-right: 2px;
+    --tf-col: var(--btn-col);
+    
+    --tf-placeholder: #707070;
+    --tf-hover-placeholder: #999;
+    
+    --tf-subgroup-placeholder: #808080;
+    --tf-subgroup-bg: #3a3a3a;
+    --tf-subgroup-icon-bg: var(--tf-subgroup-bg);
+    --tf-subgroup-brd-col: #767676;
+    --tf-subgroup-hover-brd-col: #bababa;
+    
+    /* Editor */
+    --editor-p-size: 1rem;
+    --editor-p-family: var(--sans);
+    --editor-h2-size: 2rem;
+    --editor-h2-family: var(--serif);
+    --editor-pre-size: 1.05rem;
+    --editor-pre-family: var(--mono);
+    
+    /* Results */
+    --result-heading-col: #bbb;
+    --result-heading-hover-col: #eee;
+    
+    --result-bg: var(--btn-bg);
+    --result-bg-2: #404040;
+    --result-bg-3: #505050;
+    
+    --result-hover-bg: var(--btn-hover-bg);
+    --result-hover-bg-2: #606060;
+    --result-hover-bg-3: #7a7a7a;
+    
+    --result-selected-bg: var(--checked-bg);
+    --result-selected-bg-2: var(--checked-bg-2);
+    --result-selected-bg-3: var(--checked-bg-3);
+    
+    --result-selected-brd-col: var(--checked-col-1);
+    --result-selected-brd-width: 3px;
+    
+    /* Taggers / Keyworders */
+    --tag-bg: #4a4a4a;
+    --tag-gap: 0.4rem;
+    
+    /* Dropdowns */
+    --z-index-dropdown: 10;
+    
+    /* Tooltips */
+    --tip-col: #191919;
+    --tip-bg-col: #ccc;
+    --tip-shadow: #111;
+}

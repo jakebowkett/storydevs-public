@@ -1,0 +1,133 @@
+
+[[Editor]]
+
+    Name = "basics"
+    Desc = "Basics"
+    Icon = "basics"
+    
+    [[Editor.Field]]
+
+        Replace = "visibility"
+    
+    [[Editor.Field]]
+
+        Name = "name"
+        Desc = "Title"
+        Type = "text"
+        Max = 128
+    
+    [[Editor.Field]]
+
+        Name = "summary"
+        Desc = "Summary"
+        Context = "This will be the preview in search results. If left empty the body will be used as a preview instead."
+        Type = "textarea"
+        Max = 256
+        Optional = true
+
+[[Editor]]
+
+    Name = "body"
+    Desc = "Body"
+    Icon = "library/body"
+
+    [[Editor.Field]]
+
+        Name = "body"
+        Type = "editor"
+        Max = 150000 # characters
+
+[[Editor]]
+
+    Name = "kind"
+    Desc = "Event Kind"
+    Icon = "library/category"
+    
+    [[Editor.Field]]
+        Replace = "event_category"
+        Name = "category"
+            
+    [[Editor.Field]]
+        Replace = "event_setting"
+        Name = "setting"
+
+[[Editor]]
+
+    Name = "period"
+    Desc = "Period"
+    Icon = "library/events"
+
+    [[Editor.Field]]
+        Replace = "timezone"
+        Context = "Choose \"Local Time\" for events that are the same local time for everyone."
+
+    [[Editor.Field]]
+
+        Name = "start"
+        Desc = "At"
+        NoGroupFormat = true
+        NoWrap = true
+        SubmitSingle = true
+
+        [[Editor.Field.Field]]
+
+            Name = "start_date"
+            Type = "date"
+            Data = ["future"]
+            Percent = 80
+
+        [[Editor.Field.Field]]
+            Name = "start_time"
+            Type = "time"
+            Percent = 20
+
+    [[Editor.Field]]
+
+        Name = "finish"
+        Desc = "Until"
+        NoGroupFormat = true
+        NoWrap = true
+        SubmitSingle = true
+        Optional = true
+        Context = "Omit end date/time for instant events (e.g. game releases)."
+        Validate = ["afterStart"]
+
+        [[Editor.Field.Field]]
+
+            Name = "finish_date"
+            Type = "date"
+            Data = ["future"]
+            Percent = 80
+
+        [[Editor.Field.Field]]
+            Name = "finish_time"
+            Type = "time"
+            Percent = 20
+
+    [[Editor.Field]]
+
+        Name = "weekly"
+        Desc = "Recurring"
+        Type = "bool"
+
+        [[Editor.Field.Value]]
+            Name = "weekly"
+            Text = "Weekly"
+            Icon = "duration/week"
+            True = true
+
+        [[Editor.Field.Value]]
+            Name = "daily"
+            Text = "Does Not Recur"
+            Icon = "cancel"
+            Default = true
+
+[[Editor]]
+
+    Name = "tags"
+    Desc = "Tags"
+    Icon = "tag"
+
+    [[Editor.Field]]
+
+        Replace = "tags"

@@ -1,0 +1,7 @@
+
+Name = "forums"
+Title = "Forums"
+BrowseName = "Results"
+ResourceName = "Post"
+ResourcePlural = "Posts"
+ResourceColumn = "Thread"

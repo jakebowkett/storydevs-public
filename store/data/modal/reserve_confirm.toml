@@ -1,0 +1,16 @@
+
+Name = "reserve_confirm"
+Title = "Reserve Your Handle (2/2)"
+Class = "confirm"
+Msg = "A confirmation email has been sent. Follow the link or paste the code below."
+
+[[Field]]
+
+    Replace = "confirm"
+    
+[[Button]]
+
+    Text = "Confirm"
+    Icon = "submit"
+    Dest = "reserve/confirm"
+    Submit = true

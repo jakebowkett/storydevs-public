@@ -1,0 +1,12 @@
+
+Name = "mailing_success"
+Title = "Success"
+Class = "success"
+Msg = "Your email address has been confirmed. You will now receive updates on StoryDevs' development, launch date, and more."
+Disabled = true
+
+[[Button]]
+
+    Text = "Okay"
+    Icon = "available"
+    Dismiss = true

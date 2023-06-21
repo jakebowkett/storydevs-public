@@ -1,0 +1,471 @@
+    
+# Names of fields here should match the names of resources
+# in storydevs/resource.go in order to make unmarshalling
+# easier. Specific fields are targetted like this: 
+# 
+#       "groupName.fieldName.subFieldName"
+# 
+# This also allows different levels and branches of the tree
+# to have repeated names - only duplicate names on the same
+# level and branch are disallowed.
+        
+[[Editor]]
+
+    Name = "basics"
+    Desc = "Basics"
+    Icon = "basics"
+        
+    [[Editor.Field]]
+    
+        Replace = "visibility"
+            
+    [[Editor.Field]]
+    
+        Name = "available"
+        Desc = "Availability"
+        Type = "bool"
+        
+        [[Editor.Field.Value]]
+        
+            Name = "available"
+            Text = "Available"
+            Icon = "available"
+            True = true
+            Default = true
+            
+        [[Editor.Field.Value]]
+        
+            Name = "unavailable"
+            Text = "Unavailable"
+            Icon = "cancel"
+            
+    [[Editor.Field]]
+
+        Name = "name"
+        Desc = "Name"
+        Type = "text"
+        # Optional = true
+        # Context = "If no name is chosen your account display name will be used."
+        Max = 128
+
+        # Text = "Jake Bowkett"
+    
+    [[Editor.Field]]
+
+        Name = "summary"
+        Desc = "About Me"
+        Type = "textarea"
+        Optional = true
+        Max = 256
+        Placeholder = "Tell us about yourself!"
+
+        # Text = "Programmer and artist."
+ 
+[[Editor]]
+
+    Name = "project"
+    Desc = "Project"
+    Icon = "experience"
+    Add = 5
+    AddIcon = "add_project"
+    AddName = "Project"
+    Context = """A project is a set of completed work. It doesn't have to be a game — three pieces of art following a theme would suffice, for example. Projects are automatically sorted in reverse chronological order by finish date."""
+    
+    [[Editor.Field]]
+
+        Name = "name"
+        Desc = "Project Name"
+        Type = "text"
+        Paired = true
+        Max = 128
+
+        # Text = "Fantasy"
+
+    [[Editor.Field]]
+
+        Name = "link"
+        Desc = "Website"
+        Type = "text"
+        Optional = true
+        Paired = true
+        Max = 512
+
+    [[Editor.Field]]
+
+        Name = "teamname"
+        Desc = "Team Name"
+        Type = "text"
+        Optional = true
+        Paired = true
+        Max = 128
+
+    [[Editor.Field]]
+
+        Name = "teamlink"
+        Desc = "Team Website"
+        Type = "text"
+        Optional = true
+        Paired = true
+        Max = 512
+        
+    [[Editor.Field]]
+    
+        Name = "period"
+        Desc = "Creation Period"
+        Context = 'Generally speaking projects must be finished to be listed on your talent profile. Exceptions are made for projects that have no clear finish point such as MMOs, podcasts, etc. In such cases please choose "Present" for the finish date.'
+        NoGroupFormat = true
+    
+        [[Editor.Field.Field]]
+
+            Name = "start"
+            Desc = "Start Date"
+            Type = "calendar"
+            Paired = true
+            Data = ["past"]
+
+            # Text = "January 2021"
+            
+        [[Editor.Field.Field]]
+
+            Name = "finish"
+            Desc = "Finish Date"
+            Type = "calendar"
+            Paired = true
+            Data = ["past", "present"]
+
+            # Text = "June 2021"
+        
+    [[Editor.Field]]
+    
+        Name = "role"
+        Desc = "Project Roles"
+        Add = 5
+        AddName = "Role"
+        
+        [[Editor.Field.Field]]
+        
+            Name = "name"
+            Desc = "Role Name"
+            Type = "text"
+
+            # Text = "Environment Artist"
+            
+        [[Editor.Field.Field]]
+        
+            Name = "skill"
+            Desc = "Skills Used"
+            Context = "More skills will be added in the future. Thank you for your patience!"
+            Type = "dropdown"
+            Add = 3
+            AddName = "Skill"
+            Shared = "skills"
+
+            # Default = "Environment Art"
+            
+        # [[Editor.Field.Field]]
+        
+        #     Name = "role_software"
+        #     Desc = "Software"
+        #     Type = "dropdown"
+        #     Optional = true
+        #     Add = 3
+        #     Shared = "software"
+        
+        [[Editor.Field.Field]]
+        
+            Name = "duty"
+            Desc = "Duties"
+            Type = "text"
+            Add = 5
+            AddName = "Duty"
+            Max = 128
+
+            # Text = "Making the art."
+            
+        [[Editor.Field.Field]]
+        
+            Name = "comment"
+            Desc = "Comment"
+            Type = "textarea"
+            Optional = true
+            Context = "Add any clarifying information about this role here."
+        
+    # [[Editor.Field]]
+    
+    #     Name = "project_comment"
+    #     Desc = "Project Comment"
+    #     Type = "textarea"
+    #     Optional = true
+
+[[Editor]]
+    
+    Name = "advertised"
+    Icon = "skill/marketing"
+    AddIcon = "skill/marketing"
+    Desc = "Advertised Skill"
+    Add = 3
+    AddName = "Advertised Skill"
+    Context = """Your talent profile will appear in searches for skills you choose here. Only skills you've demonstrated in projects can be advertised, so make sure you've added a project before filling out this section."""
+
+    [[Editor.Field]]
+    
+        HasIcons = true
+        Name = "skill"
+        Desc = "Skill"
+        Type = "dropdown"
+        Ref = "project.role.skill"
+        
+        [[Editor.Field.Events]]
+        
+            Handler = "populateDropdownFromTextInputs"
+            Type = "focus"
+            Args = ["project.role.skill"]
+            Before = true
+
+        [[Editor.Field.Events]]
+
+            Handler = "disallowSiblingDuplicates"
+            Type = "focus"
+            Args = ["advertised.skill"]
+            Before = true
+            
+        [[Editor.Field.Events]]
+        
+            Handler = "requestFieldFromDropdown"
+            Type = "update"
+            Args = ["advertised.example.example", "advertised.example"]
+        
+    [[Editor.Field]]
+        
+        Name = "example"
+        Desc = "Examples"
+        Add = 3
+        AddMin = 3
+        AddName = "Example"
+        Disabled = true
+        
+        # Allowed Types
+        [[Editor.Field.Value]]
+            Name = "image"
+            Text = "image"
+        
+        [[Editor.Field.Value]]
+            Name = "audio"
+            Text = "audio"
+        
+        [[Editor.Field.Value]]
+            Name = "video"
+            Text = "video"
+        
+        [[Editor.Field.Value]]
+            Name = "text"
+            Text = "text"
+        
+        [[Editor.Field.Value]]
+            Name = "code"
+            Text = "code"
+                
+        # Placeholder field.
+        [[Editor.Field.Field]]
+        
+            Name = "example"
+            Desc = "Example Here"
+            Type = "tempfield"
+            
+        # ====================================================
+        #  Different example types = image, text, audio, etc.
+        #  These will be loaded in on request from the client.
+        # ====================================================
+        
+        [[Editor.Field.Field]]
+        
+            RequestOnly = true
+            Name = "image"
+            Desc = "Image"
+            Context = "No NSFW images please. (Artistic/incidental nudity is fine.)"
+            Type = "image"
+            To = "file"
+            Max = 5120 # kilobytes
+            CanReplace = true
+            
+        [[Editor.Field.Field]]
+        
+            RequestOnly = true
+            Name = "text"
+            Desc = "Text"
+            Type = "editor"
+            To = "richtext"
+            CanReplace = true
+                
+        [[Editor.Field.Field]]
+        
+            Name = "alttext"
+            Desc = "Alt Text"
+            Context = "Brief description of the actual image content for people with low visibility."
+            Type = "textarea"
+            Max = 128
+
+            # Text = "The alt text."
+                
+        [[Editor.Field.Field]]
+        
+            Name = "title"
+            Desc = "Title"
+            Type = "text"
+            Paired = true
+            
+            # Text = "The title."
+
+        [[Editor.Field.Field]]
+        
+            Name = "project"
+            Desc = "Associated Project"
+            Type = "dropdown"
+            Paired = true
+
+            # Text = "Fantasy"
+            
+            [[Editor.Field.Field.Events]]
+            
+                Handler = "populateDropdownFromTextInputs"
+                Type = "focus"
+                Args = ["project.name"]
+                Before = true
+                
+        [[Editor.Field.Field]]
+        
+            Name = "info"
+            Desc = "Description"
+            Type = "textarea"
+            
+            # Text = "The description."
+            
+[[Editor]]
+
+    Name = "seeking"
+    Desc = "Seeking Project"
+    Icon = "project"
+    
+    [[Editor.Field]]
+    
+        Name = "duration"
+        Desc = "Desired Duration"
+        Type = "range"
+        Shared = "durations"
+        
+        Default = "days-years"
+        
+    [[Editor.Field]]
+    
+        Name = "compensation"
+        Desc = "Desired Compensation"
+        Type = "checkbox"
+        Shared = "compensation"
+        
+[[Editor]]
+
+    Name = "communication"
+    Desc = "Communication"
+    Icon = "communication"
+        
+    [[Editor.Field]]
+
+        Name = "website"
+        Desc = "Personal Website"
+        Type = "text"
+        Min = 3
+        Max = 512
+        Optional = true
+        Placeholder = "mydomain.com"
+        Validate = ["isDomain"]
+
+        # Text = "https://jakebowkett.com"
+        
+    [[Editor.Field]]
+
+        Name = "email"
+        Desc = "Contact Email"
+        Type = "text"
+        Min = 5
+        Max = 256
+        Optional = true
+        Placeholder = "example@domain.com"
+        Validate = ["isEmail"]
+        Paired = true
+
+        # Text = "jake.bowkett01@gmail.com"
+
+    [[Editor.Field]]
+
+        Name = "discord"
+        Desc = "Discord Handle"
+        Type = "text"
+        Min = 6
+        Max = 128
+        Optional = true
+        Placeholder = "name#0000"
+        Validate = ["isDiscord"]
+        Paired = true
+
+        # Text = "Jake#7585"
+    
+    [[Editor.Field]]
+    
+        Name = "medium"
+        Desc = "Preferred Mediums"
+        Type = "checkbox"
+        Shared = "mediums"
+            
+    [[Editor.Field]]
+    
+        Name = "language"
+        Desc = "Language Fluency"
+        Type = "dropdown"
+        Add = 5
+        Shared = "languages"
+        Default = "English"
+        
+# [[Editor]]
+
+#     Name = "location"
+#     Desc = "Location"
+#     Icon = "timezone"
+        
+#     [[Editor.Field]]
+
+#         Name = "country"
+#         Desc = "Country"
+#         Type = "dropdown"
+#         Optional = true
+#         Paired = true
+        
+#     [[Editor.Field]]
+
+#         Name = "timezone"
+#         Desc = "Time Zone"
+#         Type = "dropdown"
+#         Optional = true
+#         Paired = true
+        
+[[Editor]]
+
+    Name = "tag"
+    Desc = "Tags"
+    Icon = "tag"
+    
+    [[Editor.Field]]
+
+        Replace = "tags"
+
+# [[Editor]]
+
+#     Desc = "Submission Comment"
+#     Icon = "comments"
+    
+#     [[Editor.Field]]
+
+#         Name = "comment"
+#         Context = "This will only be visible to StoryDevs staff."
+#         Type = "textarea"
+#         Optional = true
+#         

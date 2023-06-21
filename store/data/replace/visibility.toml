@@ -1,0 +1,26 @@
+
+[visibility]
+
+    Name = "visibility"
+    Desc = "Visibility"
+    Type = "radio"
+    # Context = "Public {{.}} appears in search results. Unlisted {{.}} won't appear in search results but you can still directly link to them. Private {{.}} can only be seen by you."
+    
+    [[visibility.Value]]
+    
+        Name = "public"
+        Text = "Public"
+        Icon = "skill/community"
+        Default = true
+    
+    [[visibility.Value]]
+    
+        Name = "unlisted"
+        Text = "Unlisted"
+        Icon = "eye"
+        
+    [[visibility.Value]]
+    
+        Name = "private"
+        Text = "Private"
+        Icon = "padlock"

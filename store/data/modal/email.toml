@@ -1,0 +1,29 @@
+
+Name = "email"
+Title = "Change Email (1/2)"
+Msg = "Current email: {{email}}"
+
+[[Field]]
+
+    Name = "password"
+    Desc = "Enter Password"
+    Type = "password"
+    
+[[Field]]
+
+    Replace = "email"
+    Name = "new"
+    Desc = "New Email"
+    
+[[Field]]
+
+    Name = "confirm"
+    Desc = "Confirm New Email"
+    Type = "text"
+    
+[[Button]]
+
+    Submit = true
+    Text = "Submit"
+    Icon = "submit"
+    Dest = "email"

@@ -1,0 +1,404 @@
+
+{{- $mode := .Name -}}
+{{- $inAccount := .InAccount -}}
+{{- $inAdmin := .InAdmin -}}
+{{- $ed := .Editor -}}
+{{- $admin := .IsAdmin -}}
+
+<p id="result_count">
+    {{- if eq (len .Results) 0 -}}
+        No results
+    {{- else if eq (len .Results) 1 -}}
+        1 result
+    {{- else -}}
+        {{len .Results}} results
+    {{- end -}}
+</p>
+
+<div class="results {{$mode}}">
+    
+    {{- $seenPinned := false -}}
+    {{- $selected := "" -}}
+    {{- if and (eq $mode "settings") $ed -}}
+        {{- $selected = (index $ed 0).Name -}}
+    {{- else if .Resource -}}
+        {{- $selected = .Resource.Slug -}}
+    {{- end -}}
+
+    {{- range .Results -}}
+    
+        {{- $skip := false -}}
+        {{- $slug := .Slug -}}
+        {{- $origSlug := .Slug }}
+        {{- if or (eq $mode "library") (eq $mode "forums") -}}
+            {{- $skip = skipThread $admin . -}}
+            {{- if .IsReply -}}
+                {{- $slug = join .ThreadSlug "#post-" .Slug -}}
+            {{- end -}}
+            {{- if .Pinned.Bool -}}
+                {{- $seenPinned = true -}}
+            {{- else -}}
+                {{if $seenPinned}}
+                    <div class="hr"></div>
+                    {{- $seenPinned = false -}}
+                {{- end -}}
+            {{- end -}}
+        {{- end -}}
+        
+        {{- if not $skip -}}
+            <a
+                data-slug="{{$origSlug}}"
+                {{if $inAccount -}}
+                    href="/account/{{$mode}}/{{$slug}}"
+                {{else if $inAdmin -}}
+                    href="/admin/{{$mode}}/{{$slug}}"
+                {{else -}}
+                    href="/{{$mode}}/{{$slug}}"
+                {{end -}}
+                class="
+                    result
+                    {{$mode}}
+                    {{if eq .Slug $selected -}}
+                        selected
+                    {{end -}}
+                "
+                data-action="resource"
+            >
+                {{- if eq $mode "talent" -}}
+                    {{template "talent" squash . $ed $inAdmin $inAccount}}
+                {{- else if eq $mode "event" -}}
+                    {{template "event" squash . $inAdmin $inAccount $ed}}
+                {{- else if eq $mode "library" -}}
+                    {{template "library"  squash . $inAdmin $inAccount}}
+                {{- else if eq $mode "forums" -}}
+                    {{template "forums"  squash . $inAdmin $inAccount $admin}}
+                {{- else if eq $mode "settings" -}}
+                    {{template "settings" .}}
+                {{- end -}}
+            </a>
+        {{- end -}}
+    {{- end -}}
+</div>
+
+{{define "settings"}}
+    <div class="icon">{{.Icon}}</div>
+    <div class="body">
+        <h3>{{.Desc}}</h3>
+        <p>{{.Context}}</p>
+        <div class="tags">
+            <!--
+                The settings result is a struct embedding
+                sd.ResourceBase and sd.Field. Therefore to
+                access the .Field slice we must first name
+                the embedded field to access its subfield
+                of the same name, hence the stutter below.
+             -->
+            {{range .Field.Field}}
+                <div class="tag">{{.Desc}}</div>
+            {{end}}
+        </div>
+    </div>
+{{end}}
+
+{{define "talent"}}
+
+{{- $r         := index . 0 -}}
+{{- $ed        := index . 1 -}}
+{{- $inAdmin   := index . 2 -}}
+{{- $inAccount := index . 3 -}}
+
+<div class="thumb">
+    <div class="inner">
+        {{- $first := (index (index $r.Advertised 0).Example 0) -}}
+        {{- $url := $first.File.Name.URLThumb -}}
+        <img
+            src="{{$url}}"
+            alt="{{$first.AltText}}"
+            {{if lt $first.Aspect 1.0 -}}
+                class="portrait"
+            {{end -}}
+        >
+    </div>
+</div>
+<div class="body">
+    <div class="header">
+        <h3>{{$r.Name.String}}</h3>
+        {{if $r.Available -}}
+            <div data-tip="Available" class="avail available">{{template "on.svg"}}</div>
+        {{else -}}
+            <div data-tip="Unavailable" class="avail">{{template "off.svg"}}</div>
+        {{end -}}
+    </div>
+    <div class="summary">
+        {{- with $r.Summary.String -}}
+            {{hyphen .}}
+        {{- else -}}
+            {{hyphen "No Description"}}
+        {{- end -}}
+    </div>
+</div>
+{{- if or $inAdmin $inAccount -}}
+    {{- $v := $r.Visibility -}}
+    <div class="visibility" data-tip="{{capitalise $v}}">
+        {{- if      eq $v "public" -}}
+            {{template "skill/community.svg"}}
+        {{- else if eq $v "unlisted" -}}
+            {{template "eye.svg"}}
+        {{- else if eq $v "private" -}}
+            {{template "padlock.svg"}}
+        {{- end -}}
+    </div>
+{{- end -}}
+
+{{end}}
+
+{{define "talent_icons"}}
+
+    {{$duration := index . 0}}
+    {{$ed       := index . 1}}
+
+    {{$v := $ed.Value "seeking.duration" $duration}}
+    <span data-tip="{{$v.Text}}">
+        {{if eq $duration "days"}}
+            {{template "duration/days.svg"}}
+        {{else if eq $duration "week"}}
+            {{template "duration/week.svg"}}
+        {{else if eq $duration "month"}}
+            {{template "duration/month.svg"}}
+        {{else if eq $duration "months"}}
+            {{template "duration/months.svg"}}
+        {{else if eq $duration "year"}}
+            {{template "duration/year.svg"}}
+        {{else if eq $duration "years"}}
+            {{template "duration/years.svg"}}
+        {{end}}
+    </span>
+
+{{end}}
+
+
+{{define "event"}}
+
+{{- $r         := index . 0 -}}
+{{- $inAdmin   := index . 1 -}}
+{{- $inAccount := index . 2 -}}
+{{- $ed        := index . 3 -}}
+{{- $delta     := $r.Deltas -}}
+{{- $u         := $delta.Until -}}
+{{- $cat       := ($ed.Field "kind.category").Value -}}
+
+<div class="header">
+    <h3>{{$r.Name.String}}</h3>
+    <div class="meta">
+        <div class="until">
+            <div class="label">{{$u.Label}}</div>
+            <div class="unit">{{$u.Unit}}</div>
+        </div>
+        <div class="brd"></div>
+        <div class="cat">
+            <div
+                class="
+                    icon
+                    {{if not (in $r.Setting "online")}}
+                        disabled
+                    {{end}}
+                "
+                data-tip="Online"
+            >{{template "communication.svg"}}</div>
+            <div
+                class="
+                    icon
+                    {{if not (in $r.Setting "physical")}}
+                        disabled
+                    {{end}}
+                "
+                data-tip="Physical"
+            >{{template "timezone.svg"}}</div>
+        </div>
+    </div>
+</div>
+<div class="body">
+    <div class="preview">
+        {{- with $r.Summary.String -}}
+            {{.}}
+        {{- else -}}
+            {{$r.GenerateSummary}}
+        {{- end -}}
+    </div>
+    <div class="footer">
+        <div>
+            <div class="label">Lasts</div>
+            <div class="unit">{{$delta.Lasting true}}</div>
+            {{if $r.Weekly.Bool}}
+                <div class="unit">, Weekly</div>
+            {{end}}
+        </div>
+        <div>
+            <div class="label"></div>
+            <div class="unit">{{mList $r.Category $cat}}</div>
+        </div>
+    </div>
+</div>
+
+{{end}}
+
+
+{{define "library"}}
+
+{{- $r         := index . 0 -}}
+{{- $inAdmin   := index . 1 -}}
+{{- $inAccount := index . 2 -}}
+
+<h3>{{$r.Name.String}}</h3>
+<div class="meta">
+    <div>
+        Created by 
+        <span class="handle">@{{$r.PersHandle}}</span>
+        <span class="date">on {{date $r.Created}}</span>
+    </div>
+    {{if not (eq $r.Created $r.Updated)}}
+        <div>
+            <span class="label">Updated</span>
+            <span class="date">{{date $r.Updated}}</span>
+        </div>
+    {{end}}
+</div>
+<div class="preview">
+    {{- with $r.Summary.String -}}
+        {{.}}
+    {{- else -}}
+        {{$r.GenerateSummary}}
+    {{- end -}}
+</div>
+<div class="tags">
+    {{range $r.Category}}
+        <span class="tag site">{{.}}</span>
+    {{end}}
+    {{range $r.Tag}}
+        <span class="tag">{{.}}</span>
+    {{end}}
+</div>
+{{- if or $inAdmin $inAccount -}}
+    {{- $v := $r.Visibility -}}
+    <div class="visibility" data-tip="{{capitalise $v}}">
+        {{- if      eq $v "public" -}}
+            {{template "skill/community.svg"}}
+        {{- else if eq $v "unlisted" -}}
+            {{template "eye.svg"}}
+        {{- else if eq $v "private" -}}
+            {{template "padlock.svg"}}
+        {{- end -}}
+    </div>
+{{- end -}}
+{{end}}
+
+{{define "forums"}}
+
+{{- $r         := index . 0 -}}
+{{- $inAdmin   := index . 1 -}}
+{{- $inAccount := index . 2 -}}
+{{- $admin     := index . 3 -}}
+
+{{$n := $r.ReplyCount $admin}}
+{{$last := $r.LastReply}}
+
+<div class="header">
+    <div class="title">
+        {{if $r.Pinned.Bool}}
+            <div
+                class="pin"
+                data-tip="Pinned thread."
+                data-tip-delayed="true"
+            >{{template "pin.svg"}}</div>
+        {{end}}
+        {{if $r.Locked.Bool}}
+            <div
+                class="lock"
+                data-tip="Locked thread."
+                data-tip-delayed="true"
+            >{{template "padlock.svg"}}</div>
+        {{end}}
+        <h3
+            data-tip="{{$r.Name.String}}"
+            data-tip-client="true"
+            data-tip-delayed="true"
+        >{{$r.Name.String}}</h3>
+    </div>
+    <div class="meta">
+        <div
+            class="date"
+            data-tip="Latest reply."
+            data-tip-delayed="true"
+        >{{date $last.Created}}</div>
+        <div
+            class="replies"
+            data-tip="# of replies."
+            data-tip-delayed="true"
+        >
+            <div class="n">{{$n}}</div>
+            <div class="icon">{{template "comments.svg"}}</div>
+        </div>
+    </div>
+</div>
+<div class="preview">
+    {{template "post_preview" squash $r $last true  $admin}}
+    {{if and (not $r.Pinned.Bool) (gt $n 0)}}
+        {{template "post_preview" squash $last $r false $admin}}
+    {{end}}
+</div>
+{{- if or $inAdmin $inAccount -}}
+    {{- $v := $r.Visibility -}}
+    <div class="visibility" data-tip="{{capitalise $v}}">
+        {{- if      eq $v "public" -}}
+            {{template "skill/community.svg"}}
+        {{- else if eq $v "unlisted" -}}
+            {{template "eye.svg"}}
+        {{- else if eq $v "private" -}}
+            {{template "padlock.svg"}}
+        {{- end -}}
+    </div>
+{{- end -}}
+
+{{end}}
+
+{{define "post_preview"}}
+    {{- $p      := index . 0 -}}
+    {{- $other  := index . 1 -}}
+    {{- $op     := index . 2 -}}
+    {{- $admin  := index . 3 -}}
+    {{- $show   := postPrev $admin $op $p $other -}}
+    <div class="body">
+        <div class="label">
+            {{- if $show -}}
+                <span>
+                    {{- if $op -}}
+                        Opening Post
+                    {{- else -}}
+                        Latest Reply
+                    {{- end -}}
+                </span>
+                <span>{{date $p.Created}}</span>
+            {{- end -}}
+        </div>
+        <div class="content">
+            {{- if $show -}}
+                {{- with $p.Summary.String -}}
+                    {{hyphen .}}
+                {{- else -}}
+                    {{$p.GenerateSummary}}
+                {{- end -}}
+            {{- else -}}
+                <span class="noreply">
+                    {{- if $op -}}
+                        Preview Unavailable
+                    {{- else -}}
+                        No Replies Yet
+                    {{- end -}}
+                </span>
+            {{- end -}}
+        </div>
+        {{if $show}}
+            <span class="handle">@{{$p.PersHandle}}</span>
+        {{end}}
+    </div>
+{{end}}

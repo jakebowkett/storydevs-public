@@ -1,0 +1,9 @@
+
+[email]
+
+    Name = "email"
+    Desc = "Email"
+    Type = "text"
+    Min = 5
+    Max = 256
+    Validate = ["isEmail"]

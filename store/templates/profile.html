@@ -1,0 +1,282 @@
+
+{{$ed := .Editor}}
+
+{{with .Resource}}
+    <div class="resource">
+        <h2 class="title">{{.Name.String}}</h2>
+            
+        {{with .Summary.String}}
+            <p class="summary">{{hyphen .}}</p>
+        {{end}}
+        
+        <div class="tags">
+            <div class="filed site">
+                {{if .Available}}
+                    Available
+                {{else}}
+                    Unavailable
+                {{end}}
+            </div>
+            {{range .Tag}}
+                <div class="filed">{{.}}</div>
+            {{end}}
+        </div>
+        
+        <div class="subhead">
+            <div>
+                <div class="identity">
+                    <span>{{.PersName}}</span>
+                    <span>@{{.PersHandle}}</span>
+                </div>
+                <span class="pronouns">
+                    {{- with .PersPronouns -}}
+                        {{- list . -}}
+                    {{- else -}}
+                        Pronouns Unknown
+                    {{- end -}}
+                </span>
+            </div>
+            <div>
+                <div class="dates">
+                    <span class="label">Pub.</span>
+                    <span class="date">{{date .Created}}</span>
+                </div>
+                <div class="dates">
+                    <span class="label">Edit</span>
+                    <span class="date">
+                        {{- if not (eq .Created .Updated) -}}
+                            {{- date .Updated -}}
+                        {{- else -}}
+                            {{- "N/A" -}}
+                        {{- end -}}
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>    
+{{end}}
+
+{{define "graphic"}}
+    {{$ex := index . 0}}
+    {{$len := len .}}
+    <div class="graphic">
+        <div class="inner">
+            <div class="loading hidden">{{template "loading.svg"}}</div>
+            <!-- 1.77 == 16:9 aspect -->
+            <img
+                src="{{$ex.File.Name.URL}}"
+                alt="{{$ex.AltText}}"
+                {{if lt $ex.Aspect 1.77}}
+                    class="portrait"
+                {{end}}
+            >
+        </div>
+        <div class="full" data-action="portfolioImageFullSize"></div>
+        <div class="nav">
+            <div data-action="portfolioPrev" class="prev hidden"><div></div></div>
+            <div data-action="portfolioNext" class="next {{if eq $len 1}}hidden{{end}}"><div></div></div>
+        </div>
+    </div>
+{{end}}
+
+{{with .Resource}}
+
+<div class="advertised">
+    <div class="tabs" data-action="switchPortfolioTab">
+        {{range $i, $ad := .Advertised}}
+            <div {{if eq $i 0}}class="selected"{{end}}>
+                {{if eq $ad.Skill "character"}}
+                    {{template "skill/character.svg"}}
+                {{else if eq $ad.Skill "environment"}}
+                    {{template "skill/environment.svg"}}
+                {{else if eq $ad.Skill "ui"}}
+                    {{template "skill/ux.svg"}}
+                {{end}}
+                {{$v := $ed.Value "project.role.skill" $ad.Skill}}
+                <span class="label">{{$v.Text}}</span>
+            </div>
+        {{end}}
+    </div>
+    <div class="portfolio">
+        {{range $i, $_ := .Advertised}}
+            <div class="section {{if not (eq $i 0)}}hidden{{end}}">
+                <div
+                    class="example"
+                    {{with .Example -}}
+                        data-examples="{{range .}}{{.File.Name.URL}},{{end}}"
+                        data-aspects="{{range .}}{{.Aspect}},{{end}}"
+                    {{end -}}
+                >
+                    {{if eq .Skill "character"}}
+                        {{template "graphic" .Example}}
+                    {{else if eq .Skill "environment"}}
+                        {{template "graphic" .Example}}
+                    {{else if eq .Skill "ui"}}
+                        {{template "graphic" .Example}}
+                    {{end}}
+                </div>
+                <div class="meta">
+                    {{range $i, $_ := .Example}}
+                        <div class="inner {{if not (eq $i 0)}}hidden{{end}}">
+                            <div class="title">
+                                <h4>{{.Title}}</h4>
+                                <div>{{.Project}}</div>
+                            </div>
+                            <div class="info">
+                                {{range (strToParas .Info)}}
+                                    <p>{{hyphen .}}</p>
+                                {{end}}
+                            </div>
+                        </div>
+                    {{end}}
+                </div>
+            </div>
+        {{end}}
+    </div>
+</div>
+
+<div class="resource">
+    
+    <div class="legend">
+        <div class="icon">
+            {{template "experience.svg"}}
+        </div>
+        <h3>Experience</h3>
+    </div>
+        
+    <div>
+        {{range .Project}}
+        
+            <div class="project">
+                
+                <div class="dates">
+                    <div>{{mmYYYY .Finish}}</div>
+                    <div></div>
+                    <div>{{mmYYYY .Start}}</div>
+                </div>
+                
+                <div class="body">
+                    
+                    <div class="title">
+                        <h4>
+                            {{- with .Link.String -}}
+                                <a href="{{.}}">
+                            {{- end -}}
+                                    {{- .Name -}}
+                            {{- with .Link.String -}}
+                                </a>
+                            {{- end -}}
+                        </h4>
+                        <div class="dev">
+                            {{- with .TeamLink.String}}
+                                <a href="{{.}}">
+                            {{end}}
+                                    {{- .TeamName.String -}}
+                            {{- with .TeamLink.String -}}
+                                </a>
+                            {{end}}
+                        </div>
+                    </div>
+                    
+                    {{range .Role}}
+                        <div class="role">
+                            <h5>{{.Name}}</h5>
+                            {{with .Comment.String}}
+                                <p>{{hyphen .}}</p>
+                            {{end}}
+                            <ul>
+                                {{range .Duty}}
+                                    <li>{{.}}</li>
+                                {{end}}
+                            </ul>
+                        </div>
+                    {{end}}
+                    
+                </div>
+            </div>
+        {{end}}
+    </div>
+    
+    <div class="legend">
+        <div class="icon">
+            {{template "skill/marketing.svg"}}
+        </div>
+        <h3>Seeking Projects</h3>
+    </div>
+    
+    <div class="items">
+        {{with .Duration}}
+            {{$f := "seeking.duration"}}
+            {{$s := ($ed.Value $f .Start).Text}}
+            {{with .End}}
+                {{$s = join $s " – " (($ed.Value $f .).Text)}}
+            {{end}}
+            {{template "fProf" squash "Available For" $s false false false}}
+        {{end}}
+        {{with .Compensation}}
+            {{$v := ($ed.Field "seeking.compensation").Value}}
+            {{template "fProf" squash "Compensation Type" (mList . $v) false false false}}
+        {{end}}
+    </div>
+    
+    <div class="legend">
+        <div class="icon">
+            {{template "communication.svg"}}
+        </div>
+        <h3>Communication</h3>
+    </div>
+    
+    <div class="items">
+        {{$L := ($ed.Field "communication.language").Value}}
+        {{$m := ($ed.Field "communication.medium").Value}}
+        {{$website := .Website.String}}
+        {{$email   := .Email.String}}
+        {{$discord := .Discord.String}}
+        {{with .Language}}{{template "fProf" squash "Spoken Languages"  (mList . $L)  false false false}}{{end}}
+        {{with $website}} {{template "fProf" squash "Personal Website"  .             false true  true }}{{end}}
+        {{with $email}}   {{template "fProf" squash "Email"             (obfuscate .) true  false true }}{{end}}
+        {{with $discord}} {{template "fProf" squash "Discord"           (obfuscate .) true  false true }}{{end}}
+        {{with .Medium}}  {{template "fProf" squash "Preferred Mediums" (mList . $m)  false false false}}{{end}}
+    </div>
+    
+</div>
+
+{{end}} <!-- End of with .Resource -->
+
+
+{{define "fProf"}}
+
+    {{- $desc   := index . 0 -}}
+    {{- $value  := index . 1 -}}
+    {{- $copy   := index . 2 -}}
+    {{- $link   := index . 3 -}}
+    {{- $nowrap := index . 4 -}}
+    
+    <div class="info-row"{{if $copy}} data-action="copyObfuscated"{{end}}>
+        <div class="desc">{{$desc}}</div>
+        {{if $link}}
+            <a class="value" target="_blank" href="{{$value}}">{{$value}}</a>
+        {{else}}
+            <div
+                class="
+                    value
+                    {{if $nowrap}}
+                        nowrap
+                    {{end}}
+                "
+            >
+                <div
+                    {{if eq $desc "About Me"}}
+                        class="bio"
+                    {{end}}
+                >{{$value}}</div>
+                {{- if $copy -}}
+                    <div class="copy">
+                        {{template "link_copy.svg"}}
+                    </div>
+                {{- end -}}
+            </div>
+        {{end}}
+    </div>
+
+{{end}}

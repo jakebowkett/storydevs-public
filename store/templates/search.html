@@ -1,0 +1,45 @@
+
+{{- $notAccOrAdmin := not (or .InAdmin .InAccount) -}}
+
+{{if $notAccOrAdmin}}
+    <div class="col_head">
+        <div class="name">
+            <div class="logo">
+                <img id="logo_{{.Name}}" src="/gfx/logo_{{.Name}}.png">
+            </div>
+            <h2>{{.Title}}</h2>
+        </div>
+        <a
+            href="/{{.Name}}/new"
+            class="btn context logged_in"
+            data-action="newResource"
+        >
+            <span class="text">New<span class="desktop" style="white-space: pre;"> {{.ResourceColumn}}</span>...</span>
+            <span class="icon">{{template "new.svg"}}</span>
+        </a>
+    </div>
+{{end}}
+
+<form>
+    {{- if $notAccOrAdmin -}}
+        <button
+            type="button"
+            class="btn submit search top"
+            data-action="search"
+        >
+            <span class="text">Search...</span>
+            <span class="icon">{{template "search.svg"}}</span>
+        </button>
+    {{- end -}}
+    {{- template "form.html" squash .Search .IsAdmin -}}
+    {{- if $notAccOrAdmin -}}
+        <button
+            type="button"
+            class="btn submit search"
+            data-action="search"
+        >
+            <span class="text">Search...</span>
+            <span class="icon">{{template "search.svg"}}</span>
+        </button>
+    {{- end -}}
+</form>

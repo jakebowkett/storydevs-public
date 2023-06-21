@@ -1,0 +1,3121 @@
+
+@keyframes fade-in {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+.scroll {
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+}
+
+.scroll .scroll_inner {
+    overflow-y: scroll;
+    overflow-x: hidden;
+    overflow-x: hidden;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+
+    left: 0;
+    right: 0;
+
+    /*
+    The negative margin pulls the scrollbar over to the side while
+    the padding pushes the content back to where it was. While 1.1rem
+    seems to suffice we use 10rem because the scrollbar can come back
+    into view when zooming out.
+    */
+    margin-right: calc(var(--scroll-offset) * -1);
+    padding-right: calc(
+        var(--scroll-offset) -
+        var(--browser-scrollbar-width) -
+        1px
+    );
+}
+
+.scroll::before,
+.scroll::after {
+    content: "";
+    position: absolute;
+    top:    0;
+    bottom: 0;
+    z-index: 2;
+    pointer-events: none;
+}
+.col > .scroll::before {
+    margin-right: var(--col-brd-width);
+}
+.scroll::before {
+    box-sizing: border-box;
+    width: var(--scrollbar-dragger-width);
+    border-radius: 10rem;
+    background-color: var(--scroll-disabled-col);
+    position: absolute;
+    
+    top:    var(--scrollbar-arrow-height);
+    bottom: var(--scrollbar-arrow-height);
+    right:  calc(
+        (
+            var(--scrollbar-width) -
+            var(--scrollbar-dragger-width)
+        ) / 2
+    );
+}
+/* placeholder for .track below */
+.scroll.no_scroll > .scrollbar .track::before,
+.col > .scroll::before {
+    background-color: var(--scroll-disabled-col);
+    border-color:     var(--scroll-disabled-col);
+}
+.scroll::after {
+    pointer-events: none;
+    right:  0;
+    width: var(--scrollbar-width);
+    cursor: pointer;
+    z-index: 20;
+}
+.scrollbar {
+    z-index: 15;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right:  0;
+    width:  var(--scrollbar-width);
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    opacity: 0;
+    pointer-events: none;
+    transition-duration: var(--scroll-fade-in-duration);
+    transition-property: opacity;
+}
+.scroll.initialised > .scrollbar {
+    transition-duration: var(--scroll-fade-in-duration);
+    opacity: 1;
+}
+.col > .scroll > .scrollbar {
+    right: var(--col-brd-width);
+}
+.col > .scroll::after {
+    border-right: var(--col-brd-width) solid var(--col-brd-col);
+}
+
+.scrollbar .track {
+    flex: 1 1 100%;
+    z-index: 2;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+.scrollbar .track::before {
+    content: "";
+    box-sizing: border-box;
+    flex: 0 0 var(--scrollbar-dragger-width);
+    border-radius: 10rem;
+    background-color: var(--scroll-track-bg);
+}
+.scrollbar .track.active::before,
+.scrollbar .track.hover::before {
+    background-color: var(--scroll-track-bg-hover);
+}
+.scrollbar .dragger {
+    min-height: 2rem;
+    transition-duration: 0.25s, 0.15s, 0.3s;
+    transition-property: height, top, opacity;
+    z-index: 3;
+    position: relative;
+    box-sizing: border-box;
+    
+    position: absolute;
+    top:    0;
+    left:   0;
+    right:  0;
+}
+.scrollbar .dragger::before {
+    box-sizing: border-box;
+    content: "";
+    width: var(--scrollbar-dragger-width);
+    margin: 0 auto;
+    border-radius: 10rem;
+    background-color: var(--scroll-dragger-bg);
+    position: absolute;
+    top:    0;
+    bottom: 0;
+    left:   0;
+    right:  0;
+}
+.scrollbar .track.active .dragger::before,
+.scrollbar .track.hover .dragger::before {
+    background-color: var(--scroll-dragger-hover-bg);
+}
+.scroll.no_scroll > .scrollbar .dragger {
+    visibility: hidden;
+    opacity: 0;
+}
+
+.scrollbar .arrow {
+    width: var(--scrollbar-width);
+    flex: 0 0 var(--scrollbar-arrow-height);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    z-index: 3;
+}
+.scrollbar .arrow.bottom svg {
+    transform: rotateZ(180deg);
+}
+.scrollbar .arrow path,
+.scrollbar .arrow rect,
+.scrollbar .arrow circle,
+.scrollbar .arrow ellipse,
+.scrollbar .arrow line,
+.scrollbar .arrow polyline,
+.scrollbar .arrow polygon {
+    fill: var(--scroll-btn-bg);
+}
+.scrollbar .arrow.hover path,
+.scrollbar .arrow.hover rect,
+.scrollbar .arrow.hover circle,
+.scrollbar .arrow.hover ellipse,
+.scrollbar .arrow.hover line,
+.scrollbar .arrow.hover polyline,
+.scrollbar .arrow.hover polygon {
+    fill: var(--scroll-btn-hover-bg);
+}
+.scroll.no_scroll > .scrollbar .arrow path,
+.scroll.no_scroll > .scrollbar .arrow rect,
+.scroll.no_scroll > .scrollbar .arrow circle,
+.scroll.no_scroll > .scrollbar .arrow ellipse,
+.scroll.no_scroll > .scrollbar .arrow line,
+.scroll.no_scroll > .scrollbar .arrow polyline,
+.scroll.no_scroll > .scrollbar .arrow polygon {
+    fill: var(--scroll-disabled-col);
+}
+
+
+
+
+
+
+body.forums:not(.account):not(.admin) #search .group:not([name="search"]) {
+    padding-top: 3.5rem !important;
+}
+body.forums:not(.account) #search .group:not([name="search"]) .field {
+    margin-bottom: 0 !important;
+}
+body.forums:not(.account):not(.admin) #search .wdgt-menu .btn {
+    --dim: 4rem;
+    height: var(--dim);
+    border-radius: 10rem 0 0 10rem;
+    max-width: 100%;
+    justify-content: flex-start;
+    overflow: hidden;
+}
+body.forums:not(.account):not(.admin) #search .wdgt-menu .btn .icon {
+    width: var(--dim);
+    border-radius: 10rem;
+}
+body.forums:not(.account):not(.admin) #search .wdgt-menu .btn .text {
+    margin-top: 0.7rem;
+    font-weight: bold;
+    white-space: nowrap;
+    position: absolute;
+}
+body.forums:not(.account):not(.admin) #search .wdgt-menu .btn .desc {
+    font-size: 1rem;
+    position: absolute;
+    top: 2rem;
+    white-space: nowrap;
+}
+body.forums:not(.account):not(.admin) #search .wdgt-menu .btn .text,
+body.forums:not(.account):not(.admin) #search .wdgt-menu .btn .desc {
+    margin-left: 5rem;
+}
+body.forums:not(.account):not(.admin) #search .wdgt-menu .btn .data {
+    margin-left: 0.5rem;
+    padding: 0 0.2rem;
+    background-color: #fa6;
+    color: var(--result-bg);
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    position: relative;
+    z-index: 2;
+    pointer-events: all;
+}
+
+body.forums:not(.account):not(.admin) #search .wdgt-menu .btn.selected .data {
+    color: var(--result-selected-bg);
+}
+
+
+.wdgt-menu {
+    margin: 0 auto;
+}
+.wdgt-menu .btn {
+    background-color: var(--btn-bg);
+    box-shadow: 0 0.1px 0.1rem #000;
+    height: var(--btn-height);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    margin-top: 0.5rem;
+    color: #b8b8b8;
+    text-decoration: none;
+    position: relative;
+    z-index: 2;
+}
+.wdgt-menu .btn:first-child {
+    margin-top: 0;
+}
+.wdgt-menu .btn::after {
+    content: "";
+    position: absolute;
+    top:    0;
+    bottom: 0;
+    right:  0;
+    width: 4rem;
+    background: linear-gradient(to right, transparent, var(--btn-bg));
+    border-right: 1rem solid var(--btn-bg);
+    z-index: 1;
+    pointer-events: none;
+}
+.wdgt-menu .btn .tri {
+    position: absolute;
+    top:    0;
+    bottom: 0;
+    right:  0;
+    width: var(--btn-height);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition-duration: 0.15s;
+    z-index: 2;
+}
+.wdgt-menu .btn.expanded .tri {
+    transform: rotateZ(90deg);
+}
+.wdgt-menu .sub {
+    position: relative;
+    padding-left: var(--btn-height);
+    margin-left: 2px;
+    z-index: 1;
+    overflow: hidden;
+}
+.wdgt-menu .sub .btn {
+    margin-top: var(--btn-height-neg);
+    position: relative;
+    transition-duration: 0.15s;
+    transition-property: margin-top;
+}
+.wdgt-menu .btn.expanded + .sub .btn {
+    margin-top: 0.5rem;
+}
+.wdgt-menu .sub .btn::before {
+    content: "";
+    z-index: 1;
+    border-left:   1px solid #4a4a4a;
+    border-bottom: 1px solid #4a4a4a;
+    width: calc(var(--btn-height) / 2);
+    height: calc(var(--btn-height) + 0.5rem);
+    position: absolute;
+    bottom: calc(var(--btn-height) / 2);
+    left: calc(var(--btn-height-neg) / 2);
+    margin-left: -2px;
+}
+.wdgt-menu .btn .icon {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: var(--btn-height);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-right: var(--btn-icon-brd-right) solid var(--btn-brd-col);
+}
+.wdgt-menu .btn .text {
+    flex: 0 1 auto;
+    margin-left: calc(var(--btn-height) + 1rem);
+    height: auto;
+    font-family: var(--serif);
+    font-size: 1.25rem;
+    font-style: italic;
+    color: #ccc;
+}
+.wdgt-menu .btn .text::before,
+.wdgt-menu .btn .text::after {
+    content: none;
+}
+.wdgt-menu .btn .desc {
+    margin-left: calc(var(--btn-height) + 1rem);
+    color: #999;
+    margin-bottom: 0;
+    font-size: 1rem;
+}
+
+body.hover .wdgt-menu .btn:not(.selected):hover::after {
+    border-right: 1rem solid var(--btn-hover-bg);
+    background: linear-gradient(to right, transparent, var(--btn-hover-bg));
+}
+body.hover .wdgt-menu .btn:not(.selected):hover .icon {
+    border-color: var(--btn-hover-brd-col);
+}
+body.hover .wdgt-menu .btn:not(.selected):hover .text {
+    color: #eee;
+}
+body.hover .wdgt-menu .btn:not(.selected):hover .desc {
+    color: #bbb;
+}
+.wdgt-menu .btn.selected {
+    background-color: var(--checked-bg);
+}
+.wdgt-menu .btn.selected .text {
+    color: var(--checked-col);
+}
+.wdgt-menu .btn.selected .desc {
+    color: var(--checked-col-2);
+}
+.wdgt-menu .btn.selected .icon {
+    border-right-color: var(--checked-brd-col);
+}
+.wdgt-menu .btn.selected path,
+.wdgt-menu .btn.selected rect,
+.wdgt-menu .btn.selected circle,
+.wdgt-menu .btn.selected ellipse,
+.wdgt-menu .btn.selected line,
+.wdgt-menu .btn.selected polyline,
+.wdgt-menu .btn.selected polygon {
+    fill: var(--checked-icon-col);
+}
+.wdgt-menu .btn.selected::after {
+    border-right: 1rem solid var(--checked-bg);
+    background: linear-gradient(to right, transparent, var(--checked-bg));
+}
+.wdgt-menu .btn.selected {
+    border-right: 0.4rem solid var(--checked-col-1);
+}
+
+
+
+
+
+.calendar {
+    position: relative;
+}
+.calendar .display {
+    display: flex;
+    background-color: var(--btn-bg);
+    box-shadow: 0 0.1px 0.1rem rgba(0, 0, 0, 1);
+    user-select: none;
+}
+body.hover .calendar .display:not(.selected):hover {
+    background-color: var(--btn-hover-bg);
+}
+.calendar .value {
+    flex: 1 1 100%;
+    height: var(--btn-height);
+    display: flex;
+    align-items: center;
+    padding-left: 1rem;
+}
+.calendar .value:empty::before {
+    content: "Choose date...";
+    color: #707070;
+    font-style: italic;
+}
+body.hover .calendar .display:not(.selected):hover .value {
+    color: var(--btn-hover-col);
+}
+body.hover .calendar .display:not(.selected):hover .value:empty::before {
+    color: #909090;
+}
+.calendar .beneath {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+}
+.calendar .beneath.hidden {
+    display: none;
+}
+.calendar .clear {
+    position: absolute;
+    top: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0.3rem 0;
+    cursor: default;
+}
+.calendar .clear .icon {
+    display: flex;
+    width: 0.75rem;
+}
+.calendar .clear span {
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    color: #999;
+    margin-left: 0.3rem;
+}
+body.hover .calendar .clear:not(.selected):hover span {
+    color: #c68;
+}
+.calendar .clear path,
+.calendar .clear rect,
+.calendar .clear circle,
+.calendar .clear ellipse,
+.calendar .clear line,
+.calendar .clear polyline,
+.calendar .clear polygon {
+    fill: #888;
+}
+body.hover .calendar .clear:not(.selected):hover path,
+body.hover .calendar .clear:not(.selected):hover rect,
+body.hover .calendar .clear:not(.selected):hover circle,
+body.hover .calendar .clear:not(.selected):hover ellipse,
+body.hover .calendar .clear:not(.selected):hover line,
+body.hover .calendar .clear:not(.selected):hover polyline,
+body.hover .calendar .clear:not(.selected):hover polygon {
+    fill: #c68;
+}
+.calendar .button {
+    flex: 0 0 var(--btn-height);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-left: 2px solid #1a1a1a;
+}
+body.hover .calendar .display:not(.selected):hover .button {
+    border-color: var(--btn-hover-brd-col);
+}
+.calendar .button path,
+.calendar .button rect,
+.calendar .button circle,
+.calendar .button ellipse,
+.calendar .button line,
+.calendar .button polyline,
+.calendar .button polygon {
+    fill: var(--btn-col);
+}
+body.hover .calendar .display:not(.selected):hover .button path,
+body.hover .calendar .display:not(.selected):hover .button rect,
+body.hover .calendar .display:not(.selected):hover .button circle,
+body.hover .calendar .display:not(.selected):hover .button ellipse,
+body.hover .calendar .display:not(.selected):hover .button line,
+body.hover .calendar .display:not(.selected):hover .button polyline,
+body.hover .calendar .display:not(.selected):hover .button polygon {
+    fill: var(--btn-hover-col);
+}
+.calendar .selector {
+    position: absolute;
+    border-top: 1px solid #1a1a1a;
+    top: 100%;
+    left:  0;
+    right: 0;
+    background-color: #2a2a2a;
+    box-shadow: 0 1px 0.1rem rgba(0, 0, 0, 1);
+    z-index: var(--z-index-dropdown);
+    user-select: none;
+}
+.calendar .selector.hidden {
+    display: none;
+}
+.calendar .header {
+    display: flex;
+    height: var(--btn-height);
+    background-color: #303030;
+}
+.calendar .view {
+    flex: 1 1 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.calendar .view.disabled {
+    pointer-events: none;
+}
+body.hover .calendar .view:not(.selected, .disabled):hover {
+    background-color: #3a3a3a;
+}
+.calendar .view .label {
+    font-size: 0.75rem;
+    color: #808080;
+    text-transform: uppercase;
+    letter-spacing: 0.05rem
+}
+.calendar .view .range {
+    position: relative;
+    width: 100%;
+}
+.calendar .view .month,
+.calendar .view .year,
+.calendar .view .period {
+    position: absolute;
+    width: 100%;
+    top:    0;
+    bottom: 0;
+}
+.calendar .view .month,
+.calendar .view .year,
+.calendar .view .period {
+    transition-duration: 0.3s;
+    transition-property: opacity, transform;
+    transform: rotateY(0.01deg);
+}
+.calendar .view .month.hidden,
+.calendar .view .year.hidden,
+.calendar .view .period.hidden {
+    opacity: 0;
+    transform: rotateY(90deg);
+}
+.calendar .period,
+.calendar .month,
+.calendar .year,
+.calendar .prev,
+.calendar .next {
+    cursor: default;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+body.hover .calendar .prev:not(.selected):hover,
+body.hover .calendar .next:not(.selected):hover {
+    color: var(--btn-hover-col);
+    background-color: #3a3a3a;
+}
+.calendar .prev.disabled,
+.calendar .next.disabled {
+    pointer-events: none;
+}
+.calendar .prev.disabled svg > *,
+.calendar .next.disabled svg > * {
+    fill: var(--btn-disabled-col);
+}
+.calendar .header svg > * {
+    fill: var(--btn-col);
+}
+body.hover .calendar .header *:not(.selected):hover svg > * {
+    fill: var(--btn-hover-col);
+}
+.calendar .prev,
+.calendar .next {
+    flex: 0 0 var(--btn-height);
+}
+.calendar .prev svg {
+    transform: rotateZ(90deg);
+}
+.calendar .next svg {
+    transform: rotateZ(-90deg);
+}
+.calendar .dates .frame {
+    margin-top: 1rem;
+}
+.calendar .days {
+    position: absolute;
+    top:   0;
+    left:  0;
+    right: 0;
+    display: flex;
+    height: 1rem;
+    transition-duration: 0.3s;
+    transition-property: opacity;
+    z-index: 1;
+}
+.calendar .days div {
+    flex: 1 1 14.2857%;
+    text-transform: uppercase;
+    font-size: 0.7rem;
+    display: flex;
+    justify-content: center;
+    color: #999;
+    background-color: #252525;
+}
+.calendar .dates,
+.calendar .years {
+    position: absolute;
+    top:    var(--btn-height);
+    bottom: 0;
+    left:   0;
+    right:  0;
+}
+.calendar .dates.hidden,
+.calendar .months.hidden,
+.calendar .years.hidden {
+    pointer-events: none;
+}
+.calendar .dates .frame div,
+.calendar .months .frame div,
+.calendar .years .frame div {
+    transform: rotateY(0.01deg);
+}
+.calendar .dates.hidden .frame div,
+.calendar .months.hidden .frame div,
+.calendar .years.hidden .frame div {
+    opacity: 0;
+    transform: rotateY(90deg);
+}
+.calendar .dates.hidden .days {
+    opacity: 0;
+}
+.calendar .dates,
+.calendar .dates .frames,
+.calendar .years,
+.calendar .months {
+    height: 12rem;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+.calendar .dates .frames.bottom,
+.calendar .years.bottom,
+.calendar .months.bottom {
+    justify-content: flex-end;
+}
+.calendar .frame {
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+    transition-duration: 0.3s;
+}
+.calendar .bottom .frame:last-child {
+    margin-bottom: -12rem;
+}
+.calendar .top .frame:first-child {
+    margin-top: -12rem;
+}
+.calendar .dates .frames.top .frame:first-child {
+    margin-top: -11rem;
+}
+.calendar .frame div {
+    height: 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    transition-duration: 0.3s;
+    transition-property: transform, opacity;
+}
+.calendar .years .frame div {
+    font-size: 0.95rem;
+}
+body.hover .calendar .frame div:not(.selected):hover {
+    background-color: #353535;
+    color: var(--btn-hover-col);
+}
+.calendar .frame div.selected {
+    background-color: var(--checked-bg);
+    color: var(--checked-col);
+}
+.calendar .frame div.disabled {
+    pointer-events: none;
+    background-color: transparent !important;
+    color: #5a5a5a !important;
+}
+.calendar .present {
+    flex: 1 0 50%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: var(--btn-height);
+    padding: 0 1rem;
+}
+body.hover .calendar .present:not(.selected):hover {
+    background-color: #353535;
+    color: var(--btn-hover-col);
+}
+.calendar .present.hidden {
+    display: none;
+}
+
+.calendar .dates .frame {
+    grid-template-columns: repeat(7, auto);
+}
+.calendar .dates .frame div {
+    height: 1.8333rem;
+}
+
+
+
+.image {
+    box-shadow: 0 0.1px 0.1rem #000;
+}
+.image .preview {
+    position: relative;
+    display: block;
+    background-color: var(--btn-bg);
+    height: 0;
+    padding-bottom: 56.25%;
+    cursor: pointer;
+    
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+.image .preview svg {
+    position: absolute;
+    top:   0.7rem;
+    right: 0.7rem;
+}
+.image:not(.present) .preview svg {
+    display: none;
+}
+.image .preview path,
+.image .preview rect,
+.image .preview circle,
+.image .preview ellipse,
+.image .preview line,
+.image .preview polyline,
+.image .preview polygon {
+    fill: #aaa;
+}
+body.hover .image .preview:not(.selected):hover path,
+body.hover .image .preview:not(.selected):hover rect,
+body.hover .image .preview:not(.selected):hover circle,
+body.hover .image .preview:not(.selected):hover ellipse,
+body.hover .image .preview:not(.selected):hover line,
+body.hover .image .preview:not(.selected):hover polyline,
+body.hover .image .preview:not(.selected):hover polygon {
+    fill: #eee;
+}
+.image.thumb {
+    display: flex;
+    border: 0;
+    box-shadow: none;
+}
+.image.thumb .preview {
+    flex: 0 0 10rem;
+    height:   10rem;
+    padding-bottom: 0;
+    background-size: cover;
+    box-shadow: 0 0.1px 0.1rem #000;
+}
+.image.present .preview {
+    background-color: #101010;
+}
+.image input {
+    display: none;
+}
+.button .image > * {
+    display: none;
+}
+body.hover .image .preview:not(.selected):hover {
+    background-color: var(--btn-hover-bg);
+}
+body.hover .image.present .preview:not(.selected):hover {
+    background-color: #101010;
+}
+.image .msg {
+    position: absolute;
+    top:    0;
+    bottom: 0;
+    left:   0;
+    right:  0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    font-size: 1.4rem;
+    font-family: var(--serif);
+    font-style: italic;
+    color: var(--tf-placeholder);
+}
+body.hover .image .preview:not(.selected):hover .msg {
+    color: var(--tf-hover-placeholder);
+}
+.image.thumb .msg {
+    font-size: 1.3rem;
+}
+.image.present .msg {
+    display: none;
+}
+.image .or {
+    font-style: normal;
+    font-family: var(--sans);
+    font-size: 1rem;
+    margin: 0.25rem 0;
+}
+.image .meta {
+    border-top: 1px solid #101010;
+    height: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 0.5rem;
+    font-size: 0.95rem;
+    color: #707070;
+}
+.image.thumb .meta {
+    flex: 1 1 100%;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    border: 0;
+}
+
+
+.dropdown {
+    position: relative;
+    display: flex;
+}
+.dropdown.error input {
+    border-color: #904060;
+    color: #a06070;
+    background-color: #20101a !important;
+}
+.dropdown.error > .arrow path,
+.dropdown.error > .arrow rect,
+.dropdown.error > .arrow circle,
+.dropdown.error > .arrow ellipse,
+.dropdown.error > .arrow line,
+.dropdown.error > .arrow polyline,
+.dropdown.error > .arrow polygon {
+    fill: #a06070 !important;
+}
+.dropdown > .icon {
+    flex: 0 0 var(--tf-height);
+    background-color: var(--tf-icon-bg);
+    border-right: var(--tf-icon-brd-right) solid var(--tf-brd-right-col);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.dropdown > .icon.hidden {
+    display: none;
+}
+.dropdown > .icon path,
+.dropdown > .icon rect,
+.dropdown > .icon circle,
+.dropdown > .icon ellipse,
+.dropdown > .icon line,
+.dropdown > .icon polyline,
+.dropdown > .icon polygon {
+    fill: #aaa;
+}
+.dropdown > .arrow {
+    position: absolute;
+    top:    0;
+    bottom: 0;
+    right:  0;
+    width: var(--tf-height);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+}
+.dropdown > .arrow svg {
+    transition-duration: 0.15s;
+}
+.dropdown .arrow path,
+.dropdown .arrow rect,
+.dropdown .arrow circle,
+.dropdown .arrow ellipse,
+.dropdown .arrow line,
+.dropdown .arrow polyline,
+.dropdown .arrow polygon {
+    fill: #808080;
+}
+.dropdown .list {
+    position: absolute;
+    top: 100%;
+    left:  0;
+    right: 0;
+    background-color: #2a2a2a;
+    background-color: #2a2a2a;
+    z-index: var(--z-index-dropdown);
+    height: 19.5rem;
+    max-height: 19.5rem;
+    overflow: hidden;
+    box-shadow: 0 0.5rem 0.7rem 0 rgba(0, 0, 0, 0.8);
+    
+    visibility: hidden;
+    pointer-events: none;
+}
+.dropdown .list .scrollbar {
+    background-color: #303030;
+    pointer-events: auto;
+}
+.dropdown .list .scroll.no_scroll > .scrollbar * {
+    opacity: 0;
+    pointer-events: none;
+}
+.dropdown .list .scrollbar .track::before {
+    background-color: #252525;
+}
+.dropdown input:focus + .arrow path,
+.dropdown input:focus + .arrow rect,
+.dropdown input:focus + .arrow circle,
+.dropdown input:focus + .arrow ellipse,
+.dropdown input:focus + .arrow line,
+.dropdown input:focus + .arrow polyline,
+.dropdown input:focus + .arrow polygon,
+body.hover .dropdown input:not(.selected):hover + .arrow path,
+body.hover .dropdown input:not(.selected):hover + .arrow rect,
+body.hover .dropdown input:not(.selected):hover + .arrow circle,
+body.hover .dropdown input:not(.selected):hover + .arrow ellipse,
+body.hover .dropdown input:not(.selected):hover + .arrow line,
+body.hover .dropdown input:not(.selected):hover + .arrow polyline,
+body.hover .dropdown input:not(.selected):hover + .arrow polygon {
+    fill: #ddd;
+}
+.dropdown input:focus + .arrow svg {
+    transform: rotateZ(90deg);
+}
+.dropdown input:focus ~ .list {
+    visibility: visible;
+    pointer-events: auto;
+}
+.dropdown .list .empty {
+    height: var(--tf-height);
+    padding-left: 4.3rem;
+    display: flex;
+    align-items: center;
+    color: #888;
+}
+.dropdown .list .empty.hidden {
+    display: none;
+}
+.dropdown .item {
+    display: flex;
+}
+.dropdown .item.hidden {
+    display: none;
+}
+body.hover .dropdown .item:not(.selected):hover {
+    background-color: #353535;
+    color: #ccc;
+}
+.dropdown .item .icon {
+    flex: 0 0 var(--tf-height);
+    height: var(--tf-height);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.dropdown .item .icon path,
+.dropdown .item .icon rect,
+.dropdown .item .icon circle,
+.dropdown .item .icon ellipse,
+.dropdown .item .icon line,
+.dropdown .item .icon polyline,
+.dropdown .item .icon polygon {
+    fill: #909090;
+}
+body.hover .dropdown .item:not(.selected):hover .icon path,
+body.hover .dropdown .item:not(.selected):hover .icon rect,
+body.hover .dropdown .item:not(.selected):hover .icon circle,
+body.hover .dropdown .item:not(.selected):hover .icon ellipse,
+body.hover .dropdown .item:not(.selected):hover .icon line,
+body.hover .dropdown .item:not(.selected):hover .icon polyline,
+body.hover .dropdown .item:not(.selected):hover .icon polygon {
+    fill: #ddd;
+}
+.dropdown .item .abbr,
+.dropdown .item .offset,
+.dropdown .item .text {
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+    pointer-events: none;
+}
+.dropdown .item .abbr {
+    flex: 0 0 3rem;
+    justify-content: flex-end;
+    padding-right: 0.8rem;
+    font-family: var(--mono);
+    font-weight: bold;
+}
+.dropdown .item .offset {
+    justify-content: flex-end;
+    font-family: var(--mono);
+}
+.dropdown .item .text {
+    height: var(--tf-height);
+    padding-left: 0.8rem;
+}
+
+
+
+
+
+
+.password .strength {
+    margin-top: 0.3rem;
+    display: flex;
+    justify-content: flex-end;
+}
+.password .strength > span {
+    font-size: 0.9;
+    margin-right: 0.3rem;
+}
+.password .meter {
+    flex: 0 0 20rem;
+    display: flex;
+    /*background-color: var(--btn-bg);*/
+    background-color: var(--tf-subgroup-bg);
+}
+.password .meter div {
+    flex: 1 1 33%;
+    display: flex;
+    justify-content: center;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    color: #888;
+    padding: 0.2rem;
+    border-right: var(--btn-icon-brd-right) solid var(--btn-sg-brd-col);
+}
+.password .meter div:last-child {
+    border-right: 0;
+}
+.password .meter div.on {
+    color: #ddd;
+}
+.password .meter .weak.on {
+    background-color: #802020;
+}
+.password .meter .okay.on {
+    background-color: #906a00;
+}
+.password .meter .strong.on {
+    background-color: #108020;
+}
+
+
+.password .forgot {
+    margin-top: 0.5rem;
+    display: flex;
+    justify-content: flex-end;
+}
+.password .forgot a {
+    color: var(--warn-col);
+}
+
+
+
+
+.group {
+    position: relative;   
+    display: flex;
+    margin-top: 2.5rem;
+    margin-top: 1rem;
+    padding-top: 4rem;
+    flex-wrap: wrap;
+    padding-left: 2rem;
+}
+.group.hidden {
+    display: none;
+}
+.field {
+    flex: 0 1 100%;
+    margin-bottom: 2rem;
+    padding-left: 1rem;
+    box-sizing: border-box;
+    position: relative;
+}
+.field.no_group_format {
+    padding-left: 0;
+    margin-bottom: 0;
+}
+.field.no_group_format > .desc {
+    padding-left: 1rem;
+}
+.field.hidden {
+    display: none;
+}
+@media (max-width: 1366px) {
+    .group {
+        padding-left: 0;
+        column-gap: 0.5rem;
+    }
+    .field {
+        padding-left: 0;
+    }
+}
+/*
+.admin   #search .group,
+.account #search .group {
+    padding: 0 1.5rem;
+}
+.admin   #search .field,
+.account #search .field {
+    padding-left: 0;
+}
+.admin   #search .field.paired:nth-child(odd),
+.account #search .field.paired:nth-child(odd) {
+    padding-right: 0.5rem;
+}
+.admin   #search .field.paired:nth-child(even),
+.account #search .field.paired:nth-child(even) {
+    padding-left: 0.5rem;
+}
+*/
+.field.row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+}
+.field.row::before {
+    content: "";
+    position: absolute;
+    top:    0;
+    bottom: 0;
+    left:   0.5rem;
+    right:  0.5rem;
+}
+.field.row > .desc {
+    flex: 0 0 12rem;
+    position: relative;
+    z-index: 2;
+    padding-left: 1.2rem;
+    box-sizing: border-box;
+}
+.field.row > .errors {
+    flex: 1 0 100%;
+}
+.field.row > *:last-child {
+    position: relative;
+    z-index: 2;
+    flex: 0 0 6rem;
+    margin-right: 1rem;
+}
+.field.paired {
+    flex: 1 1 50%;
+    min-width: 16rem;
+}
+@media (max-width: 1366px) {
+    .field.paired {
+        /*flex: 1 1 auto;*/
+        flex: 1 1 48%;
+        min-width: 13rem;
+    }
+    .field.no_group_format > .desc {
+        padding-left: 0 !important;
+    }
+}
+.field .desc {
+    margin-bottom: 0.3rem;
+}
+.field .desc > span:first-child::after {
+    content: normal;
+}
+.field .desc > span::after {
+    content: ", ";
+}
+.field .desc > span:last-child::after {
+    content: normal;
+}
+.field .desc .text {
+    margin-right: 0.5rem;
+}
+.field .desc .note {
+    text-transform: uppercase;
+    color: #707070;
+    font-size: 0.9rem;
+}
+
+form .errors > div {
+    background-color: var(--error-window);
+    color: var(--error-col-bright);
+    font-size: 1rem;
+    padding: 0.7rem 1rem;
+    margin-bottom: 0.4rem;
+}
+.thread > .locked,
+form .context {
+    font-size: 1rem;
+    padding: 0.7rem 1rem;
+    background-color: var(--ctx-bg);
+    color: var(--ctx-col);
+    text-align: justify;
+}
+form .button .context {
+    display: none;
+}
+.group > .context {
+    width: calc(100% + 1.5rem);
+    margin-top:   -0.5rem;
+    margin-left:  -1.5rem;
+    margin-bottom: 1.5rem;
+}
+@media (max-width: 1366px) {
+    .group > .context {
+        margin-left: 0;
+    }
+}
+form *:not(.group) > .context {
+    margin-top: 1.5rem;
+    margin-top: 0.3rem;
+    margin-bottom: 0.5rem;
+}
+.field .help {
+    margin-top: 0.75rem;
+    font-size: 1rem;
+    color: #909090;
+    font-style: italic;
+}
+.field .help a {
+    color: #ccc;
+}
+.field .adder > * {
+    margin-top: 0.5rem;
+}
+.field .adder > *:first-child {
+    margin-top: 0;
+}
+.field .adder .instance {
+    display: flex;
+}
+.field .adder .instance > .num {
+    font-style: italic;
+    font-family: var(--serif);
+    font-size: 1.35rem;
+    color: #909090;
+}
+.field .adder .instance > .num,
+.field .adder .instance > .remove {
+    flex: 0 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.field .adder .instance > .remove path,
+.field .adder .instance > .remove rect,
+.field .adder .instance > .remove circle,
+.field .adder .instance > .remove ellipse,
+.field .adder .instance > .remove line,
+.field .adder .instance > .remove polyline,
+.field .adder .instance > .remove polygon {
+    fill: #777;
+}
+body.hover .field .adder .instance > .remove:not(.selected):hover path,
+body.hover .field .adder .instance > .remove:not(.selected):hover rect,
+body.hover .field .adder .instance > .remove:not(.selected):hover circle,
+body.hover .field .adder .instance > .remove:not(.selected):hover ellipse,
+body.hover .field .adder .instance > .remove:not(.selected):hover line,
+body.hover .field .adder .instance > .remove:not(.selected):hover polyline,
+body.hover .field .adder .instance > .remove:not(.selected):hover polygon {
+    fill: #c68;
+}
+.field .adder .instance > .remove {
+    flex: 0 0 3rem;
+}
+.field .adder .instance > .remove.hidden {
+    max-width: 0;
+    opacity: 0;
+    pointer-events: none;
+}
+.field .adder .instance > .num::after {
+    content: ".";
+}
+.field .adder .instance > .widget {
+    flex: 1 1 100%;
+}
+.field .adder .button {
+    position: relative;
+    overflow: hidden;
+}
+.field .adder .button *::placeholder {
+    opacity: 0 !important;
+}
+.field .adder .button.hidden {
+    display: none;
+}
+.field .adder .button .instance > .remove {
+    opacity: 0;
+    pointer-events: none;
+}
+.field .adder .button .widget {
+    position: relative;
+}
+.field .adder.sg > .button::before,
+.field .adder > .button > .instance > .widget::before {
+    content: "";
+    position: absolute;
+    top:    0;
+    bottom: 0;
+    left:   0;
+    right:  0;
+    border: 2px dashed #5a5a5a;
+    z-index: 6;
+}
+
+.field .adder .button .msg {
+    color: #606060;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    z-index: 5;
+    top:    0;
+    bottom: 0;
+    left:   0;
+    right:  0;
+    background-color: var(--col-bg-trans-1);
+}
+.field .subgroup .adder .button .msg {
+    background-color: var(--sg-body-bg-trans-1);
+}
+.field .adder .button > * {
+    pointer-events: none;
+}
+
+/*
+    Adder button hover states.
+*/
+body.hover .field .adder .button:not(.selected):hover .instance .num {
+    color: #909090;
+}
+body.hover .field .adder .button:not(.selected):hover .msg {
+    background: #1a1a1a55;
+    background-color: var(--col-bg-trans-2);
+}
+body.hover .field .adder .button:not(.selected):hover .msg {
+    color: #909090;
+}
+body.hover .field .subgroup .adder .button:not(.selected):hover .msg {
+    background-color: var(--sg-body-bg-trans-2);
+}
+
+/*
+    Modal adder buttons.
+*/
+#modal .field .adder .button .msg {
+    background-color: var(--sg-body-bg-trans-1);
+}
+body.hover #modal .field .adder .button:not(.selected):hover .msg {
+    color: #909090;
+    background-color: var(--sg-body-bg-trans-2);
+}
+
+
+
+/*
+    Group Adder
+*/
+.adder.grp > .button {
+    height: 16rem;
+    overflow: hidden;
+    position: relative;
+}
+.adder.grp > .button.hidden {
+    display: none;
+}
+.adder.grp .group > .remove {
+    background-color: var(--col-bg);
+    padding: 0 0.6rem;
+    position: absolute;
+    /*top: -1.5rem;*/
+    top: 1.75rem;
+    /*right: 1rem;*/
+    right: -0.6rem;
+    display: flex;
+    align-items: center;
+    /*height: 2rem;*/
+}
+.adder.grp .group > .remove.hidden {
+    display: none;
+}
+.adder.grp .group > .remove::before {
+    content: "remove";
+    margin-right: 0.5rem;
+    margin-top: -0.1rem;
+    text-transform: uppercase;
+    font-size: 0.95rem;
+    color: #888;
+}
+body.hover .adder.grp .group > .remove:not(.selected):hover::before {
+    color: #a57;
+}
+.adder.grp > .button > .group > .remove {
+    display: none;
+}
+.group > .remove path,
+.group > .remove rect,
+.group > .remove circle,
+.group > .remove ellipse,
+.group > .remove line,
+.group > .remove polyline,
+.group > .remove polygon {
+    fill: #888;
+}
+body.hover .group > .remove:not(.selected):hover path,
+body.hover .group > .remove:not(.selected):hover rect,
+body.hover .group > .remove:not(.selected):hover circle,
+body.hover .group > .remove:not(.selected):hover ellipse,
+body.hover .group > .remove:not(.selected):hover line,
+body.hover .group > .remove:not(.selected):hover polyline,
+body.hover .group > .remove:not(.selected):hover polygon {
+    fill: #a57;
+}
+.group > .legend .note,
+.adder.grp .group > .legend .note {
+    font-family: var(--sans);
+    text-transform: uppercase;
+    color: #707070;
+    font-size: 0.9rem;
+    margin-left: 0.5rem;
+    
+    margin-bottom: 0.1rem;
+}
+.adder.grp .group > .legend .num {
+    display: inline;
+    margin-left: 0.4rem;
+}
+.adder.grp .group > .legend .num::before {
+    content: "#";
+}
+.adder.grp > .button::before {
+    content: "";
+    background: linear-gradient(to bottom, transparent, var(--col-bg));
+    position: absolute;
+    top:    4rem;
+    top:    0;
+    bottom: 0;
+    left:   0;
+    right:  0;
+    z-index: 1;
+}
+.adder.grp > .button > .msg {
+    pointer-events: none;
+    position: absolute;
+    top:    0;
+    bottom: 0;
+    left:   0;
+    right:  0;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.adder.grp > .button > .msg > span {
+    font-size: 1.7rem;
+    font-style: italic;
+    font-family: var(--serif);
+    color: #7a7a7a;
+    margin-top: -0.5rem;
+}
+body.hover .adder.grp > .button:not(.selected):hover > .msg > span {
+    color: #ddd;
+}
+.adder.grp > .button > .group::after {
+    content: "";
+    position: absolute;
+    top:    0;
+    bottom: 0;
+    left:   0;
+    right:  0;
+    z-index: 2;
+    background-color: #1a1a1acc;
+}
+body.hover .adder.grp > .button:not(.selected):hover > .group::after {
+    background-color: #1a1a1a99;
+}
+.adder.grp > .button > .group > .legend {
+    z-index: 3;
+}
+.adder.grp > .button > .group > .legend h3 {
+    border-bottom-style: dashed;
+    border-bottom-width: 2px;
+}
+
+
+/*
+    SubGroups
+*/
+.subgroup:not(.no_group_format) {
+    box-shadow: 0 0.1px 0.1rem rgba(0, 0, 0, 1);
+    display: flex;
+    margin-top: 0.5rem;
+    position: relative;
+}
+@media (max-width: 1366px) {
+    .adder .subgroup:not(.no_group_format) {
+        flex-direction: column;
+    }
+    .adder .subgroup:not(.no_group_format) > .num {
+        flex: 0 0 3rem;
+        align-items: center;
+        justify-content: flex-start;
+        padding-top: 0;
+        padding-left: 1.5rem;
+        border-bottom: 1px solid #1d1d1d;
+        border-right: 0;
+    }
+    .adder.grp .group > .remove::before {
+        letter-spacing: 0.01rem;
+        margin-top: 0;
+        margin-right: 0.4rem;
+        font-size: 0.85rem;
+    }
+}
+.modal .textarea,
+.modal .textfield,
+.modal .dropdown .icon,
+.modal .dropdown input,
+.modal .password input,
+.modal .tagger input,
+.subgroup:not(.no_group_format) .textarea,
+.subgroup:not(.no_group_format) .textfield,
+.subgroup:not(.no_group_format) .dropdown .icon,
+.subgroup:not(.no_group_format) .dropdown input,
+.subgroup:not(.no_group_format) .password input,
+.subgroup:not(.no_group_format) .tagger input,
+.subgroup:not(.no_group_format) .wdgt-time .wdgt {
+    background-color: var(--tf-subgroup-bg);
+}
+.subgroup:not(.no_group_format) .wdgt-time .meridiem input:not(:checked) + div {
+    background-color: var(--btn-subgroup-bg);
+}
+body.hover .subgroup:not(.no_group_format) .wdgt-time .meridiem input:not(:checked) + div:hover {
+    color: var(--btn-subgroup-hover-col);
+    background-color: var(--btn-subgroup-hover-bg);
+}
+.modal .textarea textarea::placeholder,
+.modal .textfield input::placeholder,
+.modal .dropdown input::placeholder,
+.modal .password input::placeholder,
+.modal .tagger input::placeholder,
+.subgroup:not(.no_group_format) .textarea textarea::placeholder,
+.subgroup:not(.no_group_format) .textfield input::placeholder,
+.subgroup:not(.no_group_format) .dropdown input::placeholder,
+.subgroup:not(.no_group_format) .password input::placeholder,
+.subgroup:not(.no_group_format) .tagger input::placeholder {
+    color: var(--tf-subgroup-placeholder);
+}
+.modal .textarea .brd,
+.modal .textfield .brd,
+.modal .password input,
+.modal .tagger input,
+.modal .dropdown input,
+.subgroup:not(.no_group_format) .textarea .brd,
+.subgroup:not(.no_group_format) .textfield .brd,
+.subgroup:not(.no_group_format) .password input,
+.subgroup:not(.no_group_format) .tagger input,
+.subgroup:not(.no_group_format) .dropdown input,
+.subgroup:not(.no_group_format) .wdgt-time .brd {
+    border-color: var(--tf-subgroup-brd-col);
+}
+.modal .textarea > .icon,
+.modal .textfield > .icon,
+.modal .dropdown > .icon,
+.subgroup:not(.no_group_format) .textarea > .icon,
+.subgroup:not(.no_group_format) .textfield > .icon,
+.subgroup:not(.no_group_format) .dropdown > .icon {
+    border-color: var(--btn-sg-brd-col);
+}
+/*.subgroup:not(.no_group_format) > .num {*/
+.subgroup > .num {
+    flex: 0 0 3.5rem;
+    background-color: var(--sg-num-bg);
+    border-right: 1px solid #1d1d1d;
+    display: flex;
+    justify-content: center;
+    padding-top: 1.5rem;
+    font-family: var(--serif);
+    font-size: 1.6rem;
+    color: var(--btn-col);
+}
+.group .adder.sg > .subgroup.no_group_format {
+    margin-bottom: 0 !important;
+}
+.subgroup.no_group_format {
+    display: flex;
+    /*margin-bottom: 2rem;*/
+}
+.subgroup.no_group_format > .remove {
+    position: static;
+}
+.subgroup.no_group_format > .num {
+    flex: 0 0 2rem;
+    background-color: transparent;
+    padding: 0;
+}
+.group .adder.sg > .subgroup.no_group_format > .body > .field {
+    margin: 0 !important;
+}
+.subgroup > .num::after {
+    content: ".";
+    margin-right: -0.4rem;
+}
+.subgroup > .body {
+    background-color: var(--sg-body-bg);
+    flex: 1 1 100%;
+    padding-left:  0.5rem;
+    padding-right: 1.5rem;
+    padding-top: 2rem;
+    padding-bottom: 0;
+    display: flex;
+    flex-wrap: wrap;
+}
+@media (max-width: 1366px) {
+    .subgroup > .body {
+        padding-left: 1.5rem;
+        column-gap: 0.5rem;
+    }
+}
+.subgroup.no_wrap > .body {
+    flex-wrap: nowrap;
+}
+.subgroup.no_group_format > .body {
+    background-color: transparent;
+    padding: 0;
+}
+.subgroup > .remove {
+    position: absolute;
+    top:   0;
+    right: 0;
+    width: 5rem;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #151515;
+    border-radius: 0 0 0 0.2rem;
+    border-top:   0;
+    border-right: 0;
+    background-color: #2a2a2a;
+    padding-top: 0.1rem;
+}
+.subgroup > .remove.hidden {
+    display: none;
+}
+body.hover .subgroup > .remove:not(.selected):hover {
+    background-color: #734;
+}
+.subgroup > .remove path,
+.subgroup > .remove rect,
+.subgroup > .remove circle,
+.subgroup > .remove ellipse,
+.subgroup > .remove line,
+.subgroup > .remove polyline,
+.subgroup > .remove polygon {
+    fill: #666;
+}
+body.hover .subgroup > .remove:not(.selected):hover path,
+body.hover .subgroup > .remove:not(.selected):hover rect,
+body.hover .subgroup > .remove:not(.selected):hover circle,
+body.hover .subgroup > .remove:not(.selected):hover ellipse,
+body.hover .subgroup > .remove:not(.selected):hover line,
+body.hover .subgroup > .remove:not(.selected):hover polyline,
+body.hover .subgroup > .remove:not(.selected):hover polygon {
+    fill: #aaa;
+}
+
+
+/*
+    SubGroup Adder
+*/
+.group .adder.sg > * {
+    margin-bottom: 1.5rem;
+}
+.group .adder.sg > *:last-child {
+    margin-bottom: 0;
+}
+.group .adder.sg > .button {
+    height: 8rem;
+}
+.group .adder.sg > .button::after {
+    content: "";
+    position: absolute;
+    top:    2rem;
+    bottom: 0;
+    left:   0;
+    right:  0;
+    z-index: 7;
+    background: linear-gradient(to bottom, transparent, var(--col-bg));
+}
+.field .adder.sg > .button .msg {
+    font-size: 1.2rem;
+    color: #707070;
+}
+body.hover .field .adder.sg > .button:not(.selected):hover .msg {
+    color: #bbb;
+    background-color: var(--col-bg-trans-1);
+}
+.field .adder.sg > .button > .subgroup {
+    margin-top: 0;
+}
+.group .wdgt-info {
+    white-space: nowrap;
+    overflow: hidden;
+    background-color: #333;
+    color: #999;
+    padding: 0 1rem;
+    box-sizing: border-box;
+    height: var(--btn-height);
+    display: flex;
+    align-items: center;
+}
+.group .wdgt-info.paired {
+    flex: 1 1 50%;
+}
+
+.group .tempfield {
+    flex: 1 1 100%;
+}
+.group .tempfield.empty {
+    box-sizing: border-box;
+    height: 6rem;
+    border: 2px dashed #444;
+    margin-bottom: 2rem;
+    color: #606060;
+    font-size: 1.4rem;
+    font-family: var(--serif);
+    font-style: italic;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.group .tempfield.empty > .field {
+    display: none;
+}
+
+
+/*
+    Nested Sub-Groups
+*/
+.subgroup .subgroup > .num {
+    display: none;
+}
+.subgroup .subgroup > .body {
+    background-color: #2a2a2a;
+}
+.subgroup .subgroup > .remove {
+    background-color: #303030;
+}
+.group .adder.sg .adder.sg > .button::after {
+    background: linear-gradient(to bottom, transparent, var(--sg-body-bg));
+}
+
+
+
+
+.field.disabled .button {
+    display: none;
+}
+.field.disabled {
+    pointer-events: none !important;
+    user-select: none !important;
+    position: relative;
+}
+.field::after {
+    content: "";
+    pointer-events: none;
+    position: absolute;
+    top:    -0.5rem;
+    bottom: -0.5rem;
+    left:   -0.5rem;
+    right:  -0.5rem;
+    background-color: #1a1a1a00;
+    z-index: 7;
+    transition-duration: 0.2s;
+    transition-property: background-color;
+}
+.field.disabled::after {
+    background-color: #1a1a1aaa;
+}
+
+.field .field::after {
+    background-color: #20202000;
+}
+.field .field.disabled::after {
+    background-color: #202020aa;
+}
+
+
+
+.legend {
+    position: absolute;
+    top:   0;
+    left:  0;
+    right: 0;
+    display: flex;
+    width: 100%;
+    height: 3rem;
+    align-items: center;
+}
+.legend .icon {
+    flex: 0 0 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-right: 0;
+    border-top: 0;
+    box-sizing: border-box;
+    margin-bottom: 0.1rem;
+}
+@media (max-width: 1366px) {
+    .legend .icon {
+        flex: 0 0 2.2rem;
+        justify-content: flex-start;
+    }
+}
+.legend .icon path,
+.legend .icon rect,
+.legend .icon circle,
+.legend .icon ellipse,
+.legend .icon line,
+.legend .icon polyline,
+.legend .icon polygon {
+    fill: #b8b8b8;
+}
+.legend h3 {
+    position: relative;
+    white-space: nowrap;
+    padding-right: 0.6rem;
+    font-style: normal;
+    font-size: 1.5rem;
+    
+    font-family: var(--sans);
+    font-weight: bold;
+    font-size: 1.15rem;
+    letter-spacing: 0.01rem;
+    
+    width: 100%;
+    display: flex;
+    align-items: flex-end;
+    padding-bottom: 0.2rem;
+    border-bottom: 2px solid #777;
+}
+
+.checkers {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    grid-row-gap: 0.5rem;
+    grid-column-gap: 0.5rem;
+}
+.btn {
+    border: 0;
+    background-color: var(--btn-bg);
+    
+    box-shadow: 0 0.1px 0.1rem rgba(0, 0, 0, 1);
+    
+    color: var(--btn-col);
+    height: var(--btn-height);
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+    outline: 0;
+    
+    border-radius: 0 0 0 4px;
+    
+    user-select: none;
+    -webkit-user-select: none;
+}
+body.hover .btn:not(.selected):hover {
+    background-color: var(--btn-hover-bg);
+    border-color: var(--btn-hover-brd-col);
+    color: var(--btn-hover-col);
+}
+/*
+    Both .btn .text and .btn .icon have
+    pointer-events set to none because
+    it can interfere with event targets.
+*/
+.btn .text {
+    flex: 1 1 auto;
+    position: relative;
+
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    /*justify-content: center;*/
+    /*height: var(--btn-height);*/
+}
+.btn > .text::before {
+    content: "";
+    position: absolute;
+    top:    0;
+    bottom: 0;
+    right:  1rem;
+    width: 1.5rem;
+    background: linear-gradient(to right, transparent, var(--btn-bg));
+}
+.btn > .text::after {
+    content: "";
+    position: absolute;
+    top:    0;
+    bottom: 0;
+    right:  0;
+    width: 1rem;
+    background: var(--btn-bg);
+}
+body.hover .btn:not(.selected):hover > .text::before {
+    background: linear-gradient(to right, transparent, var(--btn-hover-bg));
+}
+body.hover .btn:not(.selected):hover > .text::after {
+    background: var(--btn-hover-bg);
+}
+.btn .icon {
+    pointer-events: none;
+    position: absolute;
+    top:    0;
+    bottom: 0;
+    width:  var(--btn-height);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-style: solid;
+    border-color: var(--btn-brd-col);
+    border-width: 0;
+}
+body.hover .btn:not(.selected):hover .icon {
+    border-color: var(--btn-hover-brd-col);
+}
+
+.btn path,
+.btn rect,
+.btn circle,
+.btn ellipse,
+.btn line,
+.btn polyline,
+.btn polygon {
+    fill: var(--btn-col);
+}
+body.hover .btn:not(.selected):hover path,
+body.hover .btn:not(.selected):hover rect,
+body.hover .btn:not(.selected):hover circle,
+body.hover .btn:not(.selected):hover ellipse,
+body.hover .btn:not(.selected):hover line,
+body.hover .btn:not(.selected):hover polyline,
+body.hover .btn:not(.selected):hover polygon {
+    fill: var(--btn-hover-col);
+}
+
+/*
+Context specific buttons such as creating / editing /
+replying to / deleting a resource.
+*/
+.btn.context {
+    height: auto;
+    padding: 0;
+    position: static;
+    box-shadow: none;
+    font-size: 1rem;
+    height: 2.5rem;
+    height: 2.8rem;
+    min-width: 6rem;
+    justify-content: center;
+    padding: 0 1rem;
+    text-decoration: none;
+    margin-right: 0.5rem;
+}
+.btn.context:last-child {
+    margin-right: 0;
+}
+.btn.context .text {
+    height: auto;
+}
+.btn.context .text::before,
+.btn.context .text::after {
+    content: none;
+}
+.btn.context .icon {
+    height: auto;
+    width: auto;
+    position: static;
+    margin-left: 0.8rem;
+}
+
+.checkable input {
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+}
+.checkable .btn {
+    position: relative;
+}
+.checkable input:focus + .btn::before {
+    content: "";
+    position: absolute;
+    top:    0;
+    bottom: 0;
+    left:   0;
+    right:  0;
+    border: var(--btn-outline-width) solid var(--btn-outline-col);
+    z-index: 1;
+}
+.checkable input:focus:checked + .btn:hover::before,
+.checkable input:focus:checked + .btn::before {
+    border-color: var(--checked-icon-col);
+}
+.checkable input[type="radio"]:focus + .btn::before {
+    border-radius: 10rem;
+}
+.checkable input[type="radio"] + .btn {
+    border-radius: 10rem;
+    overflow: hidden;
+}
+.checkable input[type="radio"] + .btn .icon {
+    border-radius: 10rem;
+}
+.checkable .btn .text {
+    margin-left: calc(var(--btn-height) + 1rem);
+}
+.checkable input:checked + .btn:hover > .text::before,
+.checkable input:checked + .btn > .text::before {
+    background: linear-gradient(to right, transparent, var(--checked-bg));
+}
+.checkable input:checked + .btn:hover > .text::after,
+.checkable input:checked + .btn > .text::after {
+    background: var(--checked-bg);
+}
+.checkable .btn .icon {
+    left:  0;
+    border-right-width: var(--btn-icon-brd-right);
+}
+.checkable input:checked + .btn:hover,
+.checkable input:checked + .btn {
+    color: var(--checked-col);
+    background-color: var(--checked-bg);
+    border-color: #107c70;
+}
+.checkable input:checked + .btn:hover .icon,
+.checkable input:checked + .btn .icon {
+    border-color: var(--checked-brd-col);
+}
+.checkable input:checked + .btn:hover .icon path,
+.checkable input:checked + .btn .icon path,
+.checkable input:checked + .btn:hover .icon rect,
+.checkable input:checked + .btn .icon rect,
+.checkable input:checked + .btn:hover .icon circle,
+.checkable input:checked + .btn .icon circle,
+.checkable input:checked + .btn:hover .icon ellipse,
+.checkable input:checked + .btn .icon ellipse,
+.checkable input:checked + .btn:hover .icon line,
+.checkable input:checked + .btn .icon line,
+.checkable input:checked + .btn:hover .icon polyline,
+.checkable input:checked + .btn .icon polyline,
+.checkable input:checked + .btn:hover .icon polygon,
+.checkable input:checked + .btn .icon polygon {
+    fill: var(--checked-icon-col);
+}
+
+.btn.submit {
+    outline: 0;
+    margin-left: 1rem;
+    padding-right: var(--submit-height);
+
+    font-size: 1.1rem;
+    font-style: normal;
+    font-family: var(--sans);
+    height: var(--btn-height);
+
+}
+/*
+Note: because footers have "row-reverse" set
+the last-child in the source is visually the
+first child.
+*/
+.btn.submit:last-child {
+    margin-left: 0;
+}
+.btn.submit .icon {
+    right: 0;
+    width:  var(--btn-height);
+    border-left-width: 2px;
+}
+.btn.submit .text {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.btn.search {
+    width: 100%;
+    margin-left: 0;
+}
+.btn.search.top {
+    margin-top: 0.5rem;
+}
+.btn.search:not(.top) {
+    margin-top: 1.5rem;
+    margin-bottom: 4rem;
+}
+.btn.editor {
+    width: 14rem;
+}
+
+.modal .btn {
+    width: 12rem;
+}
+.modal .btn > .text::before,
+.modal .btn > .text::after {
+    content: none;
+}
+
+
+.modal .btn.dangerous {
+    width: 12rem;
+}
+
+.btn.dangerous {
+    background-color: var(--btn-danger-bg);
+    color: #bbb;
+}
+body.hover .btn.dangerous:not(.selected):hover {
+    background-color: var(--btn-danger-hover-bg);
+    color: #ddd;
+}
+.btn.dangerous > .text::before {
+    background: linear-gradient(to right, transparent, var(--btn-danger-bg));
+}
+.btn.dangerous > .text::after {
+    background: var(--btn-danger-bg);
+}
+body.hover .btn.dangerous:not(.selected):hover > .text::before {
+    background: linear-gradient(to right, transparent, var(--btn-danger-hover-bg));
+}
+body.hover .btn.dangerous:not(.selected):hover > .text::after {
+    background: var(--btn-danger-hover-bg);
+}
+.btn.dangerous .icon {
+    border-left-color: #523;
+}
+.btn.dangerous path,
+.btn.dangerous rect,
+.btn.dangerous circle,
+.btn.dangerous ellipse,
+.btn.dangerous line,
+.btn.dangerous polyline,
+.btn.dangerous polygon {
+    fill: #bbb;
+}
+body.hover .btn.dangerous:not(.selected):hover path,
+body.hover .btn.dangerous:not(.selected):hover rect,
+body.hover .btn.dangerous:not(.selected):hover circle,
+body.hover .btn.dangerous:not(.selected):hover ellipse,
+body.hover .btn.dangerous:not(.selected):hover line,
+body.hover .btn.dangerous:not(.selected):hover polyline,
+body.hover .btn.dangerous:not(.selected):hover polygon {
+    fill: #ddd;
+}
+
+
+
+
+
+
+
+
+.range-wdgt {
+    position: relative;
+    margin-top:    0.4rem;
+    margin-bottom: 2rem;
+}
+
+.range-wdgt .track {
+    display: flex;
+    background-color: var(--btn-bg);
+    box-shadow: 0 0.1px 0.1rem #000;
+}
+.range-wdgt .track > div {
+    flex: 1 1 1rem;
+    padding: 0.8rem 0;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    transition-duration: 0.15s;
+    transition-property: background-color;
+}
+.range-wdgt .track > div::after {
+    content: "";
+    border-left: 2px solid var(--btn-brd-col);
+    position: absolute;
+    top:    0;
+    bottom: 0;
+    left:   0;
+}
+.range-wdgt .track > div:first-child::after {
+    border-left: 0;
+}
+.range-wdgt .track > div.selected {
+    background-color: var(--checked-bg);
+}
+.range-wdgt .track > div.selected + div.selected::after {
+    border-color: var(--checked-brd-col);
+}
+.range-wdgt .track .icon {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+.range-wdgt .track > div .text {
+    white-space: nowrap;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    transition-duration: 0.15s;
+    transition-property: color;
+    color: #999;
+    margin-top: 0.3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    letter-spacing: 0.04rem;
+}
+.range-wdgt .track > div.selected .text {
+    color: var(--checked-col);
+}
+.range-wdgt .track path,
+.range-wdgt .track rect,
+.range-wdgt .track circle,
+.range-wdgt .track ellipse,
+.range-wdgt .track line,
+.range-wdgt .track polyline,
+.range-wdgt .track polygon {
+    transition-duration: 0.15s;
+    transition-property: fill;
+    fill: #999;
+}
+.range-wdgt .track .selected path,
+.range-wdgt .track .selected rect,
+.range-wdgt .track .selected circle,
+.range-wdgt .track .selected ellipse,
+.range-wdgt .track .selected line,
+.range-wdgt .track .selected polyline,
+.range-wdgt .track .selected polygon {
+    fill: #6ba;
+    fill: var(--checked-icon-col);
+}
+
+.range-wdgt .status {
+    position: absolute;
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 0.9rem;
+    letter-spacing: 0.02rem;
+    color: #aaa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    height: 2.2rem;
+    background-color: #101010;
+    background-color: #000;
+    background-color: var(--btn-bg);
+    box-shadow: 0 1px 0 0 #000;
+    border-top: 1px solid #1a1a1a;
+}
+
+
+.range-wdgt .end {
+    margin-left: var(--marker-width-neg);
+}
+.range-wdgt .start,
+.range-wdgt .end {
+    z-index: 2;
+    position: absolute;
+    top:    0;
+    bottom: 0;
+    width:  0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+}
+
+.range-wdgt .start .grabber {
+    margin-left: -1rem;
+}
+.range-wdgt .end   .grabber {
+    margin-left: -1rem;
+}
+.range-wdgt .grabber {
+    width:  3rem;
+    height: 100%;
+    position: absolute;
+}
+
+.range-wdgt .marker.top {
+    margin-top: -0.2rem;
+}
+.range-wdgt .marker.bottom {
+    margin-bottom: -0.2rem;
+}
+.range-wdgt .marker {
+    width: var(--marker-width);
+    height: 5rem;
+    position: relative;
+    overflow: hidden;
+}
+.range-wdgt .start .marker {
+    border-left:  var(--marker-brd) solid var(--marker-col);
+}
+.range-wdgt .end .marker {
+    border-right: var(--marker-brd) solid var(--marker-col);
+}
+.range-wdgt .marker.top::after,
+.range-wdgt .marker.bottom::after,
+.range-wdgt .marker.top::before,
+.range-wdgt .marker.bottom::before {
+    background-color: var(--marker-col);
+}
+body.hover .range-wdgt .start:not(.selected):hover .marker,
+body.hover .range-wdgt .end:not(.selected):hover   .marker {
+    border-color: var(--marker-col-hover);
+}
+body.hover .range-wdgt .start:not(.selected):hover .marker::before,
+body.hover .range-wdgt .start:not(.selected):hover .marker::after,
+body.hover .range-wdgt .end:not(.selected):hover   .marker::before,
+body.hover .range-wdgt .end:not(.selected):hover   .marker::after {
+    background-color: var(--marker-col-hover);
+}
+.range-wdgt .marker.top::before,
+.range-wdgt .marker.bottom::before {
+    content: "";
+    display: block;
+    height: 0.75rem;
+    left:  0;
+    right: 0;
+}
+.range-wdgt .marker.bottom::before {
+    position: absolute;
+    bottom: 0;
+}
+.range-wdgt .marker.top::after,
+.range-wdgt .marker.bottom::after {
+    content: "";
+    position: absolute;
+    width:  5rem;
+    height: 5rem;
+}
+.range-wdgt .start .marker.top::after {
+    transform-origin: top right;
+    right: 0;
+    transform: rotateZ(45deg);
+}
+.range-wdgt .end .marker.top::after {
+    transform-origin: top left;
+    transform: rotateZ(-45deg);
+}
+
+.range-wdgt .start .marker.bottom::after {
+    transform-origin: bottom right;
+    bottom: 0.75rem;
+    right: 0;
+    transform: rotateZ(-45deg);
+}
+.range-wdgt .end .marker.bottom::after {
+    transform-origin: bottom left;
+    transform: rotateZ(45deg);
+    bottom: 0.75rem;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.textfield,
+.textarea {
+    position: relative;
+    display: flex;
+    box-sizing: border-box;
+    background-color: var(--tf-bg);
+}
+/*
+We add :not(input) because the dropdown input
+element has the .textfield class and it doesn't
+need the margin.
+*/
+.textfield:not(input),
+.textarea {
+    /*
+        This bottom margin is needed to compensate for
+        .brd elements extending over the .textfield /
+        .textarea boundaries. Without it field instances
+        of type "text" or "textarea" don't have enough
+        breathing room.
+    */
+    /*margin-bottom: var(--tf-brd-width);*/
+}
+.textfield input,
+body.hover .textfield input:not(.selected):hover,
+.textfield input:focus,
+.textarea textarea,
+body.hover .textarea textarea:not(.selected):hover,
+.textarea textarea:focus {
+    background-color: transparent !important;
+    border: 0 !important;
+}
+
+.textfield {
+    display: flex;
+}
+.textarea textarea {
+    overflow: hidden;
+    padding: 0.8rem;
+    width: 100%;
+    resize: none;
+    font-size: 1rem;
+    font-family: var(--sans);
+    outline: 0;
+    min-height: 6rem;
+    color: #b8b8b8;
+    box-sizing: border-box;
+}
+.textfield input {
+    padding: 0.8rem;
+    box-sizing: border-box;
+    flex: 0 0 100%;
+}
+.textfield .brd,
+.textarea .brd {
+    position: absolute;
+    /*bottom: var(--tf-brd-width-neg);*/
+    bottom: 0;
+    left:   0;
+    right:  0;
+    border-bottom: var(--tf-brd-width) solid var(--tf-brd-col);
+}
+/*
+We target .textfield with and without .brd
+because dropdown inputs have the .textfield
+class and no .brd element.
+*/
+.button .textfield,
+.button .textfield .brd,
+.button .textarea .brd {
+    border-color: var(--tf-bg);
+}
+.subgroup .button .textfield,
+.subgroup .button .textfield .brd,
+.subgroup .button .textarea .brd {
+    border-color: var(--tf-subgroup-bg);
+}
+.textfield .len,
+.textarea .len {
+    padding-right: 0.8rem;
+    color: #505050;
+    pointer-events: none;
+    user-select: none;
+    transition-duration: 0.2s;
+    opacity: 0;
+    font-size: 0.95rem;
+}
+.textfield.error,
+.textarea.error {
+    background-color: var(--error-bg);
+    border-color: var(--error-col);
+}
+.textfield.error input,
+.textarea.error textarea {
+    color: var(--error-col);
+}
+.textarea.warn textarea,
+.textarea.error textarea {
+    margin-bottom: 1.8rem;
+}
+.textfield.warn input,
+.textfield.error input {
+    flex: 1 1 100%;
+}
+.textfield .len {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.textarea .len {
+    position: absolute;
+    bottom: 0.8rem;
+    right:  0;
+}
+.textarea.warn .len,
+.textarea.error .len,
+.textfield.warn .len,
+.textfield.error .len {
+    opacity: 1;
+}
+.textarea.warn .len,
+.textfield.warn .len {
+    color: var(--warn-col);
+}
+.textarea.error .len,
+.textfield.error .len {
+    color: var(--error-col);
+}
+.dropdown input,
+.tagger input,
+.password input {
+    border: 0;
+    border-bottom: var(--tf-brd-width) solid var(--tf-brd-col);
+    background-color: var(--tf-bg);
+}
+.dropdown input,
+.tagger input,
+.password input,
+.textfield input {
+    width: 100%;
+    color: var(--tf-col);
+    height: var(--tf-height);
+    font-size: 1rem;
+    font-family: var(--sans);
+    padding-left: 0.8rem;
+    box-sizing: border-box;
+    outline: 0;
+}
+.textarea textarea::placeholder,
+.dropdown input::placeholder,
+.tagger input::placeholder,
+.password input::placeholder,
+.textfield input::placeholder {
+    color: var(--tf-placeholder);
+}
+body.hover .dropdown input:not(.selected):hover,
+body.hover .tagger:not(.selected):hover,
+body.hover .password input:not(.selected):hover,
+body.hover .ed .input:not(.selected):hover ~ .brd,
+body.hover .textarea:not(.selected):hover .brd,
+body.hover .textfield:not(.selected):hover .brd {
+    border-color: var(--tf-hover-brd-col);
+}
+.dropdown input:focus,
+.tagger.focused,
+.password input:focus,
+.ed .input.focused ~ .brd,
+.textarea textarea:focus + .brd,
+.textfield input:focus + .brd {
+    border-color: var(--tf-hover-brd-col);
+}
+
+.filed {
+    background-color: #404040;
+    padding: 0.4rem 0.6rem;
+    margin-right: 0.5rem;
+    margin-top: 0.5rem;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.03rem;
+    box-shadow: 0 1px 0.1rem #1a1a1a;
+}
+.filed.site {
+    display: flex;
+    align-items: center;
+    position: relative;
+    background-color: #807060;
+    color: #101010;
+    font-weight: bold;
+}
+.filed.site::before {
+    content: "";
+    width:  2rem;
+    height: 1rem;
+    display: block;
+    background-color: #807060;
+    
+    position: absolute;
+    top: -0.3rem;
+    left: 0.45rem;
+    border-radius: 0.35rem 0.35rem 0 0;
+}
+
+
+
+.keyworder,
+.tagger {
+    border-bottom: var(--tf-brd-width) solid var(--tf-brd-col);
+    background-color: var(--tf-bg);
+    height: auto !important;
+    padding: var(--tag-gap) 0.8rem;
+    font-family: "Open Sans", sans-serif;
+    color: #b8b8b8;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    cursor: text;
+}
+.tagger .tag {
+    cursor: default;
+    font-family: "Open Sans", sans-serif;
+    background-color: var(--tag-bg);
+    padding-left:  0.8rem;
+    padding-right: 2rem;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    flex: 0 0 auto;
+    margin: var(--tag-gap) 0;
+    margin-right: 0.5rem;
+    margin-left: 0.7rem;
+    position: relative;
+    height: 2rem;
+    border-radius: 0.4rem 0 0 0.4rem;
+    display: flex;
+    align-items: center;
+}
+.tagger .tag::before {
+    content: "";
+    position: absolute;
+    left: -0.5rem;
+    display: block;
+    width:  1.29rem;
+    height: 1.29rem;
+    background-color: var(--tag-bg);
+    transform: rotateZ(45deg);
+    border-radius: 0 100% 0 0.5rem;
+}
+.tagger .tag::after {
+    content: "";
+    position: absolute;
+    left: -0.15rem;
+    display: block;
+    width:  0.5rem;
+    height: 0.5rem;
+    background-color: var(--tf-bg);
+    border-radius: 1rem;
+}
+.tagger .tag .remove {
+    position: absolute;
+    right:  0;
+    top:    0;
+    bottom: 0;
+    width: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #909090;
+    font-weight: bold;
+    cursor: pointer;
+}
+.tagger .tag .remove::before {
+    content: "⨯";
+    font-size: 1.4rem;
+    margin-top: -0.2rem;
+    color: #777;
+}
+body.hover .tagger .tag .remove:not(.selected):hover::before {
+    color: #ff8080;
+}
+
+.tagger.keyworder .tag {
+    border-radius: 0;
+    padding-left: 0.6rem;
+    margin-left: 0;
+}
+.tagger.keyworder .tag::before {
+    content: normal;
+}
+.tagger.keyworder .tag::after {
+    content: normal;
+}
+
+.tagger .container {
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    position: relative;
+    margin: var(--tag-gap) 0;
+}
+.tagger .wrap {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+.tagger .placeholder {
+    font-size: 1.1rem;
+    position: absolute;
+    white-space: nowrap;
+    color: var(--tf-placeholder);
+}
+.tagger .ruler {
+    position: absolute;
+    top: 100%;
+    left: 10rem;
+    pointer-events: none;
+    white-space: pre;
+    opacity: 0;
+}
+.tagger .ruler,
+.tagger .input {
+    background-color: transparent;
+    flex: 0 0 auto;
+    font-size: 1.1rem;
+    height: 1.5rem;
+    padding: 0;
+    outline: 0;
+    border: 0;
+    font-family: "Open Sans", sans-serif;
+    color: #b8b8b8;
+    box-sizing: border-box;
+    min-width: 6.5rem !important;
+}
+.tagger .input {
+    white-space: nowrap;
+    width: 6.5rem;
+    resize: none;
+    overflow: hidden;
+    box-shadow: none !important;
+}
+
+
+
+.wdgt-btn {
+    height: var(--btn-height) !important;
+    width: 100%;
+    box-sizing: border-box;
+    padding-left: 1rem;
+    padding-right: var(--btn-height);
+}
+.wdgt-menu .btn .text,
+.wdgt-btn .text {
+    color: #aaa;
+    font-size: 1rem;
+    font-style: normal;
+    font-family: var(--sans);
+}
+
+.wdgt-btn .text {
+    overflow: hidden;
+}
+.wdgt-btn .icon {
+    width: var(--btn-height) !important;
+}
+body.hover .wdgt-btn:not(.selected):hover .text {
+    color: #ddd;
+}
+
+
+
+
+
+.wdgt-persona {
+    --height: var(--btn-height);
+    display: flex;
+    align-items: center;
+    height: var(--height);
+    background-color: var(--btn-bg);
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+}
+.wdgt-persona .tick {
+    position: absolute;
+    top:    0;
+    bottom: 0;
+    right:  0;
+    padding-right: 1rem;
+    color: var(--checked-col);
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.02rem;
+    opacity: 0;
+    background-color: var(--checked-bg);
+    padding-left: 0.6rem;
+}
+.wdgt-persona .tick::before {
+    content: "Active";
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    margin-right: 0.5rem;
+}
+.wdgt-persona .tick::after {
+    content: "";
+    top:    0;
+    bottom: 0;
+    right:  100%;
+    position: absolute;
+    background: linear-gradient(to right, transparent, var(--checked-bg));
+    width: 2rem;
+}
+.wdgt-persona .tick path,
+.wdgt-persona .tick rect,
+.wdgt-persona .tick circle,
+.wdgt-persona .tick ellipse,
+.wdgt-persona .tick line,
+.wdgt-persona .tick polyline,
+.wdgt-persona .tick polygon {
+    fill: var(--btn-col);
+}
+.wdgt-persona .avatar {
+    border-right: var(--btn-icon-brd-right) solid var(--btn-brd-col);
+    flex: 0 0 var(--height);
+    height: var(--height);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.wdgt-persona .avatar img {
+    width:  100%;
+    height: 100%;
+    object-fit: cover;
+}
+.wdgt-persona .avatar:empty::before {
+    content: "?";
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #666;
+}
+.wdgt-persona .text {
+    padding-left: 1rem;
+}
+.wdgt-persona .name {
+    font-weight: bold;
+    white-space: nowrap;
+}
+.wdgt-persona .handle {
+    flex: 1 1 100%;
+    color: #888;
+    white-space: nowrap;
+}
+
+body.hover .wdgt-persona:not(.selected):hover {
+    color: var(--btn-hover-col);
+    background-color: var(--btn-hover-bg);
+}
+body.hover .wdgt-persona:not(.selected):hover .avatar {
+    border-color: var(--btn-hover-brd-col);
+}
+body.hover .wdgt-persona:not(.selected):hover .avatar:empty::before {
+    color: #888;
+}
+body.hover .wdgt-persona:not(.selected):hover .handle {
+    color: #b0b0b0;
+}
+
+.wdgt-persona.selected {
+    background-color: var(--checked-bg);
+}
+.wdgt-persona.selected .avatar {
+    border-color: var(--checked-brd-col);
+}
+.wdgt-persona.selected .avatar:empty::before {
+    color: var(--checked-col-2);
+}
+.button .wdgt-persona::before,
+.wdgt-persona:not(.selected)::before {
+    display: none;
+}
+.wdgt-persona.selected .name {
+    color: var(--checked-col);
+}
+.wdgt-persona.selected .handle {
+    color: var(--checked-col-2);
+}
+.wdgt-persona.selected .tick path,
+.wdgt-persona.selected .tick rect,
+.wdgt-persona.selected .tick circle,
+.wdgt-persona.selected .tick ellipse,
+.wdgt-persona.selected .tick line,
+.wdgt-persona.selected .tick polyline,
+.wdgt-persona.selected .tick polygon {
+    fill: var(--checked-icon-col);
+}
+
+.wdgt-persona.selected .tick {
+    opacity: 1;
+}
+
+
+
+/*
+    IMPORTANT: this query appears in other files. Be
+    sure to update it in them as well.
+
+    We assume that all devices incapable of hovering
+    are phones. In practice this will include tablets
+    too. We'll have to address that in the future.
+    
+    Some phones mistakenly report that they can hover,
+    such as the Samsung Galaxy 9. Therefore we include
+    a max-width condition as well.
+*/
+@media (hover: none), (max-width: 480px) {
+    .wdgt-persona .text {
+        display: flex;
+        flex-direction: column;
+        padding-left: 0.8rem;
+    }
+}
+
+
+.wdgt-time > .wdgt {
+    display: flex;
+    background-color: var(--tf-bg);
+}
+.wdgt-time .inputs {
+    flex: 1 1 auto;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    color: var(--tf-col);
+    padding-left:  2.5rem;
+    padding-right: 1rem;
+    cursor: text;
+    position: relative;
+}
+.wdgt-time .wdgt .icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-left: 0.7rem;
+    cursor: text;
+    position: absolute;
+    left: 0;
+}
+.wdgt-time .icon svg > * {
+    fill: var(--tf-placeholder);
+}
+.wdgt-time .inputs .colon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--sans);
+    font-size: 1.1rem;
+    color: var(--btn-col);
+    padding-bottom: 0.23rem;
+    padding-left: 0.2rem;
+    padding-right: 0;
+    position: relative;
+    z-index: 1;
+    color: var(--tf-col);
+}
+.wdgt-time .inputs input {
+    outline: none;
+    height:  var(--tf-height);
+    color:   var(--tf-col);
+    background-color: transparent;
+    border: 0;
+    font-size: 1rem;
+    font-family: var(--sans);
+    padding: 0;
+    width: 1.5rem;
+    letter-spacing: 0.025rem;
+    text-align: right;
+}
+.wdgt-time .inputs input:nth-child(3) {
+    margin-left: -0.1rem;
+}
+.wdgt-time .brd {
+    position: absolute;
+    bottom: 0;
+    left:   0;
+    right:  0;
+    border-bottom: var(--tf-brd-width) solid var(--tf-brd-col);
+}
+.wdgt-time .inputs input:focus ~ .brd,
+.wdgt-time .inputs:hover .brd,
+.wdgt-time .icon:hover ~ * .brd {
+    border-color: var(--tf-brd-hover-col);
+}
+.wdgt-time .inputs input:focus ~ .icon svg > *,
+.wdgt-time .inputs:hover .icon svg > * {
+    fill: var(--tf-col);
+}
+.wdgt-time .meridiem {
+    position: relative;
+    z-index: 1;
+    background-color: var(--btn-bg);
+    flex: 1 0 auto;
+    max-width: 3rem;
+    display: flex;
+    flex-direction: column;
+}
+.wdgt-time .meridiem input {
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+}
+.wdgt-time .meridiem label {
+    flex: 1 1 100%;
+    display: flex;
+}
+.wdgt-time .meridiem div {
+    flex: 1 1 100%;
+    text-transform: uppercase;
+    letter-spacing: 0.03rem;
+    font-size: 0.75rem;
+    min-width: 2.6rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--btn-col);
+    background-color: var(--btn-bg);
+    position: relative;
+}
+body.hover .wdgt-time .meridiem input:not(:checked) + div:hover {
+    color: var(--btn-hover-col);
+    background-color: var(--btn-hover-bg);
+}
+.wdgt-time .meridiem div:nth-child(1) {
+    left: 0;
+}
+.wdgt-time .meridiem div:nth-child(2) {
+    right: 0;
+}
+.wdgt-time .meridiem input:checked + div {
+    color: var(--checked-col);
+    background-color: var(--checked-bg);
+}
+.wdgt-time .meridiem input:focus + div::before {
+    content: "";
+    position: absolute;
+    top:    0;
+    bottom: 0;
+    left:   0;
+    right:  0;
+    border: var(--btn-outline-width) solid var(--btn-outline-col);
+    z-index: 1;
+}
+.wdgt-time .meridiem input:focus:checked + div::before {
+    border-color: var(--checked-icon-col);
+}
+.wdgt-time .beneath {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    position: relative;
+}
+.wdgt-time .beneath.hidden {
+    display: none;
+}
+.wdgt-time .beneath .icon {
+    display: flex;
+    width: 0.75rem;
+    margin-right: 0.3rem;
+}
+.wdgt-time .beneath .clear {
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    color: #999;
+    padding: 0.3rem 0;
+    margin-left: 0.3rem;
+    display: flex;
+    align-items: center;
+    cursor: default;
+    position: absolute;
+    top: 100%;
+}
+.wdgt-time .beneath .clear:hover .icon svg > * {
+    fill: var(--error-col);
+}
+.wdgt-time .beneath .clear:hover {
+    color: var(--error-col);
+}

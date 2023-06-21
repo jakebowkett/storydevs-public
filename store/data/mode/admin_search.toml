@@ -1,0 +1,84 @@
+
+[[Search]]
+    
+    Name = "admin"
+    
+    [[Search.Field]]
+    
+        Name = "menu"
+        Type = "menu"
+        
+        [[Search.Field.Value]]
+        
+            Name = "talent"
+            Text = "Talent Profiles"
+            Icon = "star"
+            Href = "/admin/talent"
+            
+        # [[Search.Field.Value]]
+        
+        #     Name = "library"
+        #     Text = "Library Entries"
+        #     Icon = "library/category"
+        #     Href = "/admin/library"
+
+        [[Search.Field.Value]]
+
+            Name = "forums"
+            Text = "Forum Posts"
+            Icon = "communication/im"
+            Href = "/admin/forums"
+
+        [[Search.Field.Value]]
+
+            Name = "event"
+            Text = "Events"
+            Icon = "library/events"
+            Href = "/admin/event"
+            
+        # [[Search.Field.Value]]
+        
+        #     Text = "Pending"
+        #     Href = "/admin/pending"
+        #     Icon = "compensation/salary"
+            
+    # [[Search.Field]]
+    
+    #     Name = "kw"
+    #     Desc = "Keywords / Phrases"
+    #     Type = "keyworder"
+    
+    # [[Search.Field]]
+    
+    #     Name = "mode"
+    #     Desc = "Mode"
+    #     Type = "radio"
+        
+    #     [[Search.Field.Value]]
+        
+    #         Text = "Talent"
+        
+    #     [[Search.Field.Value]]
+        
+    #         Text = "Library"
+        
+    #     [[Search.Field.Value]]
+        
+    #         Text = "Forums"
+    
+    # [[Search.Field]]
+    
+    #     Name = "menu"
+    #     Type = "radio"
+        
+    #     [[Search.Field.Value]]
+        
+    #         Text = "Pending Submissions"
+        
+        # [[Search.Field.Value]]
+        
+        #     Text = "Tags"
+        
+        # [[Search.Field.Value]]
+        
+        #     Text = "Forms"

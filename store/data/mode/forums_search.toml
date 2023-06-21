@@ -1,0 +1,132 @@
+        
+[[Search]]
+
+    Name = "site"
+    Desc = "Site"
+    Icon = "communication/storydevs"
+
+    [[Search.Field]]
+
+        Name = "category"
+        Type = "menu"
+
+        [[Search.Field.Events]]
+            Handler = "forumCategory"
+            Before = true
+
+        [[Search.Field.Value]]
+
+            Name = "welcome"
+            Icon = "compensation/volunteer"
+            Text = "Welcome"
+            Desc = "Introduce yourself and check out the rules :)"
+            Href = "/forums?category=welcome"
+
+        [[Search.Field.Value]]
+
+            Name = "support"
+            Icon = "comments"
+            Text = "Support / Suggestions"
+            Desc = "Need help using the site? Have an idea to improve it? Post here."
+            Href = "/forums?category=support"
+
+[[Search]]
+
+    Name = "promo"
+    Desc = "Promotion"
+    Icon = "skill/marketing"
+    
+    [[Search.Field]]
+
+        Name = "category"
+        Type = "menu"
+        
+        [[Search.Field.Events]]
+            Handler = "forumCategory"
+            Before = true
+        
+        [[Search.Field.Value]]
+        
+            Name = "project"
+            Icon = "experience"
+            Text = "Project Showcase"
+            Desc = "Show off your darlings — finished or WIP!"
+            Href = "/forums?category=project"
+
+        [[Search.Field.Value]]
+
+            Name = "progress"
+            Icon = "available"
+            Text = "Personal Progress"
+            Desc = "What have you achieved lately? Big or small, share here!"
+            Href = "/forums?category=progress"
+
+[[Search]]
+
+    Name = "dev"
+    Desc = "Development"
+    Icon = "dev"
+
+    [[Search.Field]]
+
+        Name = "category"
+        Type = "menu"
+
+        [[Search.Field.Events]]
+            Handler = "forumCategory"
+            Before = true
+
+        [[Search.Field.Value]]
+
+            Name = "writing"
+            Icon = "skill/writing"
+            Text = "Writing"
+            Desc = "Discussion about writing."
+            Href = "/forums?category=writing"
+
+        [[Search.Field.Value]]
+
+            Name = "art"
+            Icon = "skill/ux"
+            Text = "Art"
+            Desc = "Discussion about visual assets and aesthetics."
+            Href = "/forums?category=art"
+        
+        [[Search.Field.Value]]
+        
+            Name = "audio"
+            Icon = "skill/music"
+            Text = "Audio"
+            Desc = "Discussion about music and audio generally."
+            Href = "/forums?category=audio"
+        
+        [[Search.Field.Value]]
+        
+            Name = "programming"
+            Icon = "skill/programming"
+            Text = "Programming"
+            Desc = "Discussion about programming and engines."
+            Href = "/forums?category=programming"
+                    
+[[Search]]
+
+    Name = "social"
+    Desc = "Social"
+    Icon = "communication/im"
+    
+    [[Search.Field]]
+
+        Name = "category"
+        Type = "menu"
+        
+        [[Search.Field.Events]]
+            Handler = "forumCategory"
+            Before = true
+        
+        [[Search.Field.Value]]
+
+            Name = "offtopic"
+            Icon = "forums/offtopic"
+            Text = "Off-Topic"
+            Desc = "Talk about anything."
+            Href = "/forums?category=offtopic"

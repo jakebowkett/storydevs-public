@@ -1,0 +1,208 @@
+
+# Maximum number of personas per account.
+MaxPersonas = 3
+
+# Site meta data that is used for social media embeds.
+SiteDesc = "Find developers of story-focused games and visual novels."
+SiteCardURL = "https://storydevs.com/gfx/twitter_card.png"
+SiteCardAlt = "Story devs logo. From left to right: a speech bubble, a paint brush, a musical note, and a computer monitor."
+SiteTwitter = "jakebowkett"
+
+# How many seconds must pass since the last
+# config reload before another reload attempt
+# will be tried.
+UpdateDelta = 1
+
+# Running in a dev environment.
+Dev = false
+
+# Log to the console.
+Console = true
+
+# Enable debug level logging.
+Debug = false
+
+# Logging that's easier for a human to read. Unecessary
+# for log files.
+PrettyLogging = true
+
+# Use the standard library runtime package to get 
+# the file path, line number, and function name and
+# include it in the logging output.
+RuntimeLogging = true
+
+# Whether or not to serve files cached in memory or
+# to load them from disk on each request.
+Cache = true
+
+# Use Cache-Control headers?
+CacheControl = false
+
+# Measured in days.
+CacheHTML = 1
+CacheSiteFiles = 3 # UI like banners, logo, icons, fonts, etc.
+CacheUserFiles = 30
+CacheFavicon = 90
+CacheRobots = 30
+
+# Characters that cannot appear in things like
+# handles or other user-defined URIs.
+URIReserved = "#@?$/<>.()*~"
+
+# Number of characters in randomly generated slugs such
+# as those for personas, resources, and file names.
+SlugLen = 11
+
+# Account / Persona Validation
+MinHandle = 1
+MaxHandle = 24
+MinEmail = 6
+MaxEmail = 254
+MinPass = 10
+MaxPass = 128
+
+# Resource locations relative to executable.
+DirLogs       = "../../logs"
+DirStore      = "../../store"
+DirJS         = "../../store/js"
+DirJSInit     = "../../store/js/init"
+DirGFX        = "../../store/gfx"
+DirUser       = "../../store/user"
+DirSVG        = "../../store/gfx/svg"
+DirFonts      = "../../store/fonts"
+DirCSS        = "../../store/css"
+DirTemplates  = "../../store/templates"
+DirMode       = "../../store/data/mode"
+DirModal      = "../../store/data/modal"
+DirPage       = "../../store/data/page"
+DirError      = "../../store/data/errors"
+DirShared     = "../../store/data/shared"
+DirReplace    = "../../store/data/replace"
+
+# Path to specific resources.
+PathConfigLocal     = "./config.local.toml"
+PathCredentials     = "./credentials.local.toml"
+PathRobots          = "./robots.txt"
+PathFavIcon         = "../../store/gfx/favicon.ico"
+PathHyphenate       = "../../store/hyphen/hyph-en-us.pat.txt"
+PathHyphenateCustom = "../../store/hyphen/custom.txt"
+PathDbTypes         = "../../store/db/types.sql"
+PathDbTables        = "../../store/db/tables.sql"
+PathTimezone        = "../../store/timezone/tz.txt"
+
+# Server port.
+# DevPort = "3030"
+Port = "3030"
+
+# Min 4, Max 31, Default 10.
+BcryptCost = 12
+
+# Whether to send out emails.
+EmailEnabled = true
+
+# Number of seconds to wait for an email to send.
+EmailTimeout = 10
+
+# What to do in the event of an error that affects
+# the intended outcome of the program.
+EmailOnError = ["jake.bowkett01@gmail.com", "killthedin@gmail.com"]
+
+# How many minutes to wait before emailing the above
+# addresses for an error of the same type. This is to
+# prevent 10,000 emails being sent when an error occurs
+# in a loop or a popular route.
+EmailSameTypeDelta = 5
+
+# Maxmium size for a post request that isn't
+# submitting a form. (In bytes).
+MaxViewRequest = 256
+
+ClampImageKiB = 768
+
+# Clamps the thumbnail X or Y axis - whichever is
+# greater - to this value. The other axis will be
+# proportionally scaled downed.
+ThumbMaxAxis = 400
+
+[Retry]
+    
+    [Retry.tx]
+    
+        Retries     = 10  # must be at least 1
+        Exponent    = 1.5 # must be at least 1
+        Jitter      = 0.5 # percentage - must be between 0 and 1 (inclusive).
+
+        # In milliseconds.
+        Base        = 30    # must be greater than 0
+        MaxInterval = 3000  # must be greater than base.
+        MaxWait     = 10000 # must be greater than base.
+        
+    [Retry.email]
+    
+        Retries     = 10
+        Exponent    = 1.5
+        Jitter      = 0.5
+        Base        = 30
+        MaxInterval = 3000
+        MaxWait     = 10000
+
+    [Retry.disk]
+
+        Retries     = 10
+        Exponent    = 1.5
+        Jitter      = 0.5
+        Base        = 30
+        MaxInterval = 3000
+        MaxWait     = 10000
+        
+        
+
+# Maximum payload size for forms in bytes.
+[MaxForm]
+    
+    persona  = 1024
+    forgot   = 1024
+    password = 1024
+    email    = 1024
+    reserve  = 1024
+    mailing  = 1024
+    register = 1024
+    login    = 1024
+    confirm  = 1024
+    talent   = 20_000_000
+    event    = 100000
+    library  = 200000
+    forums   = 4096
+    invite   = 1024
+    settings = 1_500_000
+
+# Text to show when these columns are empty.
+[Empty]
+    browse = "Search results will appear here."
+    detail = "Choose a search result to view it here."
+    editor = "Choose a search result to edit it here."
+
+[InputHelp]
+
+    tagger = "Press enter to confirm tags and backspace to delete. Tags may contain spaces."
+    keyworder = "Press enter to confirm terms and backspace to delete. Terms may contain spaces."
+    newpassword = 'Longer passwords containing multiple uncommon words are stronger. Any character permitted.'
+    # image = "JPEG and PNG only. Maximum file size of %s."
+    # thumb = "JPEG and PNG only. Maximum file size of %s."
+
+[Thread]
+    MinTitle = 4
+    MaxTitle = 128
+    MaxSummary = 256
+    MinBody = 16
+    MaxBody = 120000
+    MaxParagraph = 1024
+    MinCategoryCount = 1
+    MaxCategoryCount = 5
+    MinTag = 2
+    MaxTag = 64
+    MinTagCount = 1
+    MaxTagCount = 5
+    MaxComment = 512
+    ParagraphTypes = ["p", "ol", "ul", "blockquote", "h2"]
+    InlineStyles = ["b", "i", "u", "a"]

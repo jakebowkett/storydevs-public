@@ -1,0 +1,80 @@
+
+[[Editor]]
+
+    Name = "basics"
+    Desc = "Basics"
+    Icon = "basics"
+    
+    [[Editor.Field]]
+        
+        Replace = "visibility"
+    
+    [[Editor.Field]]
+
+        Name = "name"
+        Desc = "Title"
+        Type = "text"
+        Max = 128
+    
+    [[Editor.Field]]
+
+        Name = "summary"
+        Desc = "Summary"
+        Context = "This will be the preview in search results. If left empty the body will be used as a preview instead."
+        Type = "textarea"
+        Max = 256
+        Optional = true
+        
+[[Editor]]
+
+    Name = "body"
+    Desc = "Body"
+    Icon = "library/body"
+    
+    [[Editor.Field]]
+    
+        Name = "threadslug"
+        Type = "text"
+        Hidden = true
+        Optional = true
+    
+    [[Editor.Field]]
+    
+        Name = "body"
+        Type = "editor"
+        Max = 150000 # characters
+        
+[[Editor]]
+
+    Name = "category"
+    Desc = "Category"
+    Icon = "library/category"
+    
+    [[Editor.Field]]
+
+        Name = "category"
+        Type = "checkbox"
+        Shared = "entries"
+
+[[Editor]]
+
+    Name = "tag"
+    Desc = "Tags"
+    Icon = "tag"
+    
+    [[Editor.Field]]
+    
+        Replace = "tags"
+
+# [[Editor]]
+
+#     Desc = "Comment"
+#     Icon = "comments"
+    
+#     [[Editor.Field]]
+
+#         Name = "comment"
+#         # Desc = "Comment"
+#         Context =  "This will only be visible to StoryDevs staff."
+#         Type = "textarea"
+#         Optional = true

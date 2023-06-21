@@ -1,0 +1,8 @@
+
+Name = "library"
+Title = "Public Library"
+BrowseName = "Results"
+ResourceName = "Entry"
+ResourcePlural = "Entries"
+ResourceColumn = "Entry"
+Disabled = true

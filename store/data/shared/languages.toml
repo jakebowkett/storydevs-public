@@ -1,0 +1,1901 @@
+
+[[languages]]
+
+    Text = "Abkhazian"
+    Name = "abkhazian"
+
+[[languages]]
+
+    Text = "Achinese"
+    Name = "achinese"
+
+[[languages]]
+
+    Text = "Acoli"
+    Name = "acoli"
+
+[[languages]]
+
+    Text = "Adangme"
+    Name = "adangme"
+
+[[languages]]
+
+    Text = "Adyghe"
+    Name = "adyghe"
+
+[[languages]]
+
+    Text = "Afar"
+    Name = "afar"
+
+[[languages]]
+
+    Text = "Afrihili"
+    Name = "afrihili"
+
+[[languages]]
+
+    Text = "Afrikaans"
+    Name = "afrikaans"
+
+[[languages]]
+
+    Text = "Ainu (Japan)"
+    Name = "ainu_japan"
+
+[[languages]]
+
+    Text = "Akan"
+    Name = "akan"
+
+[[languages]]
+
+    Text = "Albanian"
+    Name = "albanian"
+
+[[languages]]
+
+    Text = "Aleut"
+    Name = "aleut"
+
+[[languages]]
+
+    Text = "Amharic"
+    Name = "amharic"
+
+[[languages]]
+
+    Text = "Angika"
+    Name = "angika"
+
+[[languages]]
+
+    Text = "Arabic"
+    Name = "arabic"
+
+[[languages]]
+
+    Text = "Aragonese"
+    Name = "aragonese"
+
+[[languages]]
+
+    Text = "Arapaho"
+    Name = "arapaho"
+
+[[languages]]
+
+    Text = "Arawak"
+    Name = "arawak"
+
+[[languages]]
+
+    Text = "Armenian"
+    Name = "armenian"
+
+[[languages]]
+
+    Text = "Assamese"
+    Name = "assamese"
+
+[[languages]]
+
+    Text = "Asturian"
+    Name = "asturian"
+
+[[languages]]
+
+    Text = "Avaric"
+    Name = "avaric"
+
+[[languages]]
+
+    Text = "Awadhi"
+    Name = "awadhi"
+
+[[languages]]
+
+    Text = "Aymara"
+    Name = "aymara"
+
+[[languages]]
+
+    Text = "Azerbaijani"
+    Name = "azerbaijani"
+
+[[languages]]
+
+    Text = "Balinese"
+    Name = "balinese"
+
+[[languages]]
+
+    Text = "Baluchi"
+    Name = "baluchi"
+
+[[languages]]
+
+    Text = "Bambara"
+    Name = "bambara"
+
+[[languages]]
+
+    Text = "Basa (Cameroon)"
+    Name = "basa_cameroon"
+
+[[languages]]
+
+    Text = "Bashkir"
+    Name = "bashkir"
+
+[[languages]]
+
+    Text = "Basque"
+    Name = "basque"
+
+[[languages]]
+
+    Text = "Beja"
+    Name = "beja"
+
+[[languages]]
+
+    Text = "Belarusian"
+    Name = "belarusian"
+
+[[languages]]
+
+    Text = "Bemba (Zambia)"
+    Name = "bemba_zambia"
+
+[[languages]]
+
+    Text = "Bengali"
+    Name = "bengali"
+
+[[languages]]
+
+    Text = "Bhojpuri"
+    Name = "bhojpuri"
+
+[[languages]]
+
+    Text = "Bikol"
+    Name = "bikol"
+
+[[languages]]
+
+    Text = "Bilin"
+    Name = "bilin"
+
+[[languages]]
+
+    Text = "Bini"
+    Name = "bini"
+
+[[languages]]
+
+    Text = "Bislama"
+    Name = "bislama"
+
+[[languages]]
+
+    Text = "Blissymbols"
+    Name = "blissymbols"
+
+[[languages]]
+
+    Text = "Bosnian"
+    Name = "bosnian"
+
+[[languages]]
+
+    Text = "Braj"
+    Name = "braj"
+
+[[languages]]
+
+    Text = "Breton"
+    Name = "breton"
+
+[[languages]]
+
+    Text = "Buginese"
+    Name = "buginese"
+
+[[languages]]
+
+    Text = "Bulgarian"
+    Name = "bulgarian"
+
+[[languages]]
+
+    Text = "Buriat"
+    Name = "buriat"
+
+[[languages]]
+
+    Text = "Burmese"
+    Name = "burmese"
+
+[[languages]]
+
+    Text = "Caddo"
+    Name = "caddo"
+
+[[languages]]
+
+    Text = "Catalan"
+    Name = "catalan"
+
+[[languages]]
+
+    Text = "Cebuano"
+    Name = "cebuano"
+
+[[languages]]
+
+    Text = "Central Khmer"
+    Name = "central_khmer"
+
+[[languages]]
+
+    Text = "Chamorro"
+    Name = "chamorro"
+
+[[languages]]
+
+    Text = "Chechen"
+    Name = "chechen"
+
+[[languages]]
+
+    Text = "Cherokee"
+    Name = "cherokee"
+
+[[languages]]
+
+    Text = "Cheyenne"
+    Name = "cheyenne"
+
+[[languages]]
+
+    Text = "Chinese"
+    Name = "chinese"
+
+[[languages]]
+
+    Text = "Chinook jargon"
+    Name = "chinook_jargon"
+
+[[languages]]
+
+    Text = "Chipewyan"
+    Name = "chipewyan"
+
+[[languages]]
+
+    Text = "Choctaw"
+    Name = "choctaw"
+
+[[languages]]
+
+    Text = "Chuukese"
+    Name = "chuukese"
+
+[[languages]]
+
+    Text = "Chuvash"
+    Name = "chuvash"
+
+[[languages]]
+
+    Text = "Cornish"
+    Name = "cornish"
+
+[[languages]]
+
+    Text = "Corsican"
+    Name = "corsican"
+
+[[languages]]
+
+    Text = "Cree"
+    Name = "cree"
+
+[[languages]]
+
+    Text = "Creek"
+    Name = "creek"
+
+[[languages]]
+
+    Text = "Crimean Tatar"
+    Name = "crimean_tatar"
+
+[[languages]]
+
+    Text = "Croatian"
+    Name = "croatian"
+
+[[languages]]
+
+    Text = "Czech"
+    Name = "czech"
+
+[[languages]]
+
+    Text = "Dakota"
+    Name = "dakota"
+
+[[languages]]
+
+    Text = "Danish"
+    Name = "danish"
+
+[[languages]]
+
+    Text = "Dargwa"
+    Name = "dargwa"
+
+[[languages]]
+
+    Text = "Delaware / Lenape"
+    Name = "delaware_lenape"
+
+[[languages]]
+
+    Text = "Dhivehi"
+    Name = "dhivehi"
+
+[[languages]]
+
+    Text = "Dinka"
+    Name = "dinka"
+
+[[languages]]
+
+    Text = "Dogri"
+    Name = "dogri"
+
+[[languages]]
+
+    Text = "Dogrib"
+    Name = "dogrib"
+
+[[languages]]
+
+    Text = "Duala"
+    Name = "duala"
+
+[[languages]]
+
+    Text = "Dutch"
+    Name = "dutch"
+
+[[languages]]
+
+    Text = "Dyula"
+    Name = "dyula"
+
+[[languages]]
+
+    Text = "Dzongkha"
+    Name = "dzongkha"
+
+[[languages]]
+
+    Text = "Eastern Frisian"
+    Name = "eastern_frisian"
+
+[[languages]]
+
+    Text = "Efik"
+    Name = "efik"
+
+[[languages]]
+
+    Text = "Ekajuk"
+    Name = "ekajuk"
+
+[[languages]]
+
+    Text = "English"
+    Name = "english"
+
+[[languages]]
+
+    Text = "Erzya"
+    Name = "erzya"
+
+[[languages]]
+
+    Text = "Esperanto"
+    Name = "esperanto"
+
+[[languages]]
+
+    Text = "Estonian"
+    Name = "estonian"
+
+[[languages]]
+
+    Text = "Ewe"
+    Name = "ewe"
+
+[[languages]]
+
+    Text = "Ewondo"
+    Name = "ewondo"
+
+[[languages]]
+
+    Text = "Fang (Equatorial Guinea)"
+    Name = "fang_equatorial_guinea"
+
+[[languages]]
+
+    Text = "Fanti"
+    Name = "fanti"
+
+[[languages]]
+
+    Text = "Faroese"
+    Name = "faroese"
+
+[[languages]]
+
+    Text = "Fijian"
+    Name = "fijian"
+
+[[languages]]
+
+    Text = "Filipino"
+    Name = "filipino"
+
+[[languages]]
+
+    Text = "Finnish"
+    Name = "finnish"
+
+[[languages]]
+
+    Text = "Fon"
+    Name = "fon"
+
+[[languages]]
+
+    Text = "French"
+    Name = "french"
+
+[[languages]]
+
+    Text = "Friulian"
+    Name = "friulian"
+
+[[languages]]
+
+    Text = "Fulah"
+    Name = "fulah"
+
+[[languages]]
+
+    Text = "Ga"
+    Name = "ga"
+
+[[languages]]
+
+    Text = "Galibi Carib"
+    Name = "galibi_carib"
+
+[[languages]]
+
+    Text = "Galician"
+    Name = "galician"
+
+[[languages]]
+
+    Text = "Ganda"
+    Name = "ganda"
+
+[[languages]]
+
+    Text = "Gayo"
+    Name = "gayo"
+
+[[languages]]
+
+    Text = "Gbaya–Manza–Ngbaka"
+    Name = "gbaya_manza_ngbaka"
+
+# [[languages]]
+
+#     Text = "Gbaya (Central African Republic)"
+
+[[languages]]
+
+    Text = "Georgian"
+    Name = "georgian"
+
+[[languages]]
+
+    Text = "German"
+    Name = "german"
+
+[[languages]]
+
+    Text = "Gilbertese"
+    Name = "gilbertese"
+
+[[languages]]
+
+    Text = "Gondi"
+    Name = "gondi"
+
+[[languages]]
+
+    Text = "Gorontalo"
+    Name = "gorontalo"
+
+[[languages]]
+
+    Text = "Grebo"
+    Name = "grebo"
+
+[[languages]]
+
+    Text = "Greek"
+    Name = "greek"
+
+[[languages]]
+
+    Text = "Guarani"
+    Name = "guarani"
+
+[[languages]]
+
+    Text = "Gujarati"
+    Name = "gujarati"
+
+[[languages]]
+
+    Text = "Gwichʼin"
+    Name = "gwichin"
+
+[[languages]]
+
+    Text = "Haida"
+    Name = "haida"
+
+[[languages]]
+
+    Text = "Haitian"
+    Name = "haitian"
+
+[[languages]]
+
+    Text = "Hausa"
+    Name = "hausa"
+
+[[languages]]
+
+    Text = "Hawaiian"
+    Name = "hawaiian"
+
+[[languages]]
+
+    Text = "Hebrew"
+    Name = "hebrew"
+
+[[languages]]
+
+    Text = "Herero"
+    Name = "herero"
+
+[[languages]]
+
+    Text = "Hiligaynon"
+    Name = "hiligaynon"
+
+[[languages]]
+
+    Text = "Hindi"
+    Name = "hindi"
+
+[[languages]]
+
+    Text = "Hiri Motu"
+    Name = "hiri_motu"
+
+[[languages]]
+
+    Text = "Hmong"
+    Name = "hmong"
+
+[[languages]]
+
+    Text = "Hungarian"
+    Name = "hungarian"
+
+[[languages]]
+
+    Text = "Hupa"
+    Name = "hupa"
+
+[[languages]]
+
+    Text = "Iban"
+    Name = "iban"
+
+[[languages]]
+
+    Text = "Icelandic"
+    Name = "icelandic"
+
+[[languages]]
+
+    Text = "Ido"
+    Name = "ido"
+
+[[languages]]
+
+    Text = "Igbo"
+    Name = "igbo"
+
+[[languages]]
+
+    Text = "Iloko"
+    Name = "iloko"
+
+[[languages]]
+
+    Text = "Inari Sami"
+    Name = "inari_sami"
+
+[[languages]]
+
+    Text = "Indonesian"
+    Name = "indonesian"
+
+[[languages]]
+
+    Text = "Ingush"
+    Name = "ingush"
+
+[[languages]]
+
+    Text = "Interlingua"
+    Name = "interlingua"
+
+[[languages]]
+
+    Text = "Interlingue (Occidental)"
+    Name = "interlingue_occidental"
+
+[[languages]]
+
+    Text = "Inuktitut"
+    Name = "inuktitut"
+
+[[languages]]
+
+    Text = "Inupiaq"
+    Name = "inupiaq"
+
+[[languages]]
+
+    Text = "Irish"
+    Name = "irish"
+
+[[languages]]
+
+    Text = "Italian"
+    Name = "italian"
+
+[[languages]]
+
+    Text = "Japanese"
+    Name = "japanese"
+
+[[languages]]
+
+    Text = "Javanese"
+    Name = "javanese"
+
+[[languages]]
+
+    Text = "Judeo-Arabic"
+    Name = "judeo_arabic"
+
+[[languages]]
+
+    Text = "Judeo-Persian"
+    Name = "judeo_persian"
+
+[[languages]]
+
+    Text = "Kabardian"
+    Name = "kabardian"
+
+[[languages]]
+
+    Text = "Kabyle"
+    Name = "kabyle"
+
+[[languages]]
+
+    Text = "Kachin"
+    Name = "kachin"
+
+[[languages]]
+
+    Text = "Kalaallisut"
+    Name = "kalaallisut"
+
+[[languages]]
+
+    Text = "Kalmyk"
+    Name = "kalmyk"
+
+[[languages]]
+
+    Text = "Kamba (Kenya)"
+    Name = "kamba_kenya"
+
+[[languages]]
+
+    Text = "Kannada"
+    Name = "kannada"
+
+[[languages]]
+
+    Text = "Kanuri"
+    Name = "kanuri"
+
+[[languages]]
+
+    Text = "Kara-Kalpak"
+    Name = "kara_kalpak"
+
+[[languages]]
+
+    Text = "Karachay-Balkar"
+    Name = "karachay_balkar"
+
+[[languages]]
+
+    Text = "Karelian"
+    Name = "karelian"
+
+[[languages]]
+
+    Text = "Kashmiri"
+    Name = "kashmiri"
+
+[[languages]]
+
+    Text = "Kashubian"
+    Name = "kashubian"
+
+[[languages]]
+
+    Text = "Kazakh"
+    Name = "kazakh"
+
+[[languages]]
+
+    Text = "Khasi"
+    Name = "khasi"
+
+[[languages]]
+
+    Text = "Kikuyu"
+    Name = "kikuyu"
+
+[[languages]]
+
+    Text = "Kimbundu"
+    Name = "kimbundu"
+
+[[languages]]
+
+    Text = "Kinyarwanda"
+    Name = "kinyarwanda"
+
+[[languages]]
+
+    Text = "Kirghiz"
+    Name = "kirghiz"
+
+[[languages]]
+
+    Text = "Klingon"
+    Name = "klingon"
+
+[[languages]]
+
+    Text = "Komi"
+    Name = "komi"
+
+[[languages]]
+
+    Text = "Kongo"
+    Name = "kongo"
+
+[[languages]]
+
+    Text = "Konkani"
+    Name = "konkani"
+
+[[languages]]
+
+    Text = "Korean"
+    Name = "korean"
+
+[[languages]]
+
+    Text = "Kosraean"
+    Name = "kosraean"
+
+[[languages]]
+
+    Text = "Kpelle"
+    Name = "kpelle"
+
+[[languages]]
+
+    Text = "Kuanyama"
+    Name = "kuanyama"
+
+[[languages]]
+
+    Text = "Kumyk"
+    Name = "kumyk"
+
+[[languages]]
+
+    Text = "Kurdish"
+    Name = "kurdish"
+
+[[languages]]
+
+    Text = "Kurukh"
+    Name = "kurukh"
+
+[[languages]]
+
+    Text = "Kutenai"
+    Name = "kutenai"
+
+[[languages]]
+
+    Text = "Ladino"
+    Name = "ladino"
+
+[[languages]]
+
+    Text = "Lahnda"
+    Name = "lahnda"
+
+[[languages]]
+
+    Text = "Lamba"
+    Name = "lamba"
+
+[[languages]]
+
+    Text = "Lao"
+    Name = "lao"
+
+[[languages]]
+
+    Text = "Latvian"
+    Name = "latvian"
+
+[[languages]]
+
+    Text = "Lezghian"
+    Name = "lezghian"
+
+[[languages]]
+
+    Text = "Limburgan"
+    Name = "limburgan"
+
+[[languages]]
+
+    Text = "Lingala"
+    Name = "lingala"
+
+[[languages]]
+
+    Text = "Lithuanian"
+    Name = "lithuanian"
+
+[[languages]]
+
+    Text = "Lojban"
+    Name = "lojban"
+
+[[languages]]
+
+    Text = "Low German"
+    Name = "low_german"
+
+[[languages]]
+
+    Text = "Lower Sorbian"
+    Name = "lower_sorbian"
+
+[[languages]]
+
+    Text = "Lozi"
+    Name = "lozi"
+
+[[languages]]
+
+    Text = "Luba-Katanga"
+    Name = "luba_katanga"
+
+[[languages]]
+
+    Text = "Luba-Lulua"
+    Name = "luba_lulua"
+
+[[languages]]
+
+    Text = "Luiseno"
+    Name = "luiseno"
+
+[[languages]]
+
+    Text = "Lule Sami"
+    Name = "lule_sami"
+
+[[languages]]
+
+    Text = "Lunda"
+    Name = "lunda"
+
+[[languages]]
+
+    Text = "Luo (Dholuo)"
+    Name = "luo_dholuo"
+
+# [[languages]]
+
+#     Text = "Luo (Kenya and Tanzania)"
+
+[[languages]]
+
+    Text = "Lushai"
+    Name = "lushai"
+
+[[languages]]
+
+    Text = "Luxembourgish"
+    Name = "luxembourgish"
+
+[[languages]]
+
+    Text = "Macedo-Romanian"
+    Name = "macedo_romanian"
+
+[[languages]]
+
+    Text = "Macedonian"
+    Name = "macedonian"
+
+[[languages]]
+
+    Text = "Madurese"
+    Name = "madurese"
+
+[[languages]]
+
+    Text = "Magahi"
+    Name = "magahi"
+
+[[languages]]
+
+    Text = "Maithili"
+    Name = "maithili"
+
+[[languages]]
+
+    Text = "Makasar"
+    Name = "makasar"
+
+[[languages]]
+
+    Text = "Malagasy"
+    Name = "malagasy"
+
+[[languages]]
+
+    Text = "Malay"
+    Name = "malay"
+
+[[languages]]
+
+    Text = "Malayalam"
+    Name = "malayalam"
+
+[[languages]]
+
+    Text = "Maltese"
+    Name = "maltese"
+
+[[languages]]
+
+    Text = "Manchu"
+    Name = "manchu"
+
+[[languages]]
+
+    Text = "Mandar"
+    Name = "mandar"
+
+[[languages]]
+
+    Text = "Mandingo"
+    Name = "mandingo"
+
+[[languages]]
+
+    Text = "Manipuri"
+    Name = "manipuri"
+
+[[languages]]
+
+    Text = "Manx"
+    Name = "manx"
+
+[[languages]]
+
+    Text = "Maori"
+    Name = "maori"
+
+[[languages]]
+
+    Text = "Mapudungun"
+    Name = "mapudungun"
+
+[[languages]]
+
+    Text = "Marathi"
+    Name = "marathi"
+
+[[languages]]
+
+    Text = "Mari (Russia)"
+    Name = "mari_russia"
+
+[[languages]]
+
+    Text = "Marshallese"
+    Name = "marshallese"
+
+[[languages]]
+
+    Text = "Marwari"
+    Name = "marwari"
+
+[[languages]]
+
+    Text = "Masai"
+    Name = "masai"
+
+[[languages]]
+
+    Text = "Mende (Sierra Leone)"
+    Name = "mende_sierra_leone"
+
+[[languages]]
+
+    Text = "Mi'kmaq"
+    Name = "mi_kmaq"
+
+[[languages]]
+
+    Text = "Minangkabau"
+    Name = "minangkabau"
+
+[[languages]]
+
+    Text = "Mirandese"
+    Name = "mirandese"
+
+[[languages]]
+
+    Text = "Mohawk"
+    Name = "mohawk"
+
+[[languages]]
+
+    Text = "Moksha"
+    Name = "moksha"
+
+[[languages]]
+
+    Text = "Mongo"
+    Name = "mongo"
+
+[[languages]]
+
+    Text = "Mongolian"
+    Name = "mongolian"
+
+[[languages]]
+
+    Text = "Mossi"
+    Name = "mossi"
+
+[[languages]]
+
+    Text = "N'Ko"
+    Name = "n_ko"
+
+[[languages]]
+
+    Text = "Nauru"
+    Name = "nauru"
+
+[[languages]]
+
+    Text = "Navajo"
+    Name = "navajo"
+
+[[languages]]
+
+    Text = "Ndonga"
+    Name = "ndonga"
+
+[[languages]]
+
+    Text = "Neapolitan"
+    Name = "neapolitan"
+
+[[languages]]
+
+    Text = "Nepal Bhasa"
+    Name = "nepal_bhasa"
+
+[[languages]]
+
+    Text = "Nepali"
+    Name = "nepali"
+
+[[languages]]
+
+    Text = "Nias"
+    Name = "nias"
+
+[[languages]]
+
+    Text = "Niuean"
+    Name = "niuean"
+
+[[languages]]
+
+    Text = "Nogai"
+    Name = "nogai"
+
+[[languages]]
+
+    Text = "North Ndebele"
+    Name = "north_ndebele"
+
+[[languages]]
+
+    Text = "Northern Frisian"
+    Name = "northern_frisian"
+
+[[languages]]
+
+    Text = "Northern Sami"
+    Name = "northern_sami"
+
+[[languages]]
+
+    Text = "Norwegian Bokmål"
+    Name = "norwegian_bokml"
+
+[[languages]]
+
+    Text = "Norwegian Nynorsk"
+    Name = "norwegian_nynorsk"
+
+[[languages]]
+
+    Text = "Nyamwezi"
+    Name = "nyamwezi"
+
+[[languages]]
+
+    Text = "Nyanja"
+    Name = "nyanja"
+
+[[languages]]
+
+    Text = "Nyankole"
+    Name = "nyankole"
+
+[[languages]]
+
+    Text = "Nyoro"
+    Name = "nyoro"
+
+[[languages]]
+
+    Text = "Nzima"
+    Name = "nzima"
+
+[[languages]]
+
+    Text = "Occitan"
+    Name = "occitan"
+
+[[languages]]
+
+    Text = "Odiya"
+    Name = "odiya"
+
+[[languages]]
+
+    Text = "Ojibwa"
+    Name = "ojibwa"
+
+[[languages]]
+
+    Text = "Oromo"
+    Name = "oromo"
+
+[[languages]]
+
+    Text = "Osage"
+    Name = "osage"
+
+[[languages]]
+
+    Text = "Ossetian"
+    Name = "ossetian"
+
+[[languages]]
+
+    Text = "Palauan"
+    Name = "palauan"
+
+[[languages]]
+
+    Text = "Pampanga"
+    Name = "pampanga"
+
+[[languages]]
+
+    Text = "Pangasinan"
+    Name = "pangasinan"
+
+[[languages]]
+
+    Text = "Panjabi"
+    Name = "panjabi"
+
+[[languages]]
+
+    Text = "Papiamento"
+    Name = "papiamento"
+
+[[languages]]
+
+    Text = "Pedi"
+    Name = "pedi"
+
+[[languages]]
+
+    Text = "Persian"
+    Name = "persian"
+
+[[languages]]
+
+    Text = "Pohnpeian"
+    Name = "pohnpeian"
+
+[[languages]]
+
+    Text = "Polish"
+    Name = "polish"
+
+[[languages]]
+
+    Text = "Portuguese"
+    Name = "portuguese"
+
+[[languages]]
+
+    Text = "Portuguese (Brazilian)"
+    Name = "portuguese_brazilian"
+
+[[languages]]
+
+    Text = "Pushto"
+    Name = "pushto"
+
+[[languages]]
+
+    Text = "Quechua"
+    Name = "quechua"
+
+[[languages]]
+
+    Text = "Rajasthani"
+    Name = "rajasthani"
+
+[[languages]]
+
+    Text = "Rapanui"
+    Name = "rapanui"
+
+[[languages]]
+
+    Text = "Rarotongan"
+    Name = "rarotongan"
+
+[[languages]]
+
+    Text = "Reunion Creole"
+    Name = "reunion_creole"
+
+# [[languages]]
+
+#     Text = "Reunionese, Reunion Creole"
+
+[[languages]]
+
+    Text = "Romanian"
+    Name = "romanian"
+
+[[languages]]
+
+    Text = "Romansh"
+    Name = "romansh"
+
+[[languages]]
+
+    Text = "Romany"
+    Name = "romany"
+
+[[languages]]
+
+    Text = "Rundi"
+    Name = "rundi"
+
+[[languages]]
+
+    Text = "Russian"
+    Name = "russian"
+
+[[languages]]
+
+    Text = "Samoan"
+    Name = "samoan"
+
+[[languages]]
+
+    Text = "Sandawe"
+    Name = "sandawe"
+
+[[languages]]
+
+    Text = "Sango"
+    Name = "sango"
+
+[[languages]]
+
+    Text = "Santali"
+    Name = "santali"
+
+[[languages]]
+
+    Text = "Sardinian"
+    Name = "sardinian"
+
+[[languages]]
+
+    Text = "Sasak"
+    Name = "sasak"
+
+[[languages]]
+
+    Text = "Scots"
+    Name = "scots"
+
+[[languages]]
+
+    Text = "Scottish Gaelic"
+    Name = "scottish_gaelic"
+
+[[languages]]
+
+    Text = "Selkup"
+    Name = "selkup"
+
+[[languages]]
+
+    Text = "Serbian"
+    Name = "serbian"
+
+[[languages]]
+
+    Text = "Serer"
+    Name = "serer"
+
+[[languages]]
+
+    Text = "Shan"
+    Name = "shan"
+
+[[languages]]
+
+    Text = "Shona"
+    Name = "shona"
+
+[[languages]]
+
+    Text = "Sichuan Yi"
+    Name = "sichuan_yi"
+
+[[languages]]
+
+    Text = "Sicilian"
+    Name = "sicilian"
+
+[[languages]]
+
+    Text = "Sidamo"
+    Name = "sidamo"
+
+[[languages]]
+
+    Text = "Siksika"
+    Name = "siksika"
+
+[[languages]]
+
+    Text = "Sindhi"
+    Name = "sindhi"
+
+[[languages]]
+
+    Text = "Sinhala"
+    Name = "sinhala"
+
+[[languages]]
+
+    Text = "Skolt Sami"
+    Name = "skolt_sami"
+
+[[languages]]
+
+    Text = "Slave (Athapascan)"
+    Name = "slave_athapascan"
+
+[[languages]]
+
+    Text = "Slovak"
+    Name = "slovak"
+
+[[languages]]
+
+    Text = "Slovenian"
+    Name = "slovenian"
+
+[[languages]]
+
+    Text = "Somali"
+    Name = "somali"
+
+[[languages]]
+
+    Text = "Soninke"
+    Name = "soninke"
+
+[[languages]]
+
+    Text = "South Ndebele"
+    Name = "south_ndebele"
+
+[[languages]]
+
+    Text = "Southern Altai"
+    Name = "southern_altai"
+
+[[languages]]
+
+    Text = "Southern Sami"
+    Name = "southern_sami"
+
+[[languages]]
+
+    Text = "Southern Sotho"
+    Name = "southern_sotho"
+
+[[languages]]
+
+    Text = "Spanish"
+    Name = "spanish"
+
+[[languages]]
+
+    Text = "Sranan Tongo"
+    Name = "sranan_tongo"
+
+# [[languages]]
+
+#     Text = "Standard Moroccan Tamazight"
+
+[[languages]]
+
+    Text = "Moroccan Tamazight"
+    Name = "moroccan_tamazight"
+
+[[languages]]
+
+    Text = "Sukuma"
+    Name = "sukuma"
+
+[[languages]]
+
+    Text = "Sundanese"
+    Name = "sundanese"
+
+[[languages]]
+
+    Text = "Susu"
+    Name = "susu"
+
+[[languages]]
+
+    Text = "Swahili"
+    Name = "swahili"
+
+[[languages]]
+
+    Text = "Swati"
+    Name = "swati"
+
+[[languages]]
+
+    Text = "Swedish"
+    Name = "swedish"
+
+[[languages]]
+
+    Text = "Swiss German"
+    Name = "swiss_german"
+
+[[languages]]
+
+    Text = "Syriac"
+    Name = "syriac"
+
+[[languages]]
+
+    Text = "Tagalog"
+    Name = "tagalog"
+
+[[languages]]
+
+    Text = "Tahitian"
+    Name = "tahitian"
+
+[[languages]]
+
+    Text = "Tajik"
+    Name = "tajik"
+
+[[languages]]
+
+    Text = "Tamashek"
+    Name = "tamashek"
+
+[[languages]]
+
+    Text = "Tamil"
+    Name = "tamil"
+
+[[languages]]
+
+    Text = "Tatar"
+    Name = "tatar"
+
+[[languages]]
+
+    Text = "Telugu"
+    Name = "telugu"
+
+[[languages]]
+
+    Text = "Tereno"
+    Name = "tereno"
+
+[[languages]]
+
+    Text = "Tetum"
+    Name = "tetum"
+
+[[languages]]
+
+    Text = "Thai"
+    Name = "thai"
+
+[[languages]]
+
+    Text = "Tibetan"
+    Name = "tibetan"
+
+[[languages]]
+
+    Text = "Tigre"
+    Name = "tigre"
+
+[[languages]]
+
+    Text = "Tigrinya"
+    Name = "tigrinya"
+
+[[languages]]
+
+    Text = "Timne"
+    Name = "timne"
+
+[[languages]]
+
+    Text = "Tiv"
+    Name = "tiv"
+
+[[languages]]
+
+    Text = "Tlingit"
+    Name = "tlingit"
+
+[[languages]]
+
+    Text = "Tok Pisin"
+    Name = "tok_pisin"
+
+[[languages]]
+
+    Text = "Tokelau"
+    Name = "tokelau"
+
+[[languages]]
+
+    Text = "Tonga (Nyasa)"
+    Name = "tonga_nyasa"
+
+[[languages]]
+
+    Text = "Tonga (Tonga Islands)"
+    Name = "tonga_tonga_islands"
+
+[[languages]]
+
+    Text = "Tsimshian"
+    Name = "tsimshian"
+
+[[languages]]
+
+    Text = "Tsonga"
+    Name = "tsonga"
+
+[[languages]]
+
+    Text = "Tswana"
+    Name = "tswana"
+
+[[languages]]
+
+    Text = "Tumbuka"
+    Name = "tumbuka"
+
+[[languages]]
+
+    Text = "Turkish"
+    Name = "turkish"
+
+[[languages]]
+
+    Text = "Turkmen"
+    Name = "turkmen"
+
+[[languages]]
+
+    Text = "Tuvaluan"
+    Name = "tuvaluan"
+
+[[languages]]
+
+    Text = "Tuvinian"
+    Name = "tuvinian"
+
+[[languages]]
+
+    Text = "Twi"
+    Name = "twi"
+
+[[languages]]
+
+    Text = "Udmurt"
+    Name = "udmurt"
+
+[[languages]]
+
+    Text = "Uighur"
+    Name = "uighur"
+
+[[languages]]
+
+    Text = "Ukrainian"
+    Name = "ukrainian"
+
+[[languages]]
+
+    Text = "Umbundu"
+    Name = "umbundu"
+
+[[languages]]
+
+    Text = "Upper Sorbian"
+    Name = "upper_sorbian"
+
+[[languages]]
+
+    Text = "Urdu"
+    Name = "urdu"
+
+[[languages]]
+
+    Text = "Uzbek"
+    Name = "uzbek"
+
+[[languages]]
+
+    Text = "Vai"
+    Name = "vai"
+
+[[languages]]
+
+    Text = "Venda"
+    Name = "venda"
+
+[[languages]]
+
+    Text = "Vietnamese"
+    Name = "vietnamese"
+
+[[languages]]
+
+    Text = "Volapük"
+    Name = "volapk"
+
+[[languages]]
+
+    Text = "Votic"
+    Name = "votic"
+
+[[languages]]
+
+    Text = "Walloon"
+    Name = "walloon"
+
+[[languages]]
+
+    Text = "Waray (Philippines)"
+    Name = "waray_philippines"
+
+[[languages]]
+
+    Text = "Washo"
+    Name = "washo"
+
+[[languages]]
+
+    Text = "Welsh"
+    Name = "welsh"
+
+[[languages]]
+
+    Text = "Western Frisian"
+    Name = "western_frisian"
+
+[[languages]]
+
+    Text = "Wolaytta"
+    Name = "wolaytta"
+
+[[languages]]
+
+    Text = "Wolof"
+    Name = "wolof"
+
+[[languages]]
+
+    Text = "Xhosa"
+    Name = "xhosa"
+
+[[languages]]
+
+    Text = "Yakut"
+    Name = "yakut"
+
+[[languages]]
+
+    Text = "Yao"
+    Name = "yao"
+
+[[languages]]
+
+    Text = "Yapese"
+    Name = "yapese"
+
+[[languages]]
+
+    Text = "Yiddish"
+    Name = "yiddish"
+
+[[languages]]
+
+    Text = "Yoruba"
+    Name = "yoruba"
+
+[[languages]]
+
+    Text = "Zapotec"
+    Name = "zapotec"
+
+[[languages]]
+
+    Text = "Zaza"
+    Name = "zaza"
+
+[[languages]]
+
+    Text = "Zenaga"
+    Name = "zenaga"
+
+[[languages]]
+
+    Text = "Zhuang"
+    Name = "zhuang"
+
+[[languages]]
+
+    Text = "Zulu"
+    Name = "zulu"
+
+[[languages]]
+
+    Text = "Zuni"
+    Name = "zuni"

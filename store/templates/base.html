@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="referrer" content="no-referrer">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="google-site-verification" content="KmO6EmsKOeNUgU8NNDUj4yJ2u_rtkx1OJcCKbyu0g3o">
+
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <meta name="twitter:site"    content="@storydevs">
+    <meta name="twitter:creator" content="@{{.MetaTwitter}}">
+    
+    <meta name="twitter:title" content="{{.Title}}">
+    <meta property="og:title"  content="{{.Title}}">
+    
+    <meta name="description" content="{{.MetaDesc}}">
+    <meta name="twitter:description" content="{{.MetaDesc}}">
+    <meta property="og:description"  content="{{.MetaDesc}}">
+
+    <meta name="twitter:image" content="{{.MetaCard}}">
+    <meta property="og:image"  content="{{.MetaCard}}">
+    <meta name="twitter:image:alt" content="{{.MetaAlt}}">
+    
+    <meta property="twitter:url" content="{{.MetaURL}}">
+    <meta property="og:url"      content="{{.MetaURL}}">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    
+    <title>{{.Title}}</title>
+    <style>{{.Styling}}</style>
+    <style id="auth">.logged_{{if .Account.Personas}}out{{else}}in{{end}} {display: none !important;}</style>
+    <script>
+        
+        const presentThreshold = {{.PresentThreshold}};
+
+        var context = {
+            loggedIn: {{if .Account.Personas}}true{{else}}false{{end}},
+            view: "{{.View}}",
+            subView: "{{.SubView}}",
+            viewType: "{{.ViewType}}",
+            resource: "{{.ResourceSlug}}",
+            editing: {{with .Editing}}{{.}}{{else}}null{{end}},
+            layout: "{{.Layout}}",
+            modalInitially: {{if .Modal}}true{{else}}false{{end}},
+            modalVisible: {{if .Modal}}true{{else}}false{{end}},
+            empty: {
+                search: "",
+                browse: "{{.Browse.Empty}}",
+                detail: "{{.Detail.Empty}}",
+                editor: "{{.Editor.Empty}}",
+            },
+            page: {
+            {{range $view, $meta := .ViewMeta.Page -}}
+                {{if not $meta.Disabled -}}
+                    {{$view}}: {
+                        title: "{{$meta.Title}}",
+                    },
+                {{end -}}
+            {{end -}}
+            },
+            mode: {
+            {{$p := .Account.ActivePersona -}}
+            {{range $view, $meta := .ViewMeta.Mode -}}
+                {{if and (or (not $meta.AdminOnly) $p.Admin.Bool) (not $meta.Disabled) -}}
+                    {{$view}}: {
+                        title: "{{$meta.Title}}",
+                        browseName: "{{$meta.BrowseName}}",
+                        resourceName: "{{$meta.ResourceName}}",
+                        resourcePlural: "{{$meta.ResourcePlural}}",
+                        resourceColumn: "{{$meta.ResourceColumn}}",
+                        logoutRemove: {{$meta.LogoutRemove}},
+                    },
+                {{end -}}
+            {{end -}}
+            },
+            modal: {
+            {{range $view, $meta := .ViewMeta.Modal -}}
+                {{if not $meta.Disabled -}}
+                    {{$view}}: {
+                        title: "{{$meta.Title}}",
+                    },
+                {{end}}
+            {{end -}}
+            },
+        };
+
+        var scriptLoaded = false; // Set by main() and used by scrollEvent
+
+        window.onload = function() {
+            let head = document.querySelector("head");
+            let script = document.createElement("script");
+            script.addEventListener("load", function(){ main() });
+            script.setAttribute("src", "/js/script.js");
+            head.appendChild(script);
+        }
+        
+    </script>
+</head>
+
+<body class="{{.Layout}} {{.View}} {{.SubView}} {{.Columns}}">
+    <div id="container">
+        {{template "sidebar.html" .}}
+        <div id="cols">
+            <div id="page" class="scroll">
+                <div id="page_body">
+                    {{.Page}}
+                </div>
+            </div>
+            {{template "column.html" .Search}}
+            {{template "column.html" .Browse}}
+            {{template "column.html" .Detail}}
+            {{template "column.html" .Editor}}
+        </div>
+    </div>
+    <div
+        id="modal_container"
+        data-action="dismissModalBackdrop"
+        {{if .Modal}}
+            class="visible"
+        {{end}}
+    >
+        <div
+            id="modal"
+            class="modal"
+            {{if .Modal}} style="height:auto;"{{end}}
+        >
+            <div class="tablet gutter">
+                <div class="back" data-action="dismissModal">〈 Back</div>
+            </div>
+            <div class="dismiss" data-action="dismissModal">{{template "small_x.svg"}}</div>
+            {{with .Modal}}{{.}}{{end}}
+        </div>
+    </div>
+    <div id="mobile"></div>
+    <div id="rem"></div>
+    <div id="editor_p">a</div>
+    <div id="editor_h2">a</div>
+    <div id="editor_code">a</div>
+    <div id="link_editor" data-action="focusLinkEditor">
+        <div class="textfield">
+            <input type="text" name="link" placeholder="https://www.example.com" spellcheck="false">
+            <button class="btn apply" data-action="applyLink">{{template "tick.svg"}}</button>
+            <button class="btn edit" data-action="editLink">{{template "tick.svg"}}</button>
+            <button class="btn remove" data-action="removeLink">{{template "format/link_remove.svg"}}</button>
+        </div>
+    </div>
+    <div id="loading" class="loading">{{template "loading.svg"}}</div>
+    <div id="scroll_arrow">{{template "scroll_arrow.svg"}}</div>
+    <div id="notification" class="hidden">
+        <div class="title"></div>
+        <div class="msg"></div>
+        <div
+            class="remove"
+            data-action="dismissNotification"
+        >
+            {{template "small_x.svg"}}
+        </div>
+    </div>
+    <div id="tip" class="hidden">
+        <div class="lip"></div>
+        <div class="text"></div>
+    </div>
+    <div id="full" class="hidden" data-action="dismissFullSize">
+        <div class="graphic">
+            <img>
+        </div>
+        <div class="dismiss" data-action="dismissFullSize">
+            {{- template "x.svg" -}}
+        </div>
+    </div>
+    <script>
+
+        var rem = 20;
+        var scrollArrow;
+
+        {{.JavaScript}}
+
+        let arrowElem = q("#scroll_arrow");
+        scrollArrow = arrowElem.parentNode.removeChild(arrowElem)
+        scrollArrow = scrollArrow.innerHTML;
+
+        initScrolls();
+
+    </script>
+</body>
+</html>

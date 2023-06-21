@@ -1,0 +1,21 @@
+
+##########################################################
+#
+# Settings here will override those in config.default.toml
+#
+##########################################################
+
+# You should set Dev to true as this affects redirects
+# and the address/port StoryDevs listens on.
+Dev = true
+
+# It is also recommended to set Cache to false. Cache
+# determines whether files are served from a cache in
+# memory or loaded fresh from disk every time. Disabling
+# it during development makes it possible to see changes
+# in, say, CSS files reflected on page reloads rather
+# than having to restart the server.
+Cache = false
+
+# Whether to send out emails.
+EmailEnabled = false

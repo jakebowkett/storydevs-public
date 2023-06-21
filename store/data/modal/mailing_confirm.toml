@@ -1,0 +1,17 @@
+
+Name = "mailing_confirm"
+Title = "Subscribe To Mailing List (2/2)"
+Class = "confirm"
+Msg = "A confirmation email has been sent. Follow the link or paste the code below."
+Disabled = true
+
+[[Field]]
+
+    Replace = "confirm"
+    
+[[Button]]
+
+    Text = "Confirm"
+    Icon = "submit"
+    Dest = "mailing/confirm"
+    Submit = true

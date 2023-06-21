@@ -1,0 +1,11 @@
+
+[pronouns]
+
+    Name = "pronouns"
+    Desc = "Pronouns"
+    Type = "text"
+    Optional = true
+    Placeholder = "e.g. they/them"
+    Add = 5
+    AddName = "Pronouns"
+    Max = 32

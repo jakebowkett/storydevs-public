@@ -1,0 +1,5 @@
+
+body.account #search h2,
+body.admin #search h2 {
+    margin-top: 1.5rem;
+}

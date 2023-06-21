@@ -1,0 +1,8 @@
+
+[name]
+
+    Name = "name"
+    Desc = "Display Name"
+    Type = "text"
+    Max = 32
+    # Context = "Changes how you'll appear in discussions without breaking any URLs to your profile."

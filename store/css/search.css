@@ -1,0 +1,20 @@
+
+#acc_info {
+    margin-top: 1rem;
+}
+
+.account #search .col_inner,
+.admin #search .col_inner {
+    padding-top: 0;
+}
+
+body.forums:not(.admin):not(.account) #search .btn.submit {
+    display: none;
+}
+body.forums:not(.admin):not(.account) #search form {
+    padding-bottom: 4rem;
+}
+
+body.account .adder[name="personas"] .instance .num {
+    display: none;
+}

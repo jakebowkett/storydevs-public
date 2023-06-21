@@ -1,0 +1,1767 @@
+
+[timezone]
+
+    Name = "timezone"
+    Desc = "Timezone"
+    Type = "dropdown"
+    Init = "InitTimezone"
+    Help = "Remember the 'S' in timezone names changes to 'D' during daylight savings (e.g. PST > PDT)."
+
+    [[timezone.Value]]
+        Idx  = -1
+        Name = "local"
+        Text = "Local Time"
+
+        [[timezone.Value.Value]]
+            Name = "abbr"
+
+        [[timezone.Value.Value]]
+            Name = "offset"
+            Text = "UTC ??:??"
+
+    [[timezone.Value]]
+        Idx  = -2
+        Name = "utc"
+        Text = "Coordinated Universal Time"
+
+        [[timezone.Value.Value]]
+            Name = "abbr"
+
+        [[timezone.Value.Value]]
+            Name = "offset"
+            Text = "UTC+00:00"
+            
+    [[timezone.Value]]
+        Idx  = 1
+        Name = "Africa/Abidjan"
+        Text = "Africa/Abidjan"
+
+    [[timezone.Value]]
+        Idx  = 2
+        Name = "Africa/Accra"
+        Text = "Africa/Accra"
+
+    [[timezone.Value]]
+        Idx  = 3
+        Name = "Africa/Algiers"
+        Text = "Africa/Algiers"
+
+    [[timezone.Value]]
+        Idx  = 4
+        Name = "Africa/Bissau"
+        Text = "Africa/Bissau"
+
+    [[timezone.Value]]
+        Idx  = 5
+        Name = "Africa/Cairo"
+        Text = "Africa/Cairo"
+
+    [[timezone.Value]]
+        Idx  = 6
+        Name = "Africa/Casablanca"
+        Text = "Africa/Casablanca"
+
+    [[timezone.Value]]
+        Idx  = 7
+        Name = "Africa/Ceuta"
+        Text = "Africa/Ceuta"
+
+    [[timezone.Value]]
+        Idx  = 8
+        Name = "Africa/El_Aaiun"
+        Text = "Africa/El Aaiun"
+
+    [[timezone.Value]]
+        Idx  = 9
+        Name = "Africa/Johannesburg"
+        Text = "Africa/Johannesburg"
+
+    [[timezone.Value]]
+        Idx  = 10
+        Name = "Africa/Juba"
+        Text = "Africa/Juba"
+
+    [[timezone.Value]]
+        Idx  = 11
+        Name = "Africa/Khartoum"
+        Text = "Africa/Khartoum"
+
+    [[timezone.Value]]
+        Idx  = 12
+        Name = "Africa/Lagos"
+        Text = "Africa/Lagos"
+
+    [[timezone.Value]]
+        Idx  = 13
+        Name = "Africa/Maputo"
+        Text = "Africa/Maputo"
+
+    [[timezone.Value]]
+        Idx  = 14
+        Name = "Africa/Monrovia"
+        Text = "Africa/Monrovia"
+
+    [[timezone.Value]]
+        Idx  = 15
+        Name = "Africa/Nairobi"
+        Text = "Africa/Nairobi"
+
+    [[timezone.Value]]
+        Idx  = 16
+        Name = "Africa/Ndjamena"
+        Text = "Africa/Ndjamena"
+
+    [[timezone.Value]]
+        Idx  = 17
+        Name = "Africa/Sao_Tome"
+        Text = "Africa/Sao Tome"
+
+    [[timezone.Value]]
+        Idx  = 18
+        Name = "Africa/Tripoli"
+        Text = "Africa/Tripoli"
+
+    [[timezone.Value]]
+        Idx  = 19
+        Name = "Africa/Tunis"
+        Text = "Africa/Tunis"
+
+    [[timezone.Value]]
+        Idx  = 20
+        Name = "Africa/Windhoek"
+        Text = "Africa/Windhoek"
+
+    [[timezone.Value]]
+        Idx  = 21
+        Name = "America/Adak"
+        Text = "America/Adak"
+
+    [[timezone.Value]]
+        Idx  = 22
+        Name = "America/Anchorage"
+        Text = "America/Anchorage"
+
+    [[timezone.Value]]
+        Idx  = 23
+        Name = "America/Araguaina"
+        Text = "America/Araguaina"
+
+    [[timezone.Value]]
+        Idx  = 24
+        Name = "America/Argentina/Buenos_Aires"
+        Text = "America/Argentina/Buenos Aires"
+
+    [[timezone.Value]]
+        Idx  = 25
+        Name = "America/Argentina/Catamarca"
+        Text = "America/Argentina/Catamarca"
+
+    [[timezone.Value]]
+        Idx  = 26
+        Name = "America/Argentina/Cordoba"
+        Text = "America/Argentina/Cordoba"
+
+    [[timezone.Value]]
+        Idx  = 27
+        Name = "America/Argentina/Jujuy"
+        Text = "America/Argentina/Jujuy"
+
+    [[timezone.Value]]
+        Idx  = 28
+        Name = "America/Argentina/La_Rioja"
+        Text = "America/Argentina/La Rioja"
+
+    [[timezone.Value]]
+        Idx  = 29
+        Name = "America/Argentina/Mendoza"
+        Text = "America/Argentina/Mendoza"
+
+    [[timezone.Value]]
+        Idx  = 30
+        Name = "America/Argentina/Rio_Gallegos"
+        Text = "America/Argentina/Rio Gallegos"
+
+    [[timezone.Value]]
+        Idx  = 31
+        Name = "America/Argentina/Salta"
+        Text = "America/Argentina/Salta"
+
+    [[timezone.Value]]
+        Idx  = 32
+        Name = "America/Argentina/San_Juan"
+        Text = "America/Argentina/San Juan"
+
+    [[timezone.Value]]
+        Idx  = 33
+        Name = "America/Argentina/San_Luis"
+        Text = "America/Argentina/San Luis"
+
+    [[timezone.Value]]
+        Idx  = 34
+        Name = "America/Argentina/Tucuman"
+        Text = "America/Argentina/Tucumán"
+
+    [[timezone.Value]]
+        Idx  = 35
+        Name = "America/Argentina/Ushuaia"
+        Text = "America/Argentina/Ushuaia"
+
+    [[timezone.Value]]
+        Idx  = 36
+        Name = "America/Asuncion"
+        Text = "America/Asuncion"
+
+    [[timezone.Value]]
+        Idx  = 37
+        Name = "America/Atikokan"
+        Text = "America/Atikokan"
+
+    [[timezone.Value]]
+        Idx  = 38
+        Name = "America/Bahia"
+        Text = "America/Bahia"
+
+    [[timezone.Value]]
+        Idx  = 39
+        Name = "America/Bahia_Banderas"
+        Text = "America/Bahía de Banderas"
+
+    [[timezone.Value]]
+        Idx  = 40
+        Name = "America/Barbados"
+        Text = "America/Barbados"
+
+    [[timezone.Value]]
+        Idx  = 41
+        Name = "America/Belem"
+        Text = "America/Belem"
+
+    [[timezone.Value]]
+        Idx  = 42
+        Name = "America/Belize"
+        Text = "America/Belize"
+
+    [[timezone.Value]]
+        Idx  = 43
+        Name = "America/Blanc-Sablon"
+        Text = "America/Blanc-Sablon"
+
+    [[timezone.Value]]
+        Idx  = 44
+        Name = "America/Boa_Vista"
+        Text = "America/Boa Vista"
+
+    [[timezone.Value]]
+        Idx  = 45
+        Name = "America/Bogota"
+        Text = "America/Bogota"
+
+    [[timezone.Value]]
+        Idx  = 46
+        Name = "America/Boise"
+        Text = "America/Boise"
+
+    [[timezone.Value]]
+        Idx  = 47
+        Name = "America/Cambridge_Bay"
+        Text = "America/Cambridge Bay"
+
+    [[timezone.Value]]
+        Idx  = 48
+        Name = "America/Campo_Grande"
+        Text = "America/Campo Grande"
+
+    [[timezone.Value]]
+        Idx  = 49
+        Name = "America/Cancun"
+        Text = "America/Cancun"
+
+    [[timezone.Value]]
+        Idx  = 50
+        Name = "America/Caracas"
+        Text = "America/Caracas"
+
+    [[timezone.Value]]
+        Idx  = 51
+        Name = "America/Cayenne"
+        Text = "America/Cayenne"
+
+    [[timezone.Value]]
+        Idx  = 52
+        Name = "America/Chicago"
+        Text = "America/Chicago"
+
+    [[timezone.Value]]
+        Idx  = 53
+        Name = "America/Chihuahua"
+        Text = "America/Chihuahua"
+
+    [[timezone.Value]]
+        Idx  = 54
+        Name = "America/Costa_Rica"
+        Text = "America/Costa Rica"
+
+    [[timezone.Value]]
+        Idx  = 55
+        Name = "America/Creston"
+        Text = "America/Creston"
+
+    [[timezone.Value]]
+        Idx  = 56
+        Name = "America/Cuiaba"
+        Text = "America/Cuiaba"
+
+    [[timezone.Value]]
+        Idx  = 57
+        Name = "America/Curacao"
+        Text = "America/Curacao"
+
+    [[timezone.Value]]
+        Idx  = 58
+        Name = "America/Danmarkshavn"
+        Text = "America/Danmarkshavn"
+
+    [[timezone.Value]]
+        Idx  = 59
+        Name = "America/Dawson"
+        Text = "America/Dawson"
+
+    [[timezone.Value]]
+        Idx  = 60
+        Name = "America/Dawson_Creek"
+        Text = "America/Dawson Creek"
+
+    [[timezone.Value]]
+        Idx  = 61
+        Name = "America/Denver"
+        Text = "America/Denver"
+
+    [[timezone.Value]]
+        Idx  = 62
+        Name = "America/Detroit"
+        Text = "America/Detroit"
+
+    [[timezone.Value]]
+        Idx  = 63
+        Name = "America/Edmonton"
+        Text = "America/Edmonton"
+
+    [[timezone.Value]]
+        Idx  = 64
+        Name = "America/Eirunepe"
+        Text = "America/Eirunepe"
+
+    [[timezone.Value]]
+        Idx  = 65
+        Name = "America/El_Salvador"
+        Text = "America/El Salvador"
+
+    [[timezone.Value]]
+        Idx  = 66
+        Name = "America/Fort_Nelson"
+        Text = "America/Fort Nelson"
+
+    [[timezone.Value]]
+        Idx  = 67
+        Name = "America/Fortaleza"
+        Text = "America/Fortaleza"
+
+    [[timezone.Value]]
+        Idx  = 68
+        Name = "America/Glace_Bay"
+        Text = "America/Glace Bay"
+
+    [[timezone.Value]]
+        Idx  = 69
+        Name = "America/Goose_Bay"
+        Text = "America/Goose Bay"
+
+    [[timezone.Value]]
+        Idx  = 70
+        Name = "America/Grand_Turk"
+        Text = "America/Grand Turk"
+
+    [[timezone.Value]]
+        Idx  = 71
+        Name = "America/Guatemala"
+        Text = "America/Guatemala"
+
+    [[timezone.Value]]
+        Idx  = 72
+        Name = "America/Guayaquil"
+        Text = "America/Guayaquil"
+
+    [[timezone.Value]]
+        Idx  = 73
+        Name = "America/Guyana"
+        Text = "America/Guyana"
+
+    [[timezone.Value]]
+        Idx  = 74
+        Name = "America/Halifax"
+        Text = "America/Halifax"
+
+    [[timezone.Value]]
+        Idx  = 75
+        Name = "America/Havana"
+        Text = "America/Havana"
+
+    [[timezone.Value]]
+        Idx  = 76
+        Name = "America/Hermosillo"
+        Text = "America/Hermosillo"
+
+    [[timezone.Value]]
+        Idx  = 77
+        Name = "America/Indiana/Indianapolis"
+        Text = "America/Indiana/Indianapolis"
+
+    [[timezone.Value]]
+        Idx  = 78
+        Name = "America/Indiana/Knox"
+        Text = "America/Indiana/Knox"
+
+    [[timezone.Value]]
+        Idx  = 79
+        Name = "America/Indiana/Marengo"
+        Text = "America/Indiana/Marengo"
+
+    [[timezone.Value]]
+        Idx  = 80
+        Name = "America/Indiana/Petersburg"
+        Text = "America/Indiana/Petersburg"
+
+    [[timezone.Value]]
+        Idx  = 81
+        Name = "America/Indiana/Tell_City"
+        Text = "America/Indiana/Tell City"
+
+    [[timezone.Value]]
+        Idx  = 82
+        Name = "America/Indiana/Vevay"
+        Text = "America/Indiana/Vevay"
+
+    [[timezone.Value]]
+        Idx  = 83
+        Name = "America/Indiana/Vincennes"
+        Text = "America/Indiana/Vincennes"
+
+    [[timezone.Value]]
+        Idx  = 84
+        Name = "America/Indiana/Winamac"
+        Text = "America/Indiana/Winamac"
+
+    [[timezone.Value]]
+        Idx  = 85
+        Name = "America/Inuvik"
+        Text = "America/Inuvik"
+
+    [[timezone.Value]]
+        Idx  = 86
+        Name = "America/Iqaluit"
+        Text = "America/Iqaluit"
+
+    [[timezone.Value]]
+        Idx  = 87
+        Name = "America/Jamaica"
+        Text = "America/Jamaica"
+
+    [[timezone.Value]]
+        Idx  = 88
+        Name = "America/Juneau"
+        Text = "America/Juneau"
+
+    [[timezone.Value]]
+        Idx  = 89
+        Name = "America/Kentucky/Louisville"
+        Text = "America/Kentucky/Louisville"
+
+    [[timezone.Value]]
+        Idx  = 90
+        Name = "America/Kentucky/Monticello"
+        Text = "America/Kentucky/Monticello"
+
+    [[timezone.Value]]
+        Idx  = 91
+        Name = "America/La_Paz"
+        Text = "America/La Paz"
+
+    [[timezone.Value]]
+        Idx  = 92
+        Name = "America/Lima"
+        Text = "America/Lima"
+
+    [[timezone.Value]]
+        Idx  = 93
+        Name = "America/Los_Angeles"
+        Text = "America/Los Angeles"
+
+    [[timezone.Value]]
+        Idx  = 94
+        Name = "America/Maceio"
+        Text = "America/Maceio"
+
+    [[timezone.Value]]
+        Idx  = 95
+        Name = "America/Managua"
+        Text = "America/Managua"
+
+    [[timezone.Value]]
+        Idx  = 96
+        Name = "America/Manaus"
+        Text = "America/Manaus"
+
+    [[timezone.Value]]
+        Idx  = 97
+        Name = "America/Martinique"
+        Text = "America/Martinique"
+
+    [[timezone.Value]]
+        Idx  = 98
+        Name = "America/Matamoros"
+        Text = "America/Matamoros"
+
+    [[timezone.Value]]
+        Idx  = 99
+        Name = "America/Mazatlan"
+        Text = "America/Mazatlan"
+
+    [[timezone.Value]]
+        Idx  = 100
+        Name = "America/Menominee"
+        Text = "America/Menominee"
+
+    [[timezone.Value]]
+        Idx  = 101
+        Name = "America/Merida"
+        Text = "America/Merida"
+
+    [[timezone.Value]]
+        Idx  = 102
+        Name = "America/Metlakatla"
+        Text = "America/Metlakatla"
+
+    [[timezone.Value]]
+        Idx  = 103
+        Name = "America/Mexico_City"
+        Text = "America/Mexico City"
+
+    [[timezone.Value]]
+        Idx  = 104
+        Name = "America/Miquelon"
+        Text = "America/Miquelon"
+
+    [[timezone.Value]]
+        Idx  = 105
+        Name = "America/Moncton"
+        Text = "America/Moncton"
+
+    [[timezone.Value]]
+        Idx  = 106
+        Name = "America/Monterrey"
+        Text = "America/Monterrey"
+
+    [[timezone.Value]]
+        Idx  = 107
+        Name = "America/Montevideo"
+        Text = "America/Montevideo"
+
+    [[timezone.Value]]
+        Idx  = 108
+        Name = "America/Nassau"
+        Text = "America/Nassau"
+
+    [[timezone.Value]]
+        Idx  = 109
+        Name = "America/New_York"
+        Text = "America/New York"
+
+    [[timezone.Value]]
+        Idx  = 110
+        Name = "America/Nipigon"
+        Text = "America/Nipigon"
+
+    [[timezone.Value]]
+        Idx  = 111
+        Name = "America/Nome"
+        Text = "America/Nome"
+
+    [[timezone.Value]]
+        Idx  = 112
+        Name = "America/Noronha"
+        Text = "America/Noronha"
+
+    [[timezone.Value]]
+        Idx  = 113
+        Name = "America/North_Dakota/Beulah"
+        Text = "America/North Dakota/Beulah"
+
+    [[timezone.Value]]
+        Idx  = 114
+        Name = "America/North_Dakota/Center"
+        Text = "America/North Dakota/Center"
+
+    [[timezone.Value]]
+        Idx  = 115
+        Name = "America/North_Dakota/New_Salem"
+        Text = "America/North Dakota/New Salem"
+
+    [[timezone.Value]]
+        Idx  = 116
+        Name = "America/Nuuk"
+        Text = "America/Nuuk"
+
+    [[timezone.Value]]
+        Idx  = 117
+        Name = "America/Ojinaga"
+        Text = "America/Ojinaga"
+
+    [[timezone.Value]]
+        Idx  = 118
+        Name = "America/Panama"
+        Text = "America/Panama"
+
+    [[timezone.Value]]
+        Idx  = 119
+        Name = "America/Pangnirtung"
+        Text = "America/Pangnirtung"
+
+    [[timezone.Value]]
+        Idx  = 120
+        Name = "America/Paramaribo"
+        Text = "America/Paramaribo"
+
+    [[timezone.Value]]
+        Idx  = 121
+        Name = "America/Phoenix"
+        Text = "America/Phoenix"
+
+    [[timezone.Value]]
+        Idx  = 122
+        Name = "America/Port-au-Prince"
+        Text = "America/Port-au-Prince"
+
+    [[timezone.Value]]
+        Idx  = 123
+        Name = "America/Port_of_Spain"
+        Text = "America/Port of Spain"
+
+    [[timezone.Value]]
+        Idx  = 124
+        Name = "America/Porto_Velho"
+        Text = "America/Porto Velho"
+
+    [[timezone.Value]]
+        Idx  = 125
+        Name = "America/Puerto_Rico"
+        Text = "America/Puerto Rico"
+
+    [[timezone.Value]]
+        Idx  = 126
+        Name = "America/Punta_Arenas"
+        Text = "America/Punta Arenas"
+
+    [[timezone.Value]]
+        Idx  = 127
+        Name = "America/Rainy_River"
+        Text = "America/Rainy River"
+
+    [[timezone.Value]]
+        Idx  = 128
+        Name = "America/Rankin_Inlet"
+        Text = "America/Rankin Inlet"
+
+    [[timezone.Value]]
+        Idx  = 129
+        Name = "America/Recife"
+        Text = "America/Recife"
+
+    [[timezone.Value]]
+        Idx  = 130
+        Name = "America/Regina"
+        Text = "America/Regina"
+
+    [[timezone.Value]]
+        Idx  = 131
+        Name = "America/Resolute"
+        Text = "America/Resolute"
+
+    [[timezone.Value]]
+        Idx  = 132
+        Name = "America/Rio_Branco"
+        Text = "America/Rio Branco"
+
+    [[timezone.Value]]
+        Idx  = 133
+        Name = "America/Santarem"
+        Text = "America/Santarem"
+
+    [[timezone.Value]]
+        Idx  = 134
+        Name = "America/Santiago"
+        Text = "America/Santiago"
+
+    [[timezone.Value]]
+        Idx  = 135
+        Name = "America/Santo_Domingo"
+        Text = "America/Santo Domingo"
+
+    [[timezone.Value]]
+        Idx  = 136
+        Name = "America/Sao_Paulo"
+        Text = "America/Sao Paulo"
+
+    [[timezone.Value]]
+        Idx  = 137
+        Name = "America/Scoresbysund"
+        Text = "America/Scoresbysund"
+
+    [[timezone.Value]]
+        Idx  = 138
+        Name = "America/Sitka"
+        Text = "America/Sitka"
+
+    [[timezone.Value]]
+        Idx  = 139
+        Name = "America/St_Johns"
+        Text = "America/St Johns"
+
+    [[timezone.Value]]
+        Idx  = 140
+        Name = "America/Swift_Current"
+        Text = "America/Swift Current"
+
+    [[timezone.Value]]
+        Idx  = 141
+        Name = "America/Tegucigalpa"
+        Text = "America/Tegucigalpa"
+
+    [[timezone.Value]]
+        Idx  = 142
+        Name = "America/Thule"
+        Text = "America/Thule"
+
+    [[timezone.Value]]
+        Idx  = 143
+        Name = "America/Thunder_Bay"
+        Text = "America/Thunder Bay"
+
+    [[timezone.Value]]
+        Idx  = 144
+        Name = "America/Tijuana"
+        Text = "America/Tijuana"
+
+    [[timezone.Value]]
+        Idx  = 145
+        Name = "America/Toronto"
+        Text = "America/Toronto"
+
+    [[timezone.Value]]
+        Idx  = 146
+        Name = "America/Vancouver"
+        Text = "America/Vancouver"
+
+    [[timezone.Value]]
+        Idx  = 147
+        Name = "America/Whitehorse"
+        Text = "America/Whitehorse"
+
+    [[timezone.Value]]
+        Idx  = 148
+        Name = "America/Winnipeg"
+        Text = "America/Winnipeg"
+
+    [[timezone.Value]]
+        Idx  = 149
+        Name = "America/Yakutat"
+        Text = "America/Yakutat"
+
+    [[timezone.Value]]
+        Idx  = 150
+        Name = "America/Yellowknife"
+        Text = "America/Yellowknife"
+
+    [[timezone.Value]]
+        Idx  = 151
+        Name = "Antarctica/Casey"
+        Text = "Antarctica/Casey"
+
+    [[timezone.Value]]
+        Idx  = 152
+        Name = "Antarctica/Davis"
+        Text = "Antarctica/Davis"
+
+    [[timezone.Value]]
+        Idx  = 153
+        Name = "Antarctica/DumontDUrville"
+        Text = "Antarctica/Dumont d'Urville"
+
+    [[timezone.Value]]
+        Idx  = 154
+        Name = "Antarctica/Macquarie"
+        Text = "Antarctica/Macquarie"
+
+    [[timezone.Value]]
+        Idx  = 155
+        Name = "Antarctica/Mawson"
+        Text = "Antarctica/Mawson"
+
+    [[timezone.Value]]
+        Idx  = 156
+        Name = "Antarctica/Palmer"
+        Text = "Antarctica/Palmer"
+
+    [[timezone.Value]]
+        Idx  = 157
+        Name = "Antarctica/Rothera"
+        Text = "Antarctica/Rothera"
+
+    [[timezone.Value]]
+        Idx  = 158
+        Name = "Antarctica/Syowa"
+        Text = "Antarctica/Syowa"
+
+    [[timezone.Value]]
+        Idx  = 159
+        Name = "Antarctica/Troll"
+        Text = "Antarctica/Troll"
+
+    [[timezone.Value]]
+        Idx  = 160
+        Name = "Antarctica/Vostok"
+        Text = "Antarctica/Vostok"
+
+    [[timezone.Value]]
+        Idx  = 161
+        Name = "Asia/Almaty"
+        Text = "Asia/Almaty"
+
+    [[timezone.Value]]
+        Idx  = 162
+        Name = "Asia/Amman"
+        Text = "Asia/Amman"
+
+    [[timezone.Value]]
+        Idx  = 163
+        Name = "Asia/Anadyr"
+        Text = "Asia/Anadyr"
+
+    [[timezone.Value]]
+        Idx  = 164
+        Name = "Asia/Aqtau"
+        Text = "Asia/Aqtau"
+
+    [[timezone.Value]]
+        Idx  = 165
+        Name = "Asia/Aqtobe"
+        Text = "Asia/Aqtöbe"
+
+    [[timezone.Value]]
+        Idx  = 166
+        Name = "Asia/Ashgabat"
+        Text = "Asia/Ashgabat"
+
+    [[timezone.Value]]
+        Idx  = 167
+        Name = "Asia/Atyrau"
+        Text = "Asia/Atyraū"
+
+    [[timezone.Value]]
+        Idx  = 168
+        Name = "Asia/Baghdad"
+        Text = "Asia/Baghdad"
+
+    [[timezone.Value]]
+        Idx  = 169
+        Name = "Asia/Baku"
+        Text = "Asia/Baku"
+
+    [[timezone.Value]]
+        Idx  = 170
+        Name = "Asia/Bangkok"
+        Text = "Asia/Bangkok"
+
+    [[timezone.Value]]
+        Idx  = 171
+        Name = "Asia/Barnaul"
+        Text = "Asia/Barnaul"
+
+    [[timezone.Value]]
+        Idx  = 172
+        Name = "Asia/Beirut"
+        Text = "Asia/Beirut"
+
+    [[timezone.Value]]
+        Idx  = 173
+        Name = "Asia/Bishkek"
+        Text = "Asia/Bishkek"
+
+    [[timezone.Value]]
+        Idx  = 174
+        Name = "Asia/Brunei"
+        Text = "Asia/Brunei"
+
+    [[timezone.Value]]
+        Idx  = 175
+        Name = "Asia/Chita"
+        Text = "Asia/Chita"
+
+    [[timezone.Value]]
+        Idx  = 176
+        Name = "Asia/Choibalsan"
+        Text = "Asia/Choibalsan"
+
+    [[timezone.Value]]
+        Idx  = 177
+        Name = "Asia/Colombo"
+        Text = "Asia/Colombo"
+
+    [[timezone.Value]]
+        Idx  = 178
+        Name = "Asia/Damascus"
+        Text = "Asia/Damascus"
+
+    [[timezone.Value]]
+        Idx  = 179
+        Name = "Asia/Dhaka"
+        Text = "Asia/Dhaka"
+
+    [[timezone.Value]]
+        Idx  = 180
+        Name = "Asia/Dili"
+        Text = "Asia/Dili"
+
+    [[timezone.Value]]
+        Idx  = 181
+        Name = "Asia/Dubai"
+        Text = "Asia/Dubai"
+
+    [[timezone.Value]]
+        Idx  = 182
+        Name = "Asia/Dushanbe"
+        Text = "Asia/Dushanbe"
+
+    [[timezone.Value]]
+        Idx  = 183
+        Name = "Asia/Famagusta"
+        Text = "Asia/Famagusta"
+
+    [[timezone.Value]]
+        Idx  = 184
+        Name = "Asia/Gaza"
+        Text = "Asia/Gaza"
+
+    [[timezone.Value]]
+        Idx  = 185
+        Name = "Asia/Hebron"
+        Text = "Asia/Hebron"
+
+    [[timezone.Value]]
+        Idx  = 186
+        Name = "Asia/Ho_Chi_Minh"
+        Text = "Asia/Ho Chi Minh"
+
+    [[timezone.Value]]
+        Idx  = 187
+        Name = "Asia/Hong_Kong"
+        Text = "Asia/Hong Kong"
+
+    [[timezone.Value]]
+        Idx  = 188
+        Name = "Asia/Hovd"
+        Text = "Asia/Hovd"
+
+    [[timezone.Value]]
+        Idx  = 189
+        Name = "Asia/Irkutsk"
+        Text = "Asia/Irkutsk"
+
+    [[timezone.Value]]
+        Idx  = 190
+        Name = "Asia/Jakarta"
+        Text = "Asia/Jakarta"
+
+    [[timezone.Value]]
+        Idx  = 191
+        Name = "Asia/Jayapura"
+        Text = "Asia/Jayapura"
+
+    [[timezone.Value]]
+        Idx  = 192
+        Name = "Asia/Jerusalem"
+        Text = "Asia/Jerusalem"
+
+    [[timezone.Value]]
+        Idx  = 193
+        Name = "Asia/Kabul"
+        Text = "Asia/Kabul"
+
+    [[timezone.Value]]
+        Idx  = 194
+        Name = "Asia/Kamchatka"
+        Text = "Asia/Kamchatka"
+
+    [[timezone.Value]]
+        Idx  = 195
+        Name = "Asia/Karachi"
+        Text = "Asia/Karachi"
+
+    [[timezone.Value]]
+        Idx  = 196
+        Name = "Asia/Kathmandu"
+        Text = "Asia/Kathmandu"
+
+    [[timezone.Value]]
+        Idx  = 197
+        Name = "Asia/Khandyga"
+        Text = "Asia/Khandyga"
+
+    [[timezone.Value]]
+        Idx  = 198
+        Name = "Asia/Kolkata"
+        Text = "Asia/Kolkata"
+
+    [[timezone.Value]]
+        Idx  = 199
+        Name = "Asia/Krasnoyarsk"
+        Text = "Asia/Krasnoyarsk"
+
+    [[timezone.Value]]
+        Idx  = 200
+        Name = "Asia/Kuala_Lumpur"
+        Text = "Asia/Kuala Lumpur"
+
+    [[timezone.Value]]
+        Idx  = 201
+        Name = "Asia/Kuching"
+        Text = "Asia/Kuching"
+
+    [[timezone.Value]]
+        Idx  = 202
+        Name = "Asia/Macau"
+        Text = "Asia/Macau"
+
+    [[timezone.Value]]
+        Idx  = 203
+        Name = "Asia/Magadan"
+        Text = "Asia/Magadan"
+
+    [[timezone.Value]]
+        Idx  = 204
+        Name = "Asia/Makassar"
+        Text = "Asia/Makassar"
+
+    [[timezone.Value]]
+        Idx  = 205
+        Name = "Asia/Manila"
+        Text = "Asia/Manila"
+
+    [[timezone.Value]]
+        Idx  = 206
+        Name = "Asia/Nicosia"
+        Text = "Asia/Nicosia"
+
+    [[timezone.Value]]
+        Idx  = 207
+        Name = "Asia/Novokuznetsk"
+        Text = "Asia/Novokuznetsk"
+
+    [[timezone.Value]]
+        Idx  = 208
+        Name = "Asia/Novosibirsk"
+        Text = "Asia/Novosibirsk"
+
+    [[timezone.Value]]
+        Idx  = 209
+        Name = "Asia/Omsk"
+        Text = "Asia/Omsk"
+
+    [[timezone.Value]]
+        Idx  = 210
+        Name = "Asia/Oral"
+        Text = "Asia/Oral"
+
+    [[timezone.Value]]
+        Idx  = 211
+        Name = "Asia/Pontianak"
+        Text = "Asia/Pontianak"
+
+    [[timezone.Value]]
+        Idx  = 212
+        Name = "Asia/Pyongyang"
+        Text = "Asia/Pyongyang"
+
+    [[timezone.Value]]
+        Idx  = 213
+        Name = "Asia/Qatar"
+        Text = "Asia/Qatar"
+
+    [[timezone.Value]]
+        Idx  = 214
+        Name = "Asia/Qostanay"
+        Text = "Asia/Qostanay"
+
+    [[timezone.Value]]
+        Idx  = 215
+        Name = "Asia/Qyzylorda"
+        Text = "Asia/Qyzylorda"
+
+    [[timezone.Value]]
+        Idx  = 216
+        Name = "Asia/Riyadh"
+        Text = "Asia/Riyadh"
+
+    [[timezone.Value]]
+        Idx  = 217
+        Name = "Asia/Sakhalin"
+        Text = "Asia/Sakhalin"
+
+    [[timezone.Value]]
+        Idx  = 218
+        Name = "Asia/Samarkand"
+        Text = "Asia/Samarkand"
+
+    [[timezone.Value]]
+        Idx  = 219
+        Name = "Asia/Seoul"
+        Text = "Asia/Seoul"
+
+    [[timezone.Value]]
+        Idx  = 220
+        Name = "Asia/Shanghai"
+        Text = "Asia/Shanghai"
+
+    [[timezone.Value]]
+        Idx  = 221
+        Name = "Asia/Singapore"
+        Text = "Asia/Singapore"
+
+    [[timezone.Value]]
+        Idx  = 222
+        Name = "Asia/Srednekolymsk"
+        Text = "Asia/Srednekolymsk"
+
+    [[timezone.Value]]
+        Idx  = 223
+        Name = "Asia/Taipei"
+        Text = "Asia/Taipei"
+
+    [[timezone.Value]]
+        Idx  = 224
+        Name = "Asia/Tashkent"
+        Text = "Asia/Tashkent"
+
+    [[timezone.Value]]
+        Idx  = 225
+        Name = "Asia/Tbilisi"
+        Text = "Asia/Tbilisi"
+
+    [[timezone.Value]]
+        Idx  = 226
+        Name = "Asia/Tehran"
+        Text = "Asia/Tehran"
+
+    [[timezone.Value]]
+        Idx  = 227
+        Name = "Asia/Thimphu"
+        Text = "Asia/Thimphu"
+
+    [[timezone.Value]]
+        Idx  = 228
+        Name = "Asia/Tokyo"
+        Text = "Asia/Tokyo"
+
+    [[timezone.Value]]
+        Idx  = 229
+        Name = "Asia/Tomsk"
+        Text = "Asia/Tomsk"
+
+    [[timezone.Value]]
+        Idx  = 230
+        Name = "Asia/Ulaanbaatar"
+        Text = "Asia/Ulaanbaatar"
+
+    [[timezone.Value]]
+        Idx  = 231
+        Name = "Asia/Urumqi"
+        Text = "Asia/Urumqi"
+
+    [[timezone.Value]]
+        Idx  = 232
+        Name = "Asia/Ust-Nera"
+        Text = "Asia/Ust-Nera"
+
+    [[timezone.Value]]
+        Idx  = 233
+        Name = "Asia/Vladivostok"
+        Text = "Asia/Vladivostok"
+
+    [[timezone.Value]]
+        Idx  = 234
+        Name = "Asia/Yakutsk"
+        Text = "Asia/Yakutsk"
+
+    [[timezone.Value]]
+        Idx  = 235
+        Name = "Asia/Yangon"
+        Text = "Asia/Yangon"
+
+    [[timezone.Value]]
+        Idx  = 236
+        Name = "Asia/Yekaterinburg"
+        Text = "Asia/Yekaterinburg"
+
+    [[timezone.Value]]
+        Idx  = 237
+        Name = "Asia/Yerevan"
+        Text = "Asia/Yerevan"
+
+    [[timezone.Value]]
+        Idx  = 238
+        Name = "Atlantic/Azores"
+        Text = "Atlantic/Azores"
+
+    [[timezone.Value]]
+        Idx  = 239
+        Name = "Atlantic/Bermuda"
+        Text = "Atlantic/Bermuda"
+
+    [[timezone.Value]]
+        Idx  = 240
+        Name = "Atlantic/Canary"
+        Text = "Atlantic/Canary"
+
+    [[timezone.Value]]
+        Idx  = 241
+        Name = "Atlantic/Cape_Verde"
+        Text = "Atlantic/Cape Verde"
+
+    [[timezone.Value]]
+        Idx  = 242
+        Name = "Atlantic/Faroe"
+        Text = "Atlantic/Faroe"
+
+    [[timezone.Value]]
+        Idx  = 243
+        Name = "Atlantic/Madeira"
+        Text = "Atlantic/Madeira"
+
+    [[timezone.Value]]
+        Idx  = 244
+        Name = "Atlantic/Reykjavik"
+        Text = "Atlantic/Reykjavik"
+
+    [[timezone.Value]]
+        Idx  = 245
+        Name = "Atlantic/South_Georgia"
+        Text = "Atlantic/South Georgia"
+
+    [[timezone.Value]]
+        Idx  = 246
+        Name = "Atlantic/Stanley"
+        Text = "Atlantic/Stanley"
+
+    [[timezone.Value]]
+        Idx  = 247
+        Name = "Australia/Adelaide"
+        Text = "Australia/Adelaide"
+
+    [[timezone.Value]]
+        Idx  = 248
+        Name = "Australia/Brisbane"
+        Text = "Australia/Brisbane"
+
+    [[timezone.Value]]
+        Idx  = 249
+        Name = "Australia/Broken_Hill"
+        Text = "Australia/Broken Hill"
+
+    [[timezone.Value]]
+        Idx  = 250
+        Name = "Australia/Darwin"
+        Text = "Australia/Darwin"
+
+    [[timezone.Value]]
+        Idx  = 251
+        Name = "Australia/Eucla"
+        Text = "Australia/Eucla"
+
+    [[timezone.Value]]
+        Idx  = 252
+        Name = "Australia/Hobart"
+        Text = "Australia/Hobart"
+
+    [[timezone.Value]]
+        Idx  = 253
+        Name = "Australia/Lindeman"
+        Text = "Australia/Lindeman"
+
+    [[timezone.Value]]
+        Idx  = 254
+        Name = "Australia/Lord_Howe"
+        Text = "Australia/Lord Howe"
+
+    [[timezone.Value]]
+        Idx  = 255
+        Name = "Australia/Melbourne"
+        Text = "Australia/Melbourne"
+
+    [[timezone.Value]]
+        Idx  = 256
+        Name = "Australia/Perth"
+        Text = "Australia/Perth"
+
+    [[timezone.Value]]
+        Idx  = 257
+        Name = "Australia/Sydney"
+        Text = "Australia/Sydney"
+
+    [[timezone.Value]]
+        Idx  = 258
+        Name = "Europe/Amsterdam"
+        Text = "Europe/Amsterdam"
+
+    [[timezone.Value]]
+        Idx  = 259
+        Name = "Europe/Andorra"
+        Text = "Europe/Andorra"
+
+    [[timezone.Value]]
+        Idx  = 260
+        Name = "Europe/Astrakhan"
+        Text = "Europe/Astrakhan"
+
+    [[timezone.Value]]
+        Idx  = 261
+        Name = "Europe/Athens"
+        Text = "Europe/Athens"
+
+    [[timezone.Value]]
+        Idx  = 262
+        Name = "Europe/Belgrade"
+        Text = "Europe/Belgrade"
+
+    [[timezone.Value]]
+        Idx  = 263
+        Name = "Europe/Berlin"
+        Text = "Europe/Berlin"
+
+    [[timezone.Value]]
+        Idx  = 264
+        Name = "Europe/Brussels"
+        Text = "Europe/Brussels"
+
+    [[timezone.Value]]
+        Idx  = 265
+        Name = "Europe/Bucharest"
+        Text = "Europe/Bucharest"
+
+    [[timezone.Value]]
+        Idx  = 266
+        Name = "Europe/Budapest"
+        Text = "Europe/Budapest"
+
+    [[timezone.Value]]
+        Idx  = 267
+        Name = "Europe/Chisinau"
+        Text = "Europe/Chisinau"
+
+    [[timezone.Value]]
+        Idx  = 268
+        Name = "Europe/Copenhagen"
+        Text = "Europe/Copenhagen"
+
+    [[timezone.Value]]
+        Idx  = 269
+        Name = "Europe/Dublin"
+        Text = "Europe/Dublin"
+
+    [[timezone.Value]]
+        Idx  = 270
+        Name = "Europe/Gibraltar"
+        Text = "Europe/Gibraltar"
+
+    [[timezone.Value]]
+        Idx  = 271
+        Name = "Europe/Helsinki"
+        Text = "Europe/Helsinki"
+
+    [[timezone.Value]]
+        Idx  = 272
+        Name = "Europe/Istanbul"
+        Text = "Europe/Istanbul"
+
+    [[timezone.Value]]
+        Idx  = 273
+        Name = "Europe/Kaliningrad"
+        Text = "Europe/Kaliningrad"
+
+    [[timezone.Value]]
+        Idx  = 274
+        Name = "Europe/Kiev"
+        Text = "Europe/Kiev"
+
+    [[timezone.Value]]
+        Idx  = 275
+        Name = "Europe/Kirov"
+        Text = "Europe/Kirov"
+
+    [[timezone.Value]]
+        Idx  = 276
+        Name = "Europe/Lisbon"
+        Text = "Europe/Lisbon"
+
+    [[timezone.Value]]
+        Idx  = 277
+        Name = "Europe/London"
+        Text = "Europe/London"
+
+    [[timezone.Value]]
+        Idx  = 278
+        Name = "Europe/Luxembourg"
+        Text = "Europe/Luxembourg"
+
+    [[timezone.Value]]
+        Idx  = 279
+        Name = "Europe/Madrid"
+        Text = "Europe/Madrid"
+
+    [[timezone.Value]]
+        Idx  = 280
+        Name = "Europe/Malta"
+        Text = "Europe/Malta"
+
+    [[timezone.Value]]
+        Idx  = 281
+        Name = "Europe/Minsk"
+        Text = "Europe/Minsk"
+
+    [[timezone.Value]]
+        Idx  = 282
+        Name = "Europe/Monaco"
+        Text = "Europe/Monaco"
+
+    [[timezone.Value]]
+        Idx  = 283
+        Name = "Europe/Moscow"
+        Text = "Europe/Moscow"
+
+    [[timezone.Value]]
+        Idx  = 284
+        Name = "Europe/Oslo"
+        Text = "Europe/Oslo"
+
+    [[timezone.Value]]
+        Idx  = 285
+        Name = "Europe/Paris"
+        Text = "Europe/Paris"
+
+    [[timezone.Value]]
+        Idx  = 286
+        Name = "Europe/Prague"
+        Text = "Europe/Prague"
+
+    [[timezone.Value]]
+        Idx  = 287
+        Name = "Europe/Riga"
+        Text = "Europe/Riga"
+
+    [[timezone.Value]]
+        Idx  = 288
+        Name = "Europe/Rome"
+        Text = "Europe/Rome"
+
+    [[timezone.Value]]
+        Idx  = 289
+        Name = "Europe/Samara"
+        Text = "Europe/Samara"
+
+    [[timezone.Value]]
+        Idx  = 290
+        Name = "Europe/Saratov"
+        Text = "Europe/Saratov"
+
+    [[timezone.Value]]
+        Idx  = 291
+        Name = "Europe/Simferopol"
+        Text = "Europe/Simferopol"
+
+    [[timezone.Value]]
+        Idx  = 292
+        Name = "Europe/Sofia"
+        Text = "Europe/Sofia"
+
+    [[timezone.Value]]
+        Idx  = 293
+        Name = "Europe/Stockholm"
+        Text = "Europe/Stockholm"
+
+    [[timezone.Value]]
+        Idx  = 294
+        Name = "Europe/Tallinn"
+        Text = "Europe/Tallinn"
+
+    [[timezone.Value]]
+        Idx  = 295
+        Name = "Europe/Tirane"
+        Text = "Europe/Tirane"
+
+    [[timezone.Value]]
+        Idx  = 296
+        Name = "Europe/Ulyanovsk"
+        Text = "Europe/Ulyanovsk"
+
+    [[timezone.Value]]
+        Idx  = 297
+        Name = "Europe/Uzhgorod"
+        Text = "Europe/Uzhgorod"
+
+    [[timezone.Value]]
+        Idx  = 298
+        Name = "Europe/Vienna"
+        Text = "Europe/Vienna"
+
+    [[timezone.Value]]
+        Idx  = 299
+        Name = "Europe/Vilnius"
+        Text = "Europe/Vilnius"
+
+    [[timezone.Value]]
+        Idx  = 300
+        Name = "Europe/Volgograd"
+        Text = "Europe/Volgograd"
+
+    [[timezone.Value]]
+        Idx  = 301
+        Name = "Europe/Warsaw"
+        Text = "Europe/Warsaw"
+
+    [[timezone.Value]]
+        Idx  = 302
+        Name = "Europe/Zaporozhye"
+        Text = "Europe/Zaporozhye"
+
+    [[timezone.Value]]
+        Idx  = 303
+        Name = "Europe/Zurich"
+        Text = "Europe/Zurich"
+
+    [[timezone.Value]]
+        Idx  = 304
+        Name = "Indian/Chagos"
+        Text = "Indian/Chagos"
+
+    [[timezone.Value]]
+        Idx  = 305
+        Name = "Indian/Christmas"
+        Text = "Indian/Christmas"
+
+    [[timezone.Value]]
+        Idx  = 306
+        Name = "Indian/Cocos"
+        Text = "Indian/Cocos"
+
+    [[timezone.Value]]
+        Idx  = 307
+        Name = "Indian/Kerguelen"
+        Text = "Indian/Kerguelen"
+
+    [[timezone.Value]]
+        Idx  = 308
+        Name = "Indian/Mahe"
+        Text = "Indian/Mahe"
+
+    [[timezone.Value]]
+        Idx  = 309
+        Name = "Indian/Maldives"
+        Text = "Indian/Maldives"
+
+    [[timezone.Value]]
+        Idx  = 310
+        Name = "Indian/Mauritius"
+        Text = "Indian/Mauritius"
+
+    [[timezone.Value]]
+        Idx  = 311
+        Name = "Indian/Reunion"
+        Text = "Indian/Réunion"
+
+    [[timezone.Value]]
+        Idx  = 312
+        Name = "Pacific/Apia"
+        Text = "Pacific/Apia"
+
+    [[timezone.Value]]
+        Idx  = 313
+        Name = "Pacific/Auckland"
+        Text = "Pacific/Auckland"
+
+    [[timezone.Value]]
+        Idx  = 314
+        Name = "Pacific/Bougainville"
+        Text = "Pacific/Bougainville"
+
+    [[timezone.Value]]
+        Idx  = 315
+        Name = "Pacific/Chatham"
+        Text = "Pacific/Chatham"
+
+    [[timezone.Value]]
+        Idx  = 316
+        Name = "Pacific/Chuuk"
+        Text = "Pacific/Chuuk"
+
+    [[timezone.Value]]
+        Idx  = 317
+        Name = "Pacific/Easter"
+        Text = "Pacific/Easter"
+
+    [[timezone.Value]]
+        Idx  = 318
+        Name = "Pacific/Efate"
+        Text = "Pacific/Efate"
+
+    [[timezone.Value]]
+        Idx  = 319
+        Name = "Pacific/Enderbury"
+        Text = "Pacific/Enderbury"
+
+    [[timezone.Value]]
+        Idx  = 320
+        Name = "Pacific/Fakaofo"
+        Text = "Pacific/Fakaofo"
+
+    [[timezone.Value]]
+        Idx  = 321
+        Name = "Pacific/Fiji"
+        Text = "Pacific/Fiji"
+
+    [[timezone.Value]]
+        Idx  = 322
+        Name = "Pacific/Funafuti"
+        Text = "Pacific/Funafuti"
+
+    [[timezone.Value]]
+        Idx  = 323
+        Name = "Pacific/Galapagos"
+        Text = "Pacific/Galápagos"
+
+    [[timezone.Value]]
+        Idx  = 324
+        Name = "Pacific/Gambier"
+        Text = "Pacific/Gambier"
+
+    [[timezone.Value]]
+        Idx  = 325
+        Name = "Pacific/Guadalcanal"
+        Text = "Pacific/Guadalcanal"
+
+    [[timezone.Value]]
+        Idx  = 326
+        Name = "Pacific/Guam"
+        Text = "Pacific/Guam"
+
+    [[timezone.Value]]
+        Idx  = 327
+        Name = "Pacific/Honolulu"
+        Text = "Pacific/Honolulu"
+
+    [[timezone.Value]]
+        Idx  = 328
+        Name = "Pacific/Kiritimati"
+        Text = "Pacific/Kiritimati"
+
+    [[timezone.Value]]
+        Idx  = 329
+        Name = "Pacific/Kosrae"
+        Text = "Pacific/Kosrae"
+
+    [[timezone.Value]]
+        Idx  = 330
+        Name = "Pacific/Kwajalein"
+        Text = "Pacific/Kwajalein"
+
+    [[timezone.Value]]
+        Idx  = 331
+        Name = "Pacific/Majuro"
+        Text = "Pacific/Majuro"
+
+    [[timezone.Value]]
+        Idx  = 332
+        Name = "Pacific/Marquesas"
+        Text = "Pacific/Marquesas"
+
+    [[timezone.Value]]
+        Idx  = 333
+        Name = "Pacific/Nauru"
+        Text = "Pacific/Nauru"
+
+    [[timezone.Value]]
+        Idx  = 334
+        Name = "Pacific/Niue"
+        Text = "Pacific/Niue"
+
+    [[timezone.Value]]
+        Idx  = 335
+        Name = "Pacific/Norfolk"
+        Text = "Pacific/Norfolk"
+
+    [[timezone.Value]]
+        Idx  = 336
+        Name = "Pacific/Noumea"
+        Text = "Pacific/Noumea"
+
+    [[timezone.Value]]
+        Idx  = 337
+        Name = "Pacific/Pago_Pago"
+        Text = "Pacific/Pago Pago"
+
+    [[timezone.Value]]
+        Idx  = 338
+        Name = "Pacific/Palau"
+        Text = "Pacific/Palau"
+
+    [[timezone.Value]]
+        Idx  = 339
+        Name = "Pacific/Pitcairn"
+        Text = "Pacific/Pitcairn"
+
+    [[timezone.Value]]
+        Idx  = 340
+        Name = "Pacific/Pohnpei"
+        Text = "Pacific/Pohnpei"
+
+    [[timezone.Value]]
+        Idx  = 341
+        Name = "Pacific/Port_Moresby"
+        Text = "Pacific/Port Moresby"
+
+    [[timezone.Value]]
+        Idx  = 342
+        Name = "Pacific/Rarotonga"
+        Text = "Pacific/Rarotonga"
+
+    [[timezone.Value]]
+        Idx  = 343
+        Name = "Pacific/Tahiti"
+        Text = "Pacific/Tahiti"
+
+    [[timezone.Value]]
+        Idx  = 344
+        Name = "Pacific/Tarawa"
+        Text = "Pacific/Tarawa"
+
+    [[timezone.Value]]
+        Idx  = 345
+        Name = "Pacific/Tongatapu"
+        Text = "Pacific/Tongatapu"
+
+    [[timezone.Value]]
+        Idx  = 346
+        Name = "Pacific/Wake"
+        Text = "Pacific/Wake"
+
+    [[timezone.Value]]
+        Idx  = 347
+        Name = "Pacific/Wallis"
+        Text = "Pacific/Wallis"

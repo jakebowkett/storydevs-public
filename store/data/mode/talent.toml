@@ -1,0 +1,7 @@
+
+Name = "talent"
+Title = "Talent Database"
+BrowseName = "Results"
+ResourceName = "Profile"
+ResourcePlural = "Profiles"
+ResourceColumn = "Profile"

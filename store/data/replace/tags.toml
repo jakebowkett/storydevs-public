@@ -1,0 +1,8 @@
+
+[tags]
+
+    Name = "tag"
+    Type = "tagger"
+    Optional = true
+    Add = 5
+    Max = 32

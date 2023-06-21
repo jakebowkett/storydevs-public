@@ -1,0 +1,11 @@
+
+Name = "persona_success"
+Title = "Success"
+Class = "success"
+Msg = "Your new persona has been successfully created."
+
+[[Button]]
+
+    Text = "Okay"
+    Icon = "available"
+    Dismiss = true

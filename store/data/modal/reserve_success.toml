@@ -1,0 +1,11 @@
+
+Name = "reserve_success"
+Title = "Success"
+Class = "success"
+Msg = "Your handle reservation has been confirmed. You will receive an email with instructions on how to redeem it when the site launches."
+
+[[Button]]
+
+    Text = "Okay"
+    Icon = "available"
+    Dismiss = true

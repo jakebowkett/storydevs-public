@@ -1,0 +1,30 @@
+
+# [[mediums]]
+
+#     Name = "storydevs"
+#     Text = "StoryDevs PM"
+#     Icon = "communication/storydevs"
+
+[[mediums]]
+
+    Name = "email"
+    Text = "Email"
+    Icon = "communication/email"
+
+[[mediums]]
+
+    Name = "im"
+    Text = "Instant Messaging"
+    Icon = "communication/im"
+
+[[mediums]]
+
+    Name = "call"
+    Text = "Call"
+    Icon = "communication/call"
+
+[[mediums]]
+
+    Name = "meetup"
+    Text = "Meet-Up"
+    Icon = "communication/meetup"

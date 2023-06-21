@@ -1,0 +1,83 @@
+
+.col_head {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 3rem;
+    padding-left: 3rem;
+    margin-left: -3rem;
+    z-index: 15;
+    position: relative;
+    
+    flex: 0 0 3.5rem;
+}
+.col_head.hidden {
+    display: none !important;
+}
+#search .col_head {
+    justify-content: space-between;
+}
+.col_head .name {
+    display: flex;
+    align-items: center;
+}
+.col_head .logo {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 2.2rem;
+}
+.col_head .logo img {
+    width:  32px;
+    height: 32px;
+    margin-left: -0.3rem;
+}
+.col_head h2 {
+    font-size: 1.5rem;
+    font-size: 0.95rem;
+    letter-spacing: 0.05rem;
+    font-family: var(--sans);
+    text-transform: uppercase;
+    font-style: normal;
+}
+.scroll.initialised .col_head {
+    /*right: calc( var(--scroll-offset) - var(--browser-scrollbar-width) - 1px );*/
+}
+
+.col_inner > .empty {
+    font-family: var(--sans);
+    font-size: 1.5rem;
+    color: #4a4a4a;
+    text-align: center;
+    margin-top: 4rem;
+}
+
+#col_num {
+    margin-top: 3rem;
+    margin-right: 1px;
+    display: flex;
+}
+#col_num .btn {
+    height: 3.25rem;
+    flex: 0 0 50%;
+    box-sizing: border-box;
+    border: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-top:    1px solid #606060;
+    border-bottom: 1px solid #606060;
+}
+#col_num .btn:first-child {
+    border-right:  1px solid #606060;
+}
+#col_num .btn.selected {
+    background-color: var(--sidebarBtnSelectedBg);
+    color: var(--sidebarBtnSelectedCol);
+}
+#col_num_label {
+    color: #aaa;
+    margin-top: 0.4rem;
+    display: flex;
+    justify-content: center;
+}

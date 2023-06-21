@@ -1,0 +1,101 @@
+
+[time]
+
+    Name = "time"
+    Type = "dropdown"
+
+    [[time.Value]]
+        Name = "12am"
+        Text = "12am"
+
+    [[time.Value]]
+        Name = "1am"
+        Text = "1am"
+
+    [[time.Value]]
+        Name = "2am"
+        Text = "2am"
+
+    [[time.Value]]
+        Name = "3am"
+        Text = "3am"
+
+    [[time.Value]]
+        Name = "4am"
+        Text = "4am"
+
+    [[time.Value]]
+        Name = "5am"
+        Text = "5am"
+
+    [[time.Value]]
+        Name = "6am"
+        Text = "6am"
+
+    [[time.Value]]
+        Name = "7am"
+        Text = "7am"
+
+    [[time.Value]]
+        Name = "8am"
+        Text = "8am"
+
+    [[time.Value]]
+        Name = "9am"
+        Text = "9am"
+
+    [[time.Value]]
+        Name = "10am"
+        Text = "10am"
+
+    [[time.Value]]
+        Name = "11am"
+        Text = "11am"
+
+    [[time.Value]]
+        Name = "12pm"
+        Text = "12pm"
+
+    [[time.Value]]
+        Name = "1pm"
+        Text = "1pm"
+
+    [[time.Value]]
+        Name = "2pm"
+        Text = "2pm"
+
+    [[time.Value]]
+        Name = "3pm"
+        Text = "3pm"
+
+    [[time.Value]]
+        Name = "4pm"
+        Text = "4pm"
+
+    [[time.Value]]
+        Name = "5pm"
+        Text = "5pm"
+
+    [[time.Value]]
+        Name = "6pm"
+        Text = "6pm"
+
+    [[time.Value]]
+        Name = "7pm"
+        Text = "7pm"
+
+    [[time.Value]]
+        Name = "8pm"
+        Text = "8pm"
+
+    [[time.Value]]
+        Name = "9pm"
+        Text = "9pm"
+
+    [[time.Value]]
+        Name = "10pm"
+        Text = "10pm"
+
+    [[time.Value]]
+        Name = "11pm"
+        Text = "11pm"

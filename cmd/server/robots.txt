@@ -1,0 +1,5 @@
+user-agent: *
+disallow: /register/
+disallow: /reserve/
+disallow: /mailing/
+disallow: /account

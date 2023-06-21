@@ -1,0 +1,52 @@
+
+<h2>{{.Title}}</h2>
+<div class="inner">
+    <div class="scroll">
+        {{template "inner" .}}
+    </div>
+</div>
+<div id="modal_hidden">
+    {{template "inner" .}}
+</div>
+
+{{define "inner"}}
+    <form
+        {{if .Class -}}
+            class="{{.Class}}"
+        {{end -}}
+    >
+        {{with .Msg -}}
+            <p>{{hyphen .}}</p>
+        {{end -}}
+        {{template "fields" squash .Field false .IsAdmin 0 0}}
+        <div class="footer">
+            <div class="errors error_general"></div>
+            {{range .Button}}
+                <button
+                    class="
+                        btn
+                        submit
+                        {{if .Dangerous -}}
+                            dangerous
+                        {{end -}}
+                    "
+                    data-action="
+                        {{.Actions}}
+                    "
+                    {{with .Dest -}}
+                        data-dest="{{.}}"
+                    {{end -}}
+                    {{with .Callback -}}
+                        data-callback="{{.}}"
+                    {{end -}}
+                    {{if not .Submit}}
+                        type="button"
+                    {{end -}}
+                >
+                    <span class="text">{{.Text}}</span>
+                    <span class="icon">{{.Icon}}</span>
+                </button>
+            {{end}}
+        </div>
+    </form>
+{{end}}

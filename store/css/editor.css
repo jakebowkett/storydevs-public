@@ -1,0 +1,422 @@
+
+#editor_header {
+    font-size: 1.7rem;
+    font-style: normal;
+    margin-top: 1.5rem !important;
+    text-align: left !important;
+}
+
+#editor_footer {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+@media (hover: none), (max-width: 480px) {
+    #editor_header,
+    #editor_footer {
+        padding: 0 1rem;
+        box-sizing: border-box;
+    }
+}
+
+.ed {
+    display: flex;
+    align-items: flex-start;
+    position: relative;
+}
+
+
+.ed .tools {
+    flex: 0 0 var(--btn-height);
+    z-index: 1;
+    position: relative;
+}
+.ed .btn {
+    height: var(--btn-height);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 0;
+    cursor: pointer;
+    box-shadow: none;
+    border-radius: 0;
+}
+.ed .btn svg {
+    pointer-events: none;
+}
+.ed .btn.on,
+body.hover .ed .btn.on:not(.selected):hover {
+    background-color: var(--btn-hover-bg);
+    color: #fff;
+}
+.ed .btn.on path,
+.ed .btn.on rect,
+.ed .btn.on circle,
+.ed .btn.on ellipse,
+.ed .btn.on line,
+.ed .btn.on polyline,
+.ed .btn.on polygon {
+    fill: #fff;
+}
+
+/*
+    Without this container having its overflow set to
+    hidden, the canvas following you as you scroll would
+    cause infinite scrolling.
+    
+    We can't set overflow:hidden; on .ed because that
+    will cause .ed to be the nearest scrolling ancestor
+    to .touch, screwing with its position:sticky;
+*/
+.ed .canvas-container {
+    overflow: hidden;
+    position: absolute;
+    top:    0;
+    bottom: 0;
+    left:   var(--btn-height);
+    right:  0;
+    z-index: 3;
+    
+}
+.ed .bg,
+.ed > canvas {
+    position: absolute;
+    top:    0;
+    bottom: 0;
+    left:   var(--btn-height);
+    right:  0;
+    pointer-events: none !important;
+}
+.ed .bg {
+    padding: 1.5rem;
+    background-color: var(--tf-bg);
+    z-index: 2;
+}
+.ed .bg p {
+    color: var(--tf-placeholder);
+    font-size: var(--editor-p-size);
+    margin: 0.75rem 0;
+}
+.ed .brd {
+    z-index: 4;
+    position: absolute;
+    bottom: 0;
+    left:   var(--btn-height);
+    right:  0;
+    border-bottom: var(--tf-brd-width) solid var(--tf-brd-col);
+}
+.ed > canvas {
+    z-index: 3;
+}
+
+#link_editor {
+    width: 26rem;
+    margin-top: 0.5rem;
+    background-color: #3a3a3a;
+    color: #b8b8b8;
+    position: absolute;
+    padding: 1rem;
+    z-index: 5;
+    box-shadow: 0 0 0.3rem rgba(0, 0, 0, 1);
+    display: none;
+}
+#link_editor > div {
+    box-sizing: border-box;
+    width: 100%;
+    display: flex;
+    box-shadow: 0 0.1px 0.05rem rgba(0, 0, 0, 0.5);
+}
+#link_editor.visible {
+    display: flex;
+}
+#link_editor input {
+    flex: 1 1 100%;
+    width: auto;
+    color: #b8b8b8;
+    background-color: #1a1a1a !important;
+    padding-right: 0.8rem;
+    box-sizing: border-box;
+}
+#link_editor .btn {
+    background-color: #404040;
+    box-shadow: none !important;
+    border-left: 0;
+    min-width: 3.6rem;
+    max-width: 3.6rem;
+    border-right: 2px solid #333333;
+    border-radius: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: none;
+}
+#link_editor .btn:last-child {
+    border-right: 0;
+}
+body.hover #link_editor .btn:not(.selected):hover {
+    background-color: #505050;
+}
+
+.ed .input {
+    flex: 1 1 100%;
+    color: #b8b8b8;
+    padding: 1.5rem;
+    font-size: var(--editor-p-size);
+    font-family: var(--editor-p-family);
+    min-height: 30rem;
+    max-width: 100%;
+    outline: 0;
+    display: flex;
+    flex-direction: column;
+    cursor: text;
+    z-index: 4;
+    
+            user-select: none;
+        -ms-user-select: none;
+       -moz-user-select: none;
+    -webkit-user-select: none;
+}
+
+
+
+/*.ed .input kbd {*/
+.ed .input .key {
+    /*font-size: var(--editor-p-size);*/
+    text-transform: capitalize;
+    font-size: 1rem;
+    letter-spacing: 0.05rem;
+    /*font-family: var(--mono);*/
+    font-family: var(--editor-p-family);
+    /*position: relative;*/
+    /*color: #aaa;*/
+    color: #aaa;
+    font-weight: bold;
+    border: 1px solid #3a3a3a;
+    box-shadow: 0 0.1rem 0.1rem rgba(0, 0, 0, 0.5), 0 0.05rem 0 rgba(255, 255, 255, 0.1) inset;
+    background-color: rgba(250, 250, 250, 0.22);
+    border-radius: 0.2rem;
+    padding: 0.1rem 0.25rem;
+}
+.ed .input .mono {
+    position: relative;
+    font-family: var(--mono);
+    font-size: var(--editor-p-size);
+    /*letter-spacing: 0.05rem;*/
+    padding: 0.15rem 0.3rem;
+    color: #aaa;
+    background-color: rgba(250, 250, 250, 0.1);
+}
+
+.ed .input code {
+    display: block;
+    box-sizing: border-box;
+    white-space: pre-wrap;
+    
+    font-size: var(--editor-pre-size);
+    font-family: var(--editor-pre-family);
+    color: #ccc;
+}
+.ed .input figure {
+    margin: 2.25rem 1.5rem;
+    margin-top: 5rem;
+    position: relative;
+    box-sizing: border-box;
+    
+    font-size: var(--editor-pre-size);
+    font-family: var(--editor-pre-family);
+    color: #ccc;
+}
+.ed .input figure::before {
+    content: "";
+    position: absolute;
+    top:    -1.5rem;
+    bottom: -1.5rem;
+    left:   -1.5rem;
+    right:  -1.5rem;
+    background-color: rgba(250, 250, 250, 0.075);
+    pointer-events: none;
+}
+.ed .input figure > .toolbar {
+    position: absolute;
+    top:   -4.5rem;
+    right: -1.5rem;
+    left:  -1.5rem;
+    height: 3rem;
+    box-sizing: border-box;
+    background-color: rgba(250, 250, 250, 0.125);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: space-between;
+}
+.ed .input figure > .toolbar div {
+    cursor: pointer;
+    color: #999;
+    display: flex;
+    align-items: center;
+    border-left: 1px solid rgba(0, 0, 0, 0.5);
+    padding-left:  0.8rem;
+    padding-right: 0.8rem;
+    font-family: var(--sans);
+}
+.ed .input figure > .toolbar div:first-child {
+    border-left: 0;
+    border-right: 1px solid rgba(0, 0, 0, 0.5);
+}
+.ed .input figure > .toolbar path,
+.ed .input figure > .toolbar rect,
+.ed .input figure > .toolbar circle,
+.ed .input figure > .toolbar ellipse,
+.ed .input figure > .toolbar line,
+.ed .input figure > .toolbar polyline,
+.ed .input figure > .toolbar polygon {
+    fill: #999;
+}
+body.hover .ed .input figure > .toolbar div:not(.selected):hover {
+    color: #ccc;
+    background-color: rgba(250, 250, 250, 0.05);
+}
+body.hover .ed .input figure > .toolbar div:not(.selected):hover path,
+body.hover .ed .input figure > .toolbar div:not(.selected):hover rect,
+body.hover .ed .input figure > .toolbar div:not(.selected):hover circle,
+body.hover .ed .input figure > .toolbar div:not(.selected):hover ellipse,
+body.hover .ed .input figure > .toolbar div:not(.selected):hover line,
+body.hover .ed .input figure > .toolbar div:not(.selected):hover polyline,
+body.hover .ed .input figure > .toolbar div:not(.selected):hover polygon {
+    fill: #ccc;
+}
+
+.ed .input .link {
+    color: #c94;
+    color: #79d;
+    color: #c49;
+    text-decoration: underline;
+}
+.richtext p,
+.richtext li,
+.richtext h2,
+.ed .input p,
+.ed .input li,
+.ed .input h2 {
+    margin: 0.75rem 0;
+    white-space: pre-wrap;
+    box-sizing: border-box;
+}
+.richtext ul,
+.richtext ol,
+.ed .input ul,
+.ed .input ol {
+    margin: 0;
+}
+.richtext h2,
+.ed .input h2 {
+    color: #ccc;
+    font-size: var(--editor-h2-size);
+    font-family: var(--editor-h2-family);
+    margin-top: 1.5rem;
+    margin-bottom: 0.25rem;
+    width: 100%;
+    box-sizing: border-box;
+    position: relative;
+    font-style: normal;
+}
+.richtext blockquote,
+.ed .input blockquote {
+    margin-left: 3.5rem;
+    margin-right: 1rem;
+    margin-top:    2rem;
+    margin-bottom: 2rem;
+    position: relative;
+    white-space: pre-wrap;
+    
+    box-sizing: border-box;
+    color: #aaa;
+    display: flex;
+    flex-direction: column;
+}
+.richtext blockquote::before,
+.ed .input blockquote::before {
+    content: "";
+    position: absolute;
+    top:    -1rem;
+    bottom: -1rem;
+    left:   -1.5rem;
+    right:  -1rem;
+    background-color: rgba(250, 250, 250, 0.075);
+    border-left: 0.5rem solid rgba(250, 250, 250, 0.15);
+}
+.richtext blockquote::after,
+.ed .input blockquote::after {
+    content: "“";
+    top:  -0.4rem;
+    font-size: 4rem;
+    font-weight: bold;
+    left: -3.8rem;
+    
+    font-size: 3rem;
+    font-style: italic;
+    font-family: var(--serif);
+    position: absolute;
+    color: #4a4a4a;
+    font-style: normal;
+}
+.ed .input cite {
+    position: absolute;
+    text-align: right;
+    font-style: normal;
+    bottom: -2.5rem;
+    right: 0;
+}
+.ed .input cite::before {
+    content: "—";
+    margin-right: 0.3rem;
+}
+
+/*
+    The position:sticky on .touch element will
+    not work unless overflow of the ancestor .ed
+    is visible. See comment for .canvas-container
+*/
+.ed .touch-container {
+    position: absolute;
+    top:    0;
+    bottom: 0;
+    left:   0;
+    right:  0;
+}
+.ed .touch {
+    position: sticky;
+    top:  5rem;
+    left: 8rem;
+    z-index: 1;
+    opacity: 0;
+    border:  0;
+    outline: 0;
+}
+
+#caret {
+    width: 1px;
+    background-color: #ddd;
+    pointer-events: none;
+    position: absolute;
+    animation: 1.1s linear infinite caret_blink;
+    z-index: 10;
+}
+
+@keyframes caret_blink {
+    5% {
+        opacity: 1;
+    }
+    45% {
+        opacity: 1;
+    }
+    55% {
+        opacity: 0;
+    }
+    95% {
+        opacity: 0;
+    }
+}
+
+
+

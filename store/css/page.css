@@ -1,0 +1,257 @@
+
+
+
+/*===========================================
+|    About                                  |
+===========================================*/
+
+#home {
+    color: var(--page-para-col);
+    font-size: var(--page-para-size);
+}
+#tagline {
+    height: 3.5rem;
+    padding: 0 1rem;
+    display: flex;
+    align-items: center;
+    font-family: var(--serif);
+    font-size: 1.4rem;
+    font-style: italic;
+    color: #999;
+    border-bottom: 1px solid #333;
+}
+#home .thumbs {
+    display: flex;
+    flex-wrap: wrap;
+}
+#home .thumb {
+    flex: 1 1 25%;
+    min-width: 24rem;
+    position: relative;
+}
+#home .thumb .graphic {
+    width: 100%;
+    padding-bottom: 56.25%;
+    position: relative;
+    overflow: hidden;
+}
+#home .thumb .inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top:    0;
+    bottom: 0;
+    left:   0;
+    right:  0;
+    box-sizing: border-box;
+}
+#home .thumb .inner:empty {
+    border-right:  1px solid #333;
+    border-bottom: 1px solid #333;
+}
+#home .thumb img {
+    width:  100%;
+    height: 100%;
+    object-fit: cover;
+}
+#home .thumb img.portrait {
+    width: auto;
+    height: 100%;
+}
+#home .thumb .meta {
+    position: absolute;
+    left:   0;
+    bottom: 0;
+    right:  0;
+    padding: 1rem;
+    background-color: #000d;
+    display: none;
+}
+body.hover #home .thumb:not(.selected):hover .meta {
+    display: block;
+}
+#home .thumb .meta .title {
+    color: #b8b8b8;
+    margin-bottom: 0.2rem;
+    font-size: 1.2rem;
+    font-style: italic;
+}
+#home .thumb .meta .name {
+    color: #999;
+    font-size: 0.95rem;
+}
+
+
+/*
+    IMPORTANT: this query appears in other files. Be
+    sure to update it in them as well.
+
+    We assume that all devices incapable of hovering
+    are phones. In practice this will include tablets
+    too. We'll have to address that in the future.
+
+    Some phones mistakenly report that they can hover,
+    such as the Samsung Galaxy 9. Therefore we include
+    a max-width condition as well.
+*/
+@media (hover: none), (max-width: 480px) {
+    #tagline {
+        display: none;
+    }
+}
+
+/*===========================================
+|    About                                  |
+===========================================*/
+
+
+#page_body .banner {
+    padding-right: 3.5rem;
+    height: 20rem;
+    position: relative;
+    display: flex;
+    /*justify-content: center;*/
+    justify-content: flex-end;
+    z-index: 2;
+    background-color: #060606;
+}
+#page_body .banner::before {
+    content: "";
+    background-color: #060606;
+    width: 2.5rem;
+    position: absolute;
+    top:    0;
+    bottom: 0;
+    right:  0;
+    z-index: 3;
+}
+#page_body .banner::after {
+    content: "";
+    background: linear-gradient(to right, transparent, #060606);
+    width: 3%;
+    position: absolute;
+    top:    0;
+    bottom: 0;
+    right:  2.5rem;
+    z-index: 3;
+}
+#page_body .banner .logo {
+    /*
+    image aspect ratio: 0.6788571428571429
+    */
+    width: calc(20rem / 0.67);
+    background-image: url("/gfx/banner_main.png");
+    background-size: contain;
+    background-repeat: repeat-x;
+    background-position: right;
+    /*margin-right: var(--scroll-offset);*/
+    position: absolute;
+    top:    0;
+    bottom: 0;
+    z-index: 2;
+    margin-right: 1rem;
+}
+#page_body .banner .stretch {
+    z-index: 1;
+    position: absolute;
+    top:    0;
+    bottom: 0;
+    left:   0;
+    right:  0;
+    background-image: url("/gfx/banner_edge.png");
+    background-size: contain;
+    background-repeat: repeat-x;
+    margin-right: -1rem;
+}
+
+
+#about {
+    max-width: 45rem;
+    margin: 0 auto;
+    margin-top: 2rem;
+    margin-bottom: 6rem;
+    padding: 0 2rem;
+    padding-right: 3.5rem;
+}
+#about .section {
+    position: relative;
+    box-sizing: border-box;
+    padding-top: 2rem;
+    padding-bottom: 0;
+}
+#about .section::after {
+    content: "";
+    border-bottom: 1px solid #404040;
+    width: 10rem;
+    display: block;
+    margin: 0 auto;
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+}
+#about .section img {
+    /*height: 10rem;*/
+    width: 100%;
+    object-fit: cover;
+    height: 18rem;
+}
+#about .section h2 {
+    font-size: var(--page-heading-size);
+    color: var(--page-heading-col);
+    margin: 0;
+}
+#about .section p,
+#about .section li {
+    font-size: var(--page-para-size);
+    color: var(--page-para-col);
+    text-align: justify;
+}
+#about .section ul {
+    padding: 0;
+    padding-left: 2rem;
+}
+#about .section li {
+    margin-bottom: 0.8rem;
+    list-style-type: upper-roman;
+    padding-left: 0.5rem;
+}
+#about .section a {
+    color: var(--page-para-col);
+}
+
+/*
+    IMPORTANT: this query appears in other files. Be
+    sure to update it in them as well.
+
+    We assume that all devices incapable of hovering
+    are phones. In practice this will include tablets
+    too. We'll have to address that in the future.
+
+    Some phones mistakenly report that they can hover,
+    such as the Samsung Galaxy 9. Therefore we include
+    a max-width condition as well.
+*/
+@media (hover: none), (max-width: 480px) {
+    #about {
+        padding: 0 1.5rem;
+        /*padding: 0 2.5rem;*/
+    }
+    #page_body .banner {
+        justify-content: center;
+    }
+}
+
+body.error #page_body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+body.error #page h1 {
+    color: #ccc;
+    margin-top:  1.5rem;
+}
+body.error #page p {
+    font-size: var(--sans);
+    color: #aaa;
+    font-size: 1.1rem;
+}

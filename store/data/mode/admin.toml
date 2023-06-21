@@ -1,0 +1,9 @@
+
+Name = "admin"
+Title = "Admin Centre"
+BrowseName = "Results"
+ResourceName = "Resource"
+ResourcePlural = "Resources"
+ResourceColumn = "Resource"
+AdminOnly = true
+LogoutRemove = true

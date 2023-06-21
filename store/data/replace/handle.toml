@@ -1,0 +1,8 @@
+
+[handle]
+
+    Name = "handle"
+    Desc = "Handle"
+    Type = "text"
+    Max = 24
+    Validate = ["isWord"]

@@ -1,0 +1,73 @@
+
+# 2D Art
+
+[[software]]
+    
+    Text = "Photoshop"
+    
+[[software]]
+    
+    Text = "Paint Tool Sai"
+    
+[[software]]
+    
+    Text = "Clip Studio"
+    
+[[software]]
+    
+    Text = "GIMP"
+    
+# 3D art
+    
+[[software]]
+    
+    Text = "Blender"
+    
+[[software]]
+    
+    Text = "3DS Max"
+    
+[[software]]
+    
+    Text = "Maya"
+    
+[[software]]
+    
+    Text = "Sketchup"
+    
+# Audio
+    
+[[software]]
+    
+    Text = "Reaper"
+    
+[[software]]
+    
+    Text = "Audacity"
+    
+[[software]]
+    
+    Text = "Cubase"
+    
+[[software]]
+    
+    Text = "ProTools"
+
+# Programming
+
+[[software]]
+
+    Text = "Sublime Text"
+
+[[software]]
+
+    Text = "Visual Studio Code"
+
+[[software]]
+
+    Text = "Emacs"
+
+[[software]]
+
+    Text = "Vim"
+    

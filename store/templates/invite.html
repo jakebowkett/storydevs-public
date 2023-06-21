@@ -1,0 +1,43 @@
+
+{{$r := .Resource}}
+
+<div class="resource">
+    <div class="head">
+        <h2>{{$r.Code}}</h2>
+        {{if $r.Active -}}
+            <div class="avail available">
+                <span>Active</span>
+                {{template "on.svg"}}
+            </div>
+        {{else -}}
+            <div class="avail">
+                <span>Inactive</span>
+                {{template "off.svg"}}
+            </div>
+        {{end -}}
+    </div>
+    <div class="subhead">
+        <div class="summary">
+            {{- with $r.Note.String -}}
+                Intended for: {{.}}
+            {{- end -}}
+        </div>
+        <div class="dates">
+            <div>Created: {{date $r.Created}}</div>
+            <div>Updated: {{date $r.Updated}}</div>
+        </div>
+    </div>
+    {{range $r.Accounts}}
+        <div class="table">
+            <div class="email">Email</div>
+            <div class="handles">Handles</div>
+        </div>
+        <div class="row">
+            {{$hh := .Handles}}
+            <div class="email">{{.Email}}</div>
+            <div class="handles">{{list $hh}}</div>
+        </div>
+    {{else}}
+        <div>Not used to create any accounts yet.</div>
+    {{end}}
+</div>

@@ -1,0 +1,352 @@
+
+{{- $rsrcName := "" -}}
+{{- $rsrcCol := "" -}}
+{{- $rsrcPlural := "" -}}
+{{- $accOrAdmin := false -}}
+{{- $view := .View -}}
+
+{{- if or (eq .View "account") (eq .View "admin") -}}
+    {{- $accOrAdmin = true -}}
+{{- end -}}
+
+{{- if eq .ViewType "mode" -}}
+    {{- $rsrcName = (index .ViewMeta.Mode .View).ResourceName -}}
+    {{- $rsrcCol = (index .ViewMeta.Mode .View).ResourceColumn -}}
+    {{- $rsrcPlural = (index .ViewMeta.Mode .View).ResourcePlural -}}
+{{- end -}}
+
+{{- if .SubView -}}
+    {{- $view = .SubView -}}
+    {{- $rsrcName = (index .ViewMeta.Mode .SubView).ResourceName -}}
+    {{- $rsrcCol = (index .ViewMeta.Mode .SubView).ResourceColumn -}}
+    {{- $rsrcPlural = (index .ViewMeta.Mode .SubView).ResourcePlural -}}
+{{- end -}}
+
+<div id="sidebar">
+    <a
+        id="title"
+        href="/"
+        data-action="navLink"
+        {{if eq .View "home"}}
+            class="selected"
+        {{end}}
+    >
+        <h1>StoryDevs</h1>
+        <img src="/gfx/stripes.png" alt="Story devs logo. It is four diagonal stripes, each of a different colour.">
+        <div id="visible_title"></div>
+    </a>
+    <div
+        id="mobile_nav"
+        class="tablet"
+        data-action="toggleMobileMenu"
+    >
+        <div>Menu</div>
+        {{template "menu.svg"}}
+    </div>
+    <div
+        id="mobile_backdrop"
+        class="tablet"
+        data-action="dismissMobileMenu"
+    ></div>
+    <div id="mobile_menu">
+        <div class="section logout tablet logged_in">
+            <a
+                href="/logout"
+                data-action="logout"
+                class="
+                    tablet
+                    btn
+                "
+            >
+                <span class="icon">{{template "logout.svg"}}</span>
+                <span class="text">Log Out</span>
+            </a>
+        </div>
+        <div class="section modals logged_out">
+            <!-- <a
+                href="/reserve"
+                data-action="navLink"
+                class="
+                    logged_out
+                    btn
+                "
+            >
+                <span class="icon">{{template "reserve.svg"}}</span>
+                <span class="text">Reserve Handle</span>
+            </a>
+            <a
+                href="/mailing"
+                data-action="navLink"
+                class="
+                    logged_out
+                    btn
+                "
+            >
+                <span class="icon">{{template "communication/email.svg"}}</span>
+                <span class="text">Mailing List</span>
+            </a> -->
+            <a
+                href="/register"
+                data-action="navLink"
+                class="
+                    logged_out
+                    btn
+                "
+            >
+                <span class="icon">{{template "compensation/contract.svg"}}</span>
+                <span class="text">Register</span>
+            </a>
+            <a
+                href="/login"
+                data-action="navLink"
+                class="
+                    logged_out
+                    btn
+                "
+            >
+                <span class="icon">{{template "login.svg"}}</span>
+                <span class="text">Log In</span>
+            </a>
+        </div>
+        <div class="section location">
+            <h4>Location</h4>
+            {{if .Account.Personas}}
+                {{template "persona_switcher" .}}
+            {{end}}
+           <!--  <a
+                href="/about"
+                data-action="navLink"
+                class="
+                    btn
+                    {{if eq .View "about" -}}
+                        selected
+                    {{end -}}
+                "
+            >
+                <span class="icon">{{template "info.svg"}}</span>
+                <span class="text">About</span>
+            </a> -->
+            <a
+                href="/talent"
+                data-action="navLink"
+                class="
+                    btn
+                    {{if eq .View "talent" -}}
+                        selected
+                    {{end -}}
+                "
+            >
+                <span class="icon">{{template "star.svg"}}</span>
+                <span class="text">Talent</span>
+            </a>
+            <!-- <a
+                href="/library"
+                data-action="navLink"
+                class="
+                    btn
+                    {{if eq .View "library" -}}
+                        selected
+                    {{end -}}
+                "
+            >
+                <span class="icon">{{template "library/category.svg"}}</span>
+                <span class="text">Library</span>
+            </a> -->
+            <a
+                href="/forums"
+                data-action="navLink"
+                class="
+                    btn
+                    {{if eq .View "forums" -}}
+                        selected
+                    {{end -}}
+                "
+            >
+                <span class="icon">{{template "communication/im.svg"}}</span>
+                <span class="text">Forums</span>
+            </a>
+            <a
+                href="/event"
+                data-action="navLink"
+                class="
+                    btn
+                    {{if eq .View "event" -}}
+                        selected
+                    {{end -}}
+                "
+            >
+                <span class="icon">{{template "library/events.svg"}}</span>
+                <span class="text">Events</span>
+            </a>
+            {{if .Account.ActivePersona.Admin.Bool}}
+                {{template "admin_link" .View}}
+            {{end}}
+        </div>
+    </div>
+    <div class="section view">
+        <h4>View</h4>
+        <div
+            class="btn"
+            data-col="search"
+            data-action="layoutEvent"
+        >
+            <span class="icon">{{template "sidebar/search.svg"}}</span>
+            <span class="text">Search</span>
+        </div>
+        <div
+            class="btn"
+            data-col="browse"
+            data-action="layoutEvent"
+        >
+            <span class="icon">{{template "sidebar/results.svg"}}</span>
+            <span class="text">{{if $accOrAdmin}}Browse{{else}}Results{{end}}</span>
+        </div>
+        <div
+            class="btn"
+            data-col="detail"
+            data-action="layoutEvent"
+        >
+            <span class="icon">{{template "sidebar/resource.svg"}}</span>
+            <span class="text">{{$rsrcCol}}</span>
+        </div>
+        <div
+            class="btn logged_in"
+            data-col="editor"
+            data-action="layoutEvent"
+        >
+            <span class="icon">{{template "sidebar/editor.svg"}}</span>
+            <span class="text">Editor</span>
+        </div>
+    </div>
+    <!--
+    <div class="section featured">
+        <h4>Featured</h4>
+        <a class="btn" href="/library/getting-most-storydevs">{{hyphen "Getting the most out of StoryDevs"}}</a>
+    </div>
+     -->
+    
+    <div class="section layout">
+        <h4>Columns</h4>
+        <div
+            class="btn single"
+            onclick="setNumOfCols(true)"
+        >
+            <span class="icon">{{template "sidebar/1_col.svg"}}</span>
+            <span class="text">One</span>
+        </div>
+        <div
+            class="btn dual"
+            onclick="setNumOfCols()"
+        >
+            <span class="icon">{{template "sidebar/2_col.svg"}}</span>
+            <span class="text">Two</span>
+        </div>
+    </div>
+    
+</div>
+
+
+<!-- 
+    Both the admin_link and persona_switcher templates below are
+    called from two places. First, the sidebar above in this file.
+    Second, from the Login function in /handler/modal/submit.go
+    
+    The admin_link is supplied with a string that means the same
+    thing as the .View string field in sd.Base.
+    
+    The persona_switcher is supplied with a struct containing the
+    fields .View and .Account - the sidebar above passes a sd.Base
+    while the Login function passes a struct with only the needed
+    two fields. If more fields are referenced in that template said
+    struct in the Login function must be updated.
+ -->
+{{define "admin_link"}}
+    <a
+        href="/admin"
+        data-action="navLink"
+        class="
+            logout_remove
+            logged_in
+            btn
+            {{if eq . "admin" -}}
+                selected
+            {{end -}}
+        "
+    >
+        <span class="icon">{{template "skill/management.svg"}}</span>
+        <span class="text">Admin</span>
+    </a>
+{{end}}
+
+{{define "persona_switcher"}}
+    {{$active := .Account.ActivePersona}}
+    <div
+        id="persona_switcher"
+        data-slug="{{$active.Slug}}"
+        class="
+            logout_remove
+            logged_in
+            btn
+            {{if eq .View "account" -}}
+                selected
+            {{end -}}
+        "
+    >
+        <a
+            class="link"
+            href="/account"
+            data-action="navLink"
+        >{{$active.Handle}}</a>
+        <span class="icon avatar">
+            {{- with $active.Avatar.URLThumb -}}
+                <img src="{{.}}">
+            {{- end -}}
+        </span>
+        <span class="tri desktop">{{template "tri.svg"}}</span>
+        <div class="diagonal desktop"></div>
+        <div class="menu desktop">
+            <div class="inner">
+                <div class="section">
+                    <a
+                        class="btn"
+                        href="/account"
+                        data-action="navLink"
+                    >
+                        <span class="icon">{{template "account.svg"}}</span>
+                        <span class="text">View Account</span>
+                    </a>
+                </div>
+                <div class="section">
+                    <h4>Switch Persona</h4>
+                    {{range .Account.Personas}}
+                        <div
+                            class="btn"
+                            data-slug="{{.Slug}}"
+                            data-action="switchPersonaFromSidebar"
+                        >
+                            <span class="icon avatar">
+                                {{- with .Avatar.URLThumb -}}
+                                    <img src="{{.}}">
+                                {{- end -}}
+                            </span>
+                            <span class="text">{{.Handle}}</span>
+                        </div>
+                    {{end}}
+                </div>
+                <div class="section">
+                    <a
+                        href="/logout"
+                        data-action="logout"
+                        class="
+                            logged_in
+                            btn
+                        "
+                    >
+                        <span class="icon">{{template "logout.svg"}}</span>
+                        <span class="text">Log Out</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+{{end}}

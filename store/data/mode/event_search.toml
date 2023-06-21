@@ -1,0 +1,107 @@
+
+[[Search]]
+
+    Name = "kind"
+    Desc = "Event Kind"
+    Icon = "library/category"
+
+    [[Search.Field]]
+        Replace = "event_category"
+            
+    [[Search.Field]]
+        Replace = "event_setting"
+
+[[Search]]
+
+    Name = "period"
+    Desc = "Period"
+    Icon = "library/events"
+
+    [[Search.Field]]
+
+        Replace = "timezone"
+        ValueSet = "clientTimezone"
+        Context = "Choose \"Local Time\" to automatically detect your timezone. You may need to manually specify if you're using a proxy."
+        Default = "UTC ??:?? Local Time"
+
+    [[Search.Field]]
+
+        Name = "overlap"
+        Desc = "Overlap"
+        Context = "'Overlaps' shows results that at least partially overlap with the period you've selected whereas 'Begins Within' will only show events that completely fit within it."
+        Type = "radio"
+
+        [[Search.Field.Value]]
+
+            Name = "overlap"
+            Text = "Overlaps"
+            Icon = "event/overlap"
+            Default = true
+
+        [[Search.Field.Value]]
+
+            Name = "within"
+            Text = "Begins Within"
+            Icon = "event/within"
+
+    [[Search.Field]]
+
+        Name = "start"
+        Desc = "From"
+        Type = "date"
+        Data = ["any", "present"]
+        Default = "Present"
+        Paired = true
+
+    [[Search.Field]]
+
+        Name = "finish"
+        Desc = "Until"
+        Type = "date"
+        Data = ["any", "present"]
+        Paired = true
+
+    [[Search.Field]]
+
+        Name = "time"
+        Desc = "Times"
+        Add = 7
+        Context = "Ranges of days through the week and times within them can be added, such as Mondays through Fridays, 6pm to 10pm. Omitted times extend to the start/end of the day."
+
+        [[Search.Field.Field]]
+
+            Name = "day"
+            NoGroupFormat = true
+
+            [[Search.Field.Field.Field]]
+
+                Replace = "weekday"
+                Name = "day_start"
+                Desc = "On"
+                Paired = true
+                Placeholder = "e.g. Mondays"
+
+            [[Search.Field.Field.Field]]
+
+                Replace = "weekday"
+                Name = "day_finish"
+                Desc = "Through To"
+                Paired = true
+                Placeholder = "e.g. Fridays"
+
+        [[Search.Field.Field]]
+
+            Name = "time"
+            NoGroupFormat = true
+
+            [[Search.Field.Field.Field]]
+                Name = "start"
+                Desc = "Between"
+                Type = "time"
+                Paired = true
+
+            [[Search.Field.Field.Field]]
+                Name = "finish"
+                Desc = "And"
+                Type = "time"
+                Paired = true

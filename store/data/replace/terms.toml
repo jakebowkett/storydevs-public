@@ -1,0 +1,7 @@
+
+[terms]
+
+    Name = "kw"
+    Type = "keyworder"
+    Add = 3
+    Max = 32

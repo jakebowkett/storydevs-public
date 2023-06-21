@@ -1,0 +1,200 @@
+
+<div class="resource thread">
+    {{$md := .}}
+    {{$ed := .Editor}}
+    {{$r := .Resource}}
+    {{$thread := $r.Slug}}
+    {{$locked := $r.Locked.Bool}}
+
+    {{if $locked}}
+        <div class="locked">
+            <div class="icon">{{template "padlock.svg"}}</div>
+            <div class="text">{{hyphen "This thread is locked. It cannot be replied to, nor have its posts edited or deleted."}}</div>
+        </div>
+    {{end}}
+
+    <h2 class="title">{{$r.Name.String}}</h2>
+    
+    {{with $r.Summary.String}}
+        <p class="summary">{{hyphen .}}</p>
+    {{end}}
+    
+    <div class="tags">
+        {{range $r.Category}}
+            {{- $v := ($ed.Field "category.category").Value -}}
+            <div class="filed site">{{mStr . $v}}</div>
+        {{end}}
+        {{range $r.Tag}}
+            <div class="filed">{{.}}</div>
+        {{end}}
+    </div>
+    
+    {{template "post" squash $md $thread $r $locked}}
+    {{range $r.Reply}}
+        {{template "post" squash $md $thread . $locked}}
+    {{end}}
+</div>
+
+{{define "post"}}
+    {{$md     := index . 0}}
+    {{$r      := index . 2}}
+    {{$locked := index . 3}}
+    {{$admin := $md.IsAdmin}}
+    {{$owner := $r.IsOwner $md.Account}}
+    {{$hidden := not (eq $r.PersVis "public") }}
+    {{if and (not $admin) (or $r.Deleted.Bool (and $hidden (not $owner))) }}
+        {{template "post_deleted"}}
+    {{else}}
+        {{template "post_normal" append . $hidden}}
+    {{end}}
+{{end}}    
+
+{{define "post_deleted"}}
+    <div class="post deleted">This post is unavailable.</div>
+{{end}}
+
+{{define "post_normal"}}
+    {{$md      := index . 0}}
+    {{$thread  := index . 1}}
+    {{$r       := index . 2}}
+    {{$locked  := index . 3}}
+    {{$hidden  := index . 4}}
+    <div
+        id="post-{{$r.Slug}}"
+        class="
+            post
+            {{if or $hidden $r.Deleted.Bool -}}
+                hidden
+            {{end -}}
+        "
+    >
+        {{if $r.Deleted.Bool}}
+            <div class="info">
+                <span class="icon">
+                    {{template "info.svg"}}
+                </span>
+                <span class="text">
+                    {{- hyphen "This post has been deleted." -}}
+                </span>
+            </div>
+        {{else if $hidden}}
+            <div class="info">
+                <span class="icon">
+                    {{template "info.svg"}}
+                </span>
+                <span class="text">
+                    {{- hyphen "This post is not displayed publicly as the author persona does not have its visibility set to public." -}}
+                </span>
+            </div>
+        {{end}}
+        <div class="sect">
+            {{if in $r.Kind "forums" -}}
+                <div class="avatar desktop">
+                    {{- with $r.PersAvatar.URLThumb -}}
+                        <img src="{{.}}">
+                    {{- end -}}
+                </div>
+            {{end -}}
+            <div class="main">
+                <div class="subhead">
+                    <div class="avatar mobile">
+                        {{- with $r.PersAvatar.URLThumb -}}
+                            <img src="{{.}}">
+                        {{- end -}}
+                    </div>
+                    <div>
+                        <div class="identity">
+                            <span class="name">{{$r.PersName}}</span>
+                            <span class="handle">@{{$r.PersHandle}}</span>
+                        </div>
+                        <span class="pronouns">
+                            {{if $r.GetAdmin}}
+                                <span class="admin">Admin</span>
+                            {{end}}
+                            {{- with $r.PersPronouns -}}
+                                {{- list . -}}
+                            {{- else -}}
+                                unknown
+                            {{- end -}}
+                        </span>
+                    </div>
+                    <!-- <div class="tools">
+                        <div
+                            class="btn context"
+                            data-action="collectResource"
+                        >
+                            <span class="text desktop">Collect</span>
+                            <span class="icon">{{template "collect.svg"}}</span>
+                        </div>
+                    </div> -->
+                </div>
+                <div class="dates">
+                    <div class="date">
+                        <!-- <span class="label desktop">Posted</span> -->
+                        <span class="val">{{date $r.Created}}</span>
+                    </div>
+                    {{- if not (eq $r.Created $r.Updated) -}}
+                    <div class="date">
+                        <span class="label">Edited</span>
+                        <span class="val">
+                            {{- date $r.Updated -}}
+                        </span>
+                    </div>
+                    {{- end -}}
+                </div>
+                <div class="richtext">
+                    {{$r.BodyHTML}}
+                </div>
+                <div class="footer">
+                    <div>
+                        {{if or $md.IsAdmin (and (not $locked) ($r.IsOwner $md.Account))}}
+                            <a
+                                href="/{{$md.Name}}/{{$r.Slug}}/delete"
+                                class="btn context dangerous logged_in"
+                                data-action="deleteResourcePrompt[Post]"
+                            >
+                                <span class="text desktop">Delete</span>
+                                <span class="icon">{{template "delete.svg"}}</span>
+                            </a>
+                            <a
+                                href="/{{$md.Name}}/{{$r.Slug}}/edit"
+                                class="btn context logged_in"
+                                data-action="editResource"
+                            >
+                                <span class="text desktop">Edit</span>
+                                <span class="icon">{{template "edit.svg"}}</span>
+                            </a>
+                        {{end}}
+                    </div>
+                    <div>
+                        <!-- <div
+                            class="btn context"
+                        >
+                            <span class="text desktop">React</span>
+                            <span class="icon">{{template "compensation/volunteer.svg"}}</span>
+                        </div> -->
+                        <a
+                            href="#post-{{$r.Slug}}"
+                            class="btn context link"
+                            data-action="focusReply"
+                        >
+                            <span class="text desktop">Link</span>
+                            <span class="icon">{{template "link_copy.svg"}}</span>
+                        </a>
+                        {{if or $md.IsAdmin (not $locked)}}
+                            <a
+                                href="/{{$md.Name}}/{{$thread}}/reply"
+                                class="btn context logged_in"
+                                data-action="replyResource"
+                            >
+                                <span class="text desktop">Reply</span>
+                                <span class="icon">{{template "reply.svg"}}</span>
+                            </a>
+                        {{end}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{{end}}
+

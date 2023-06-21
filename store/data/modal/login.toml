@@ -1,0 +1,22 @@
+
+Name = "login"
+Title = "Log In"
+
+[[Field]]
+
+    Name = "identity"
+    Desc = "Handle / Email"
+    Type = "text"
+
+[[Field]]
+
+    Name = "password"
+    Desc = "Password"
+    Type = "password"
+
+[[Button]]
+
+    Text = "Log In"
+    Icon = "submit"
+    Dest = "login"
+    Submit = true

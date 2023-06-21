@@ -1,0 +1,7 @@
+
+Name = "event"
+Title = "Event Calendar"
+BrowseName = "Results"
+ResourceName = "Event"
+ResourcePlural = "Events"
+ResourceColumn = "Event"

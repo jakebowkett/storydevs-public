@@ -1,0 +1,15 @@
+
+Name = "forgot_confirm"
+Title = "Forgot Password (2/2)"
+Class = "confirm"
+
+[[Field]]
+
+    Replace = "confirm"
+
+[[Button]]
+
+    Text = "Confirm"
+    Icon = "submit"
+    Dest = "password/confirm" # We reuse this endpoint.
+    Submit = true

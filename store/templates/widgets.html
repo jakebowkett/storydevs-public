@@ -1,0 +1,951 @@
+
+{{- $f        := index . 0 -}}
+{{- $disabled := index . 1 -}}
+{{- $gIdx     := index . 2 -}}
+{{- $sgIdx    := index . 3 -}}
+{{- $instIdx  := index . 4 -}}
+
+{{with $f}}
+
+{{- if eq .Type "range" -}}
+
+    <div class="range-wdgt" name="{{.Name}}" data-id="{{.Id}}">
+        {{$meta := rangeMeta .}}
+        <div class="track">
+            {{range $i, $_ := .Value -}}
+                <div
+                    name="{{.Name}}"
+                    {{if and (or (eq $i $meta.Start) (gt $i $meta.Start)) (lt $i $meta.End) -}}
+                        class="selected"
+                    {{end -}}
+                >
+                    <div class="icon">{{.Icon}}</div>
+                    <div class="text">{{.Text}}</div>
+                </div>
+            {{end -}}
+        </div>
+        <div class="status">{{$meta.Status}}</div>
+        {{- template "marker" squash "start" "Start" $meta.RuleStart $meta.Start -}}
+        {{- template "marker" squash "end"   "End"   $meta.RuleEnd   $meta.End -}}
+    </div>
+
+{{- else if eq .Type "time" -}}
+
+    {{$time := splitTime .Text}}
+
+    <div
+        class="wdgt-time"
+        data-id="{{.Id}}"
+        name="{{.Name}}"
+        data-action="
+            timeMousedown,
+            timeMouseup,
+        "
+        data-evt="
+            mousedown,
+            mouseup,
+        "
+        {{if .Optional -}}
+            data-optional="true"
+        {{end -}}
+    >
+        <div class="wdgt">
+            <div class="inputs">
+                <input
+                    class="hour"
+                    type="text"
+                    inputmode="numeric"
+                    {{with index $time 0}}
+                        value="{{.}}"
+                        data-prev="{{.}}"
+                    {{else}}
+                        value="00"
+                        data-prev="00"
+                    {{end}}
+                    data-action="
+                        timeInput,
+                        timeFocus,
+                        timeBlur,
+                    "
+                    data-evt="
+                        input,
+                        focus,
+                        blur,
+                    "
+                    {{if $disabled -}}
+                        disabled
+                    {{end -}}
+                >
+                <div class="colon">:</div>
+                <input
+                    class="min"
+                    type="text"
+                    inputmode="numeric"
+                    {{with index $time 1}}
+                        value="{{.}}"
+                        data-prev="{{.}}"
+                    {{else}}
+                        value="00"
+                        data-prev="00"
+                    {{end}}
+                    data-action="
+                        timeInput,
+                        timeFocus,
+                        timeBlur,
+                    "
+                    data-evt="
+                        input,
+                        focus,
+                        blur,
+                    "
+                    {{if $disabled -}}
+                        disabled
+                    {{end -}}
+                >
+                <div class="icon">
+                    {{template "time.svg"}}
+                </div>
+                <div class="brd"></div>
+            </div>
+            <div class="meridiem">
+                <label>
+                    <input
+                        type="radio"
+                        data-name="{{.Name}}_meridiem"
+                        name="{{.Name}}_meridiem_{{$gIdx}}_{{$sgIdx}}_{{$instIdx}}"
+                        value="am"
+                        data-action="timeMeridiemFocus"
+                        data-evt="focus"
+                        {{if eq (index $time 2) "am"}}
+                            checked
+                        {{end}}
+                        {{if $disabled -}}
+                            disabled
+                        {{end -}}
+                    >
+                    <div>am</div>
+                </label>
+                <label>
+                    <input
+                        type="radio"
+                        data-name="{{.Name}}_meridiem"
+                        name="{{.Name}}_meridiem_{{$gIdx}}_{{$sgIdx}}_{{$instIdx}}"
+                        value="pm"
+                        data-action="timeMeridiemFocus"
+                        data-evt="focus"
+                        {{if eq (index $time 2) "pm"}}
+                            checked
+                        {{end}}
+                        {{if $disabled -}}
+                            disabled
+                        {{end -}}
+                    >
+                    <div>pm</div>
+                </label>
+            </div>
+        </div>
+        <div
+            class="
+                beneath
+                {{if not .Text}}
+                    hidden
+                {{end}}
+            "
+        >
+            <div
+                class="clear"
+                data-action="timeClear"
+            >
+                <div class="icon">
+                    {{template "small_x.svg"}}
+                </div>
+                <span>Clear</span>
+            </div>
+        </div>
+    </div>
+
+{{- else if eq .Type "text" -}}
+
+    <div class="textfield">
+        <input
+            type="text"
+            name="{{.Name}}"
+            {{with .To -}}
+                data-to="{{.}}"
+            {{end -}}
+            {{if .Placeholder -}}
+                placeholder="{{.Placeholder}}"
+            {{else -}}
+                placeholder="Type here..."
+            {{ end -}}
+            spellcheck="false"
+            autocomplete="off"
+            {{if $disabled -}}
+                disabled
+            {{end -}}
+            {{with .Text -}}
+                value="{{.}}"
+            {{- end -}}
+            {{if .Optional -}}
+                data-optional="true"
+            {{end -}}
+            {{if .Max -}}
+                data-action="maxChars"
+                data-evt="input"
+                data-max="{{.Max}}"
+            {{end -}}
+            {{if .Validate -}}
+                data-validate="{{list .Validate}}"
+            {{end -}}
+        >
+        <div class="brd"></div>
+        {{with .Max -}}
+            <div class="len hidden">0/{{.}}</div>
+        {{end -}}
+    </div>
+
+{{- else if eq .Type "textarea" -}}
+
+    <div class="textarea">
+        <textarea
+            name="{{.Name}}"
+            {{with .To -}}
+                data-to="{{.}}"
+            {{end -}}
+            {{if .Placeholder -}}
+                placeholder="{{.Placeholder}}"
+            {{else -}}
+                placeholder="Type here..."
+            {{ end -}}
+            spellcheck="false"
+            autocomplete="off"
+            {{if .Optional -}}
+                data-optional="true"
+            {{end -}}
+            {{if $disabled -}}
+                disabled
+            {{end -}}
+            data-action="
+                textareaHeight,
+                {{if .Max -}}
+                    maxChars,
+                {{end -}}
+            "
+            data-evt="
+                input,
+                {{if .Max -}}
+                    input,
+                {{end -}}
+            "
+            {{if .Max}}
+                data-max="{{.Max}}"
+            {{end}}
+        >{{.Text}}</textarea>
+        <div class="brd"></div>
+        {{with .Max -}}
+            <div class="len hidden">0/{{.}}</div>
+        {{end -}}
+    </div>
+    
+{{- else if eq .Type "info" -}}
+
+    <div class="wdgt-info">
+        {{- .Default -}}
+    </div>
+
+{{- else if eq .Type "button" -}}
+
+    <div
+        class="
+            wdgt-btn
+            btn
+            submit
+            {{if .Dangerous}}
+                dangerous
+            {{end}}
+        "
+        name="{{.Name}}"
+        data-action="
+            {{.Events.BeforeHandlers -}},
+            {{.Events.AfterHandlers -}}
+        "
+        data-evt="
+            {{.Events.BeforeTypes -}},
+            {{.Events.AfterTypes -}},
+        "
+    >
+        <div class="text">{{.Default}}</div>
+        <div class="icon">{{.Icon}}</div>
+    </div>
+
+{{- else if or (eq .Type "checkbox") (eq .Type "radio") (eq .Type "bool") -}}
+
+    {{- $name := .Name -}}
+    {{- $to := .To -}}
+    {{- $id   := .Id -}}
+    {{- $type := .Type -}}
+    {{- $default := .Default -}}
+    {{- $bool := false -}}
+    {{- if eq .Type "bool" -}}
+        {{- $type = "radio" -}}
+        {{- $bool = true -}}
+    {{- end -}}
+
+    <div
+        class="checkers {{.Type}}"
+        {{if .Optional -}}
+            data-optional="true"
+        {{end -}}
+    >
+        {{- range .Value -}}
+            <label class="checkable">
+                <input
+                    data-id="{{$id}}"
+                    {{if eq $type "radio"}}
+                        data-name="{{$name}}"
+                        name="{{$name}}_{{$gIdx}}_{{$sgIdx}}_{{$instIdx}}"
+                    {{else}}
+                        name="{{$name}}"
+                    {{end}}
+                    {{with $to -}}
+                        data-to="{{.}}"
+                    {{end -}}
+                    type="{{$type}}"
+                    value="{{.Name}}"
+                    {{if $disabled -}}
+                        disabled
+                    {{end -}}
+                    {{if $bool -}}
+                        data-bool="{{.True}}"
+                    {{end -}}
+                    {{with .Data -}}
+                        data-data="{{.}}"
+                    {{end -}}
+                    {{if or .Default (eq $default .Name) -}}
+                        checked
+                    {{end -}}
+                >
+                <span
+                    class="btn"
+                >
+                    <span class="icon">{{.Icon}}</span>
+                    <span class="text">{{.Text}}</span>
+                    <span class="desc">{{.Desc}}</span>
+                </span>
+            </label>
+        {{- end -}}
+    </div>
+    
+{{- else if or (eq .Type "calendar") (eq .Type "date") -}}
+
+    {{$allowedRange := .Data.Arg 0}}
+    {{$showPresent := .Data.Arg 1}}
+    {{$date := splitCalendar .Text}}
+
+    <div
+        class="calendar"
+        data-type="{{.Type}}"
+        {{with $allowedRange -}}
+            data-allowed-range="{{.}}"
+        {{end -}}
+        {{with index $date 0}}
+            data-year="{{.}}"
+        {{end}}
+        {{with index $date 1}}
+            data-month="{{.}}"
+        {{end}}
+        {{with index $date 2}}
+            data-date="{{.}}"
+        {{end}}
+    >
+        <div
+            class="display"
+            data-action="calendarFocus"
+        >
+            <div
+                class="value"
+                name="{{.Name}}"
+                data-id="{{.Id}}"
+                {{with .To -}}
+                    data-to="{{.}}"
+                {{end -}}
+                {{if .Optional -}}
+                    data-optional="true"
+                {{end -}}
+            >
+                {{- if .Text -}}
+                    {{- .Text -}}
+                {{- else if .Default -}}
+                    {{- .Default -}}
+                {{- end -}}
+            </div>
+            <div class="button">{{template "calendar.svg"}}</div>
+        </div>
+        <div
+            class="
+                beneath
+                {{if not (or .Text .Default) -}}
+                    hidden
+                {{end -}}
+            "
+        >
+            <div
+                class="
+                    clear
+                "
+                data-action="calendarClear"
+            >
+                <div class="icon">
+                    {{template "small_x.svg"}}
+                </div>
+                <span>Clear</span>
+            </div>
+        </div>
+        <div class="selector hidden">
+            <div class="header">
+                <div class="prev" data-action="calendarPrev">{{template "tri.svg"}}</div>
+                <div class="view" data-action="calendarZoomOut">
+                    <div class="label">Viewing</div>
+                    <div class="range">
+                        <div>&nbsp;</div>
+                        <div class="month"></div>
+                        <div class="year"></div>
+                        <div class="period hidden"></div>
+                    </div>
+                </div>
+                <div class="next" data-action="calendarNext">{{template "tri.svg"}}</div>
+            </div>
+            {{if eq .Type "date"}}
+                <div
+                    class="dates"
+                    data-action="calendarSetDate"
+                >
+                    <div class="days">
+                        <div>Mon</div>
+                        <div>Tue</div>
+                        <div>Wed</div>
+                        <div>Thu</div>
+                        <div>Fri</div>
+                        <div>Sat</div>
+                        <div>Sun</div>
+                    </div>
+                    <div class="frames">
+                        <div class="frame"></div>
+                    </div>
+                </div>
+            {{end}}
+            <div
+                class="
+                    months
+                    {{if eq .Type "date" -}}
+                        hidden
+                    {{end -}}
+                "
+                data-action="calendarSetMonth"
+            >
+                <div class="frame">
+                    <div>Jan</div>
+                    <div>Feb</div>
+                    <div>Mar</div>
+                    <div>Apr</div>
+                    <div>May</div>
+                    <div>Jun</div>
+                    <div>Jul</div>
+                    <div>Aug</div>
+                    <div>Sep</div>
+                    <div>Oct</div>
+                    <div>Nov</div>
+                    <div>Dec</div>
+                </div>
+            </div>
+            <div class="years hidden" data-action="calendarSetYear">
+                <div class="frame"></div>
+            </div>
+            <div
+                class="
+                    present
+                    {{if not $showPresent -}}
+                        hidden
+                    {{end -}}
+                "
+                data-action="calendarSetPresent"
+            >Present</div>
+        </div>
+    </div>
+
+{{- else if or (eq .Type "image") (eq .Type "thumb") -}}
+
+    <div
+        class="
+            image
+            {{with .Text}}
+                present
+            {{end}}
+            {{if eq .Type "thumb"}}
+                thumb
+            {{end}}
+        "
+    >
+        <label
+            class="preview"
+            {{if eq .Type "thumb"}}
+                style="background-image:url({{fileToThumb .Text}});"
+            {{else}}
+                style="background-image:url({{.Text}});"
+            {{end}}
+        >
+            {{template "edit.svg"}}
+            <input
+                name="{{.Name}}"
+                type="file"
+                {{with .To -}}
+                    data-to="{{.}}"
+                {{end -}}
+                {{if $disabled -}}
+                    disabled
+                {{end -}}
+                {{with .Text -}}
+                    data-img="{{fileFromURL .}}"
+                {{end -}}
+                accept="image/png, image/jpeg, image/jpg"
+                onchange="addImage(this)"
+                {{if .Optional -}}
+                    data-optional="true"
+                {{end -}}
+            >
+            <span class="msg">
+                <span>Click to choose</span>
+                <!-- <span class="or">OR</span> -->
+                <!-- <span>Drag and Drop</span> -->
+            </span>
+        </label>
+        <div class="meta">
+            <span class="name"></span>
+            <span class="size">
+                <span class="n"></span>
+                <span class="unit"></span>
+            </span>
+        </div>
+    </div>
+
+{{- else if eq .Type "dropdown" -}}
+
+    <div class="dropdown">
+        {{if .HasIcons}}
+            <div class="icon">
+                {{- with .Icon}}{{.}}{{end -}}
+            </div>
+        {{end}}
+        <input
+            class="textfield"
+            type="text"
+            name="{{.Name}}"
+            data-id="{{.Id}}"
+            {{with .To -}}
+                data-to="{{.}}"
+            {{end -}}
+            {{if .Placeholder -}}
+                placeholder="{{.Placeholder}}"
+            {{else -}}
+                placeholder="Type here..."
+            {{ end -}}
+            spellcheck="false"
+            autocomplete="off"
+            {{if $disabled -}}
+                disabled
+            {{end -}}
+            {{if and .Default (not $disabled) (not .Text) -}}
+                value="{{.Default}}"
+            {{end -}}
+            {{if .Text -}}
+                value="{{.Text}}"
+            {{end -}}
+            data-action="
+                {{.Events.BeforeHandlers -}},
+                dropdownFocus,
+                dropdownInput,
+                dropdownBlur,
+                {{.Events.AfterHandlers -}}
+            "
+            data-evt="
+                {{- .Events.BeforeTypes}},
+                focus,
+                input,
+                blur,
+                {{- .Events.AfterTypes -}}
+            "
+            {{if .Optional -}}
+                data-optional="true"
+            {{end -}}
+            {{if not .Value -}}
+                data-user="true"
+            {{end -}}
+        >
+        <div class="arrow">{{template "tri_big.svg"}}</div>
+        <div
+            class="list"
+            data-action="dropdownItem"
+            data-evt="mousedown"
+        >
+            <div class="scroll">
+                {{- range .Value -}}
+                    <div
+                        class="item"
+                        {{- with .Data -}}
+                            data-data="{{.}}"
+                        {{- end -}}
+                        {{- with .Idx -}}
+                            data-idx="{{.}}"
+                        {{- end -}}
+                        name="{{.Name}}"
+                    >
+                        {{- if .Icon -}}
+                            <div class="icon">{{.Icon}}</div>
+                        {{- end -}}
+                        {{- range .Value -}}
+                            <div class="{{.Name}}">{{.Text}}</div>
+                        {{- end -}}
+                        <div class="text">{{.Text}}</div>
+                    </div>
+                {{- else -}}
+                    <div class="empty">No items yet.</div>
+                {{- end -}}
+            </div>
+        </div>
+    </div>
+
+{{- else if or (eq .Type "newpassword") (eq .Type "password") -}}
+    <div class="password">
+        <input
+            type="password"
+            name="{{.Name}}"
+            {{with .To -}}
+                data-to="{{.}}"
+            {{end -}}
+            {{if $disabled -}}
+                disabled
+            {{end -}}
+            {{if .Placeholder -}}
+                placeholder="{{.Placeholder}}"
+            {{else -}}
+                placeholder="Type here..."
+            {{ end -}}
+            spellcheck="false"
+            autocomplete="off"
+            {{if eq .Type "newpassword" -}}
+                data-action="passwordInput"
+                data-evt="input"
+            {{end -}}
+            {{if .Optional -}}
+                data-optional="true"
+            {{end -}}
+        >
+        {{- if eq .Type "newpassword" -}}
+            <div class="meter">
+                <div class="weak">Weak</div>
+                <div class="okay">Better</div>
+                <div class="strong">Okay</div>
+            </div>
+        {{- else if eq .Name "password" -}}
+            <div class="forgot">
+                <a
+                    href="/forgot"
+                    data-action="forgotPassword"
+                >I've forgotten my password</a>
+            </div>
+        {{- end -}}
+    </div>
+
+{{- else if or (eq .Type "tagger") (eq .Type "keyworder") -}}
+    <div
+        class="
+            tagger
+            {{if eq .Type "keyworder" -}}keyworder{{- end -}}
+        "
+        data-action="taggerMouseDown"
+        data-evt="mousedown"
+        name="{{.Name}}"
+        {{with .To -}}
+            data-to="{{.}}"
+        {{end -}}
+        {{if .Optional -}}
+            data-optional="true"
+        {{end -}}
+        {{if .Add -}}
+            data-add="{{.Add}}"
+        {{end -}}
+        {{if .Max -}}
+            data-max="{{.Max}}"
+        {{end -}}
+    >
+        {{- range .Value -}}
+            <div class="tag">
+                <span class="text">{{.Text}}</span>
+                <div
+                    class="remove"
+                    data-action="removeTag"
+                ></div>
+            </div>
+        {{- end -}}
+        <div class="container">
+            <div class="ruler">&#8203;</div>
+            <div class="wrap">
+                <div class="placeholder">
+                    {{- if .Placeholder -}}
+                        {{- .Placeholder -}}
+                    {{- else -}}
+                        Type here...
+                    {{- end -}}
+                </div>
+                <textarea
+                    class="input"
+                    type="text"
+                    {{if $disabled -}}
+                        disabled
+                    {{end -}}
+                    data-action="
+                        taggerInput,
+                        taggerKeydown,
+                        taggerFocus,
+                        taggerBlur,
+                    "
+                    data-evt="
+                        input,
+                        keydown,
+                        focus,
+                        blur,
+                    "
+                    spellcheck="false"
+                >&#8203;</textarea>
+            </div>
+        </div>
+    </div>
+
+{{- else if eq .Type "editor" -}}
+    <div class="ed">
+        <div class="tools" data-action="formatButton">
+            <div
+                class="btn"
+                data-format="b"
+            >{{template "format/bold.svg"}}</div>
+            <div
+                class="btn"
+                data-format="i"
+            >{{template "format/italic.svg"}}</div>
+            <div
+                class="btn"
+                data-format="h2"
+            >{{template "format/heading.svg"}}</div>
+            <div
+                class="btn"
+                data-format="ul"
+            >{{template "format/list_bullets.svg"}}</div>
+            <div
+                class="btn"
+                data-format="ol"
+            >{{template "format/list_numeric.svg"}}</div>
+            <div
+                class="btn"
+                data-format="a"
+            >{{template "format/link_insert.svg"}}</div>
+            <div
+                class="btn"
+                data-format="bq"
+            >{{template "format/quote.svg"}}</div>
+            <!-- <div
+                class="btn"
+                data-format="img"
+            >{{template "skill/ux.svg"}}</div> -->
+        </div>
+        <div class="touch-container">
+            <textarea
+                class="touch"
+                spellcheck="false"
+                {{if $disabled -}}
+                    disabled
+                {{end -}}
+                data-action="
+                    edTextareaFocus,
+                "
+                data-evt="
+                    focus,
+                "
+            >
+                {{- range .RichText -}}
+                    {{- range .Span -}}{{.Text}}{{- end -}}&#10;
+                {{- end -}}
+            </textarea>
+        </div>
+        <div
+            name="{{.Name}}"
+            {{with .To -}}
+                data-to="{{.}}"
+            {{end -}}
+            class="input"
+            spellcheck="true"
+            data-action="editorFocus"
+            data-evt="mousedown"
+            {{if .Optional -}}
+                data-optional="true"
+            {{end -}}
+        >
+            {{with .RichText -}}
+                {{.HTML}}
+            {{else -}}
+                <p><span>&#8203;</span></p>
+            {{end -}}
+        </div>
+        <div class="bg">
+            <p
+                {{if .RichText -}}
+                    style="display:none;"
+                {{end -}}
+            >
+                {{if .Placeholder -}}
+                    {{- .Placeholder -}}
+                {{else -}}
+                    Type here...
+                {{end -}}
+            </p>
+        </div>
+        <div class="canvas-container">
+            <canvas></canvas>
+        </div>
+        <div class="brd"></div>
+    </div>
+
+{{- else if eq .Type "persona" -}}
+    
+    {{$v := false}}
+    {{if .Value}}
+        {{$v = index .Value 0}}
+    {{end}}
+    
+    <div
+        class="
+            wdgt-persona
+            {{if $v -}}
+                {{if $v.True -}}
+                    selected
+                {{end -}}
+            {{end -}}
+        "
+        {{with $v -}}
+            data-slug="{{.Name}}"
+        {{end -}}
+        data-action="switchPersonaFromAccount"
+    >
+        <div class="avatar">
+            {{- with .Icon -}}
+                <img src="{{.}}">
+            {{- end -}}
+        </div>
+        <div class="text">
+            <span class="name">{{with $v}}{{$v.Desc}}{{end}}</span>
+            <span class="handle">{{with $v}}@{{$v.Text}}{{end}}</span>
+        </div>
+        <div class="tick">
+            {{- template "available.svg" -}}
+        </div>
+    </div>
+
+{{- else if eq .Type "menu" -}}
+    
+    <div
+        class="wdgt-menu"
+        data-action="
+            {{.Events.BeforeHandlers -}},
+            menuClick,
+            {{.Events.AfterHandlers -}},
+        "
+        data-evt="
+            {{.Events.BeforeTypes -}},
+            click,
+            {{.Events.AfterTypes -}},
+        "
+    >
+        {{- range .Value -}}
+            {{- template "menuitem" . -}}
+            {{- if .Value -}}            
+                <div class="sub">
+                    {{- range .Value -}}
+                        {{- template "menuitem" . -}}
+                    {{- end -}}
+                </div>
+            {{- end -}}
+        {{- end -}}
+    </div>
+    
+{{- end -}}
+
+<!-- This ends the "with $f" block. -->
+{{- end -}}
+
+
+{{- define "menuitem" -}}
+    {{- if .Href -}}
+        <a
+            href="{{.Href}}"
+            class="
+                btn
+                {{if .Default}}
+                    selected
+                {{end}}
+            "
+            {{if .Desc}}
+                data-tip="{{hyphen .Desc}}"
+                data-tip-delayed="true"
+                data-tip-client="true"
+            {{end}}
+        >
+            <span class="icon">{{.Icon}}</span>
+            <span class="text">
+                {{- .Text -}}
+                {{- with .Data -}}
+                    <span
+                        class="data"
+                        data-tip="Number of posts since last week."
+                        data-tip-delayed="true"
+                    >{{.}} Recent</span>
+                {{- end -}}
+            </span>
+            <span
+                class="desc"
+            >{{.Desc}}</span>
+        </a>
+    {{- else -}}
+        <div class="btn{{if .Default}} expanded{{end}}">
+            <span class="icon">{{.Icon}}</span>
+            <span class="text">{{.Text}}</span>
+            <span class="desc">{{.Desc}}</span>
+            {{with .Data}}
+                <span class="data">{{.}}</span>
+            {{end}}
+            {{- if .Value -}}
+                <span class="tri">{{template "tri_big.svg"}}</span>
+            {{- end -}}
+        </div>
+    {{- end -}}
+{{- end -}}
+
+
+{{- define "marker" -}}
+    
+    {{- $cls  := index . 0 -}}
+    {{- $text := index . 1 -}}
+    {{- $rule := index . 2 -}}
+    {{- $pos  := index . 3 -}}
+    
+    <div
+        class="{{$cls}}"
+        style="{{$rule}}"
+        data-pos="{{$pos}}"
+        data-action="rangeDown, rangeTouchStart"
+        data-evt="mousedown, touchstart"
+    >
+        <div class="marker top"></div>
+        <div class="marker bottom"></div>
+        <div class="grabber"></div>
+    </div>
+    
+{{- end -}}

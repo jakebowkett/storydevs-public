@@ -1,0 +1,34 @@
+
+[weekday]
+
+    Name = "day"
+    Type = "dropdown"
+    Placeholder = "e.g. Saturdays"
+
+    [[weekday.Value]]
+        Name = "mon"
+        Text = "Mondays"
+
+    [[weekday.Value]]
+        Name = "tue"
+        Text = "Tuesdays"
+
+    [[weekday.Value]]
+        Name = "wed"
+        Text = "Wednesdays"
+
+    [[weekday.Value]]
+        Name = "thu"
+        Text = "Thursdays"
+
+    [[weekday.Value]]
+        Name = "fri"
+        Text = "Fridays"
+
+    [[weekday.Value]]
+        Name = "sat"
+        Text = "Saturdays"
+
+    [[weekday.Value]]
+        Name = "sun"
+        Text = "Sundays"

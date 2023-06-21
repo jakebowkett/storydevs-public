@@ -1,0 +1,36 @@
+ 
+[[durations]]
+
+    Name = "days"
+    Text = "Days"
+    Icon = "duration/days"
+
+[[durations]]
+
+    Name = "week"
+    Text = "A Week"
+    Icon = "duration/week"
+
+[[durations]]
+
+    Name = "month"
+    Text = "A Month"
+    Icon = "duration/month"
+
+[[durations]]
+
+    Name = "months"
+    Text = "Months"
+    Icon = "duration/months"
+
+[[durations]]
+
+    Name = "year"
+    Text = "A Year"
+    Icon = "duration/year"
+
+[[durations]]
+
+    Name = "years"
+    Text = "Years"
+    Icon = "duration/years"

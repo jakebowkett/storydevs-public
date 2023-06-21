@@ -1,0 +1,50 @@
+
+{{- if not (or (eq .Name "settings") (eq .Name "forums")) -}}
+    {{$resPath := join "/" .Name "/" .Resource.Slug}}
+    {{if .InAccount}}
+        {{$resPath = join "/account" $resPath }}
+    {{end}}
+    {{if .InAdmin}}
+        {{$resPath = join "/admin" $resPath }}
+    {{end}}
+    <div class="
+        col_head
+        logged_in
+        {{if not (or (.Resource.IsOwner .Account) .IsAdmin)}}
+            hidden
+        {{end}}
+    ">
+        <a
+            href="{{$resPath}}/edit"
+            class="btn context"
+            data-action="editResource"
+        >
+            <span class="text">Edit<span class="desktop">&nbsp;{{.ResourceName}}</span>...</span>
+            <span class="icon">{{template "edit.svg"}}</span>
+        </a>
+        <a
+            href="{{$resPath}}/delete"
+            class="btn context dangerous"
+            data-action="deleteResourcePrompt"
+        >
+            <span class="text">Delete<span class="desktop">&nbsp;{{.ResourceName}}</span>...</span>
+            <span class="icon">{{template "delete.svg"}}</span>
+        </a>
+    </div>
+{{- end -}}
+
+{{if eq .Name "talent"}}
+    {{template "profile.html" .}}
+{{end}}
+
+{{if eq .Name "event"}}
+    {{template "event.html" .}}
+{{end}}
+
+{{if or (eq .Name "library") (eq .Name "forums")}}
+    {{template "thread.html" .}}
+{{end}}
+
+{{if eq .Name "settings"}}
+    {{template "editor.html" .}}
+{{end}}

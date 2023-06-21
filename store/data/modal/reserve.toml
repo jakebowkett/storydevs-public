@@ -1,0 +1,19 @@
+
+Name = "reserve"
+Title = "Reserve Your Handle (1/2)"
+            
+[[Field]]
+
+    Replace = "handle"
+    
+[[Field]]
+
+    Replace = "email"
+
+[[Button]]
+
+    Text = "Reserve"
+    Icon = "submit"
+    Dest = "reserve"
+    Submit = true
+    

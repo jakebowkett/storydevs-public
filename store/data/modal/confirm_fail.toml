@@ -1,0 +1,11 @@
+
+Name = "confirm_fail"
+Title = "Unable To Confirm"
+Class = "success"
+Msg = "Unable to verify confirmation code."
+
+[[Button]]
+
+    Text = "Okay"
+    Icon = "available"
+    Dismiss = true

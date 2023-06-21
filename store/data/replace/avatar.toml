@@ -1,0 +1,14 @@
+
+[avatar]
+
+    Name = "avatar"
+    Desc = "Avatar"
+    Type = "thumb"
+    Max = 1000 # kilobytes
+    Optional = true
+    
+    # Allowed Types
+    [[avatar.Value]]
+
+        Name = "avatar"
+        Text = "image"

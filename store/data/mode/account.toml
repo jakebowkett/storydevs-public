@@ -1,0 +1,7 @@
+
+Name = "account"
+Title = "Your Account"
+BrowseName = "Browse"
+ResourceName = "Resource"
+ResourcePlural = "Resources"
+ResourceColumn = "Resource"

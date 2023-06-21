@@ -1,0 +1,30 @@
+
+[[compensation]]
+
+    Name = "salary"
+    Text = "Salary"
+    Icon = "compensation/salary"
+
+[[compensation]]
+
+    Name = "freelance"
+    Text = "Freelance Contract"
+    Icon = "compensation/contract"
+
+[[compensation]]
+
+    Name = "share"
+    Text = "Revenue Share"
+    Icon = "compensation/profit"
+
+[[compensation]]
+
+    Name = "trade"
+    Text = "Skill Trade"
+    Icon = "compensation/trade"
+
+[[compensation]]
+
+    Name = "volunteer"
+    Text = "Volunteer"
+    Icon = "compensation/volunteer"

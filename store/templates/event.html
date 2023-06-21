@@ -1,0 +1,98 @@
+
+<div class="resource">
+
+	{{$ed := .Editor}}
+	{{$r := .Resource}}
+	{{$delta := $r.Deltas}}
+
+	<h2 class="title">{{$r.Name.String}}</h2>
+
+	{{with $r.Summary.String}}
+        <p class="summary">{{hyphen .}}</p>
+    {{end}}
+
+    <div class="tags">
+    	{{if $r.Weekly.Bool}}
+    		<div class="filed site">Weekly</div>
+    	{{end}}
+    	{{range $r.Setting}}
+    		{{- $v := ($ed.Field "kind.setting").Value -}}
+    		<div class="filed site">{{mStr . $v}}</div>
+    	{{end}}
+    	{{range $r.Category}}
+    		{{- $v := ($ed.Field "kind.category").Value -}}
+    		<div class="filed site">{{mStr . $v}}</div>
+    	{{end}}
+        {{range $r.Tag}}
+            <div class="filed">{{.}}</div>
+        {{end}}
+    </div>
+
+	<div class="added-by">
+		<span>Added By</span>
+		{{if $r.PersProfile}}
+			<a href="/talent/{{$r.PersProfile}}">
+				{{$r.PersName}} (@{{$r.PersHandle}})
+			</a>
+		{{else}}
+			<span>{{$r.PersName}} (@{{$r.PersHandle}})</span>
+		{{end}}
+	</div>
+
+	<div
+	    class="countdown"
+	    data-timezone="{{$r.Timezone}}"
+	    data-init="eventCountdown"
+	    data-unix-start="{{$delta.Start}}"
+	    {{if not $delta.Finish.Null}}
+	    	data-unix-finish="{{$delta.Finish.Int64}}"
+	    {{end}}
+	    data-dd="{{$delta.Days}}"
+	    data-hh="{{$delta.Hours}}"
+	    data-mm="{{$delta.Minutes}}"
+	    data-ss="{{$delta.Seconds}}"
+	>
+	    <div class="timer">
+	        <div class="days">&nbsp;</div>
+	        <div class="hours">&nbsp;</div>
+	        <div class="minutes">&nbsp;</div>
+	        <div class="seconds">&nbsp;</div>
+	    </div>
+		<div class="line"></div>
+		{{if $delta.Finish.Null}}
+		    <div class="date start">
+		    	<div class="label">At</div>
+		        <div class="day">&nbsp;</div>
+		        <div class="time">&nbsp;</div>
+		    </div>
+		{{else}}
+		    <div class="date start">
+		    	<div class="label">From</div>
+		        <div class="day">&nbsp;</div>
+		        <div class="time">&nbsp;</div>
+		    </div>
+		    <div class="date finish">
+		    	<div class="label">Until</div>
+		        <div class="day">&nbsp;</div>
+		        <div class="time">&nbsp;</div>
+		    </div>
+		{{end}}
+	    {{if $r.Weekly.Bool -}}
+			<div class="line"></div>
+			<div class="weekly">Weekly Event</div>
+	    {{end -}}
+		<div class="line"></div>
+		{{if not $delta.Finish.Null}}
+			<div class="lasting">
+		    	<div class="label">Lasting</div>
+				<div>{{$delta.Lasting false}}</div>
+			</div>
+		{{end}}
+		<div class="line"></div>
+	</div>
+
+    <div class="richtext">
+        {{$r.BodyHTML}}
+    </div>
+
+</div>

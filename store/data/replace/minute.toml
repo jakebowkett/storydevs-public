@@ -1,0 +1,247 @@
+
+[minute]
+
+    Name = "minute"
+    Type = "dropdown"
+    Paired = true
+    Placeholder = "23"
+
+	[[minute.Value]]
+		Name = "00"
+		Text = "00"
+
+ 	[[minute.Value]]
+		Name = "01"
+		Text = "01"
+
+ 	[[minute.Value]]
+		Name = "02"
+		Text = "02"
+
+ 	[[minute.Value]]
+		Name = "03"
+		Text = "03"
+
+ 	[[minute.Value]]
+		Name = "04"
+		Text = "04"
+
+ 	[[minute.Value]]
+		Name = "05"
+		Text = "05"
+
+ 	[[minute.Value]]
+		Name = "06"
+		Text = "06"
+
+ 	[[minute.Value]]
+		Name = "07"
+		Text = "07"
+
+ 	[[minute.Value]]
+		Name = "08"
+		Text = "08"
+
+ 	[[minute.Value]]
+		Name = "09"
+		Text = "09"
+
+ 	[[minute.Value]]
+		Name = "10"
+		Text = "10"
+
+ 	[[minute.Value]]
+		Name = "11"
+		Text = "11"
+
+ 	[[minute.Value]]
+		Name = "12"
+		Text = "12"
+
+ 	[[minute.Value]]
+		Name = "13"
+		Text = "13"
+
+ 	[[minute.Value]]
+		Name = "14"
+		Text = "14"
+
+ 	[[minute.Value]]
+		Name = "15"
+		Text = "15"
+
+ 	[[minute.Value]]
+		Name = "16"
+		Text = "16"
+
+ 	[[minute.Value]]
+		Name = "17"
+		Text = "17"
+
+ 	[[minute.Value]]
+		Name = "18"
+		Text = "18"
+
+ 	[[minute.Value]]
+		Name = "19"
+		Text = "19"
+
+ 	[[minute.Value]]
+		Name = "20"
+		Text = "20"
+
+ 	[[minute.Value]]
+		Name = "21"
+		Text = "21"
+
+ 	[[minute.Value]]
+		Name = "22"
+		Text = "22"
+
+ 	[[minute.Value]]
+		Name = "23"
+		Text = "23"
+
+ 	[[minute.Value]]
+		Name = "24"
+		Text = "24"
+
+ 	[[minute.Value]]
+		Name = "25"
+		Text = "25"
+
+	[[minute.Value]]
+		Name = "26"
+		Text = "26"
+
+ 	[[minute.Value]]
+		Name = "27"
+		Text = "27"
+
+ 	[[minute.Value]]
+		Name = "28"
+		Text = "28"
+
+ 	[[minute.Value]]
+		Name = "29"
+		Text = "29"
+
+ 	[[minute.Value]]
+		Name = "30"
+		Text = "30"
+
+ 	[[minute.Value]]
+		Name = "31"
+		Text = "31"
+
+ 	[[minute.Value]]
+		Name = "32"
+		Text = "32"
+
+ 	[[minute.Value]]
+		Name = "33"
+		Text = "33"
+
+ 	[[minute.Value]]
+		Name = "34"
+		Text = "34"
+
+ 	[[minute.Value]]
+		Name = "35"
+		Text = "35"
+
+ 	[[minute.Value]]
+		Name = "36"
+		Text = "36"
+
+ 	[[minute.Value]]
+		Name = "37"
+		Text = "37"
+
+ 	[[minute.Value]]
+		Name = "38"
+		Text = "38"
+
+ 	[[minute.Value]]
+		Name = "39"
+		Text = "39"
+
+ 	[[minute.Value]]
+		Name = "40"
+		Text = "40"
+
+ 	[[minute.Value]]
+		Name = "41"
+		Text = "41"
+
+ 	[[minute.Value]]
+		Name = "42"
+		Text = "42"
+
+ 	[[minute.Value]]
+		Name = "43"
+		Text = "43"
+
+ 	[[minute.Value]]
+		Name = "44"
+		Text = "44"
+
+ 	[[minute.Value]]
+		Name = "45"
+		Text = "45"
+
+ 	[[minute.Value]]
+		Name = "46"
+		Text = "46"
+
+ 	[[minute.Value]]
+		Name = "47"
+		Text = "47"
+
+ 	[[minute.Value]]
+		Name = "48"
+		Text = "48"
+
+ 	[[minute.Value]]
+		Name = "49"
+		Text = "49"
+
+ 	[[minute.Value]]
+		Name = "50"
+		Text = "50"
+
+ 	[[minute.Value]]
+		Name = "51"
+		Text = "51"
+
+ 	[[minute.Value]]
+		Name = "52"
+		Text = "52"
+
+ 	[[minute.Value]]
+		Name = "53"
+		Text = "53"
+
+ 	[[minute.Value]]
+		Name = "54"
+		Text = "54"
+
+ 	[[minute.Value]]
+		Name = "55"
+		Text = "55"
+
+ 	[[minute.Value]]
+		Name = "56"
+		Text = "56"
+
+ 	[[minute.Value]]
+		Name = "57"
+		Text = "57"
+
+ 	[[minute.Value]]
+		Name = "58"
+		Text = "58"
+
+ 	[[minute.Value]]
+		Name = "59"
+		Text = "59"

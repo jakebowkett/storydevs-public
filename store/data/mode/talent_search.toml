@@ -1,0 +1,153 @@
+            
+    # [[Search.Field]]
+
+    #     Name = "active"
+    #     Desc = "Last Active"
+    #     Type = "checkbox"
+        
+    #     [[Search.Field.Value]]
+
+    #         Text = "Past Month"
+    #         Icon = "duration/month"
+        
+    #     [[Search.Field.Value]]
+
+    #         Text = "Past Year"
+    #         Icon = "duration/year"
+
+[[Search]]
+
+    Name = "experience"
+    Desc = "Experience"
+    Icon = "skills"
+    
+# [[Search]]
+
+#     Name = "skills"
+#     Desc = "Skills"
+#     Icon = "skills"
+    
+    [[Search.Field]]
+
+        Name = "skill"
+        Desc = "Skillset"
+        Type = "checkbox"
+        Shared = "skills"
+        
+    [[Search.Field]]
+
+        Name = "project"
+        Desc = "Completed At Least"
+        Type = "radio"
+        
+        [[Search.Field.Value]]
+
+            Name = "1"
+            Text = "1 Project"
+            Icon = "projects/1"
+            Default = true
+        
+        [[Search.Field.Value]]
+
+            Name = "2"
+            Text = "2 Projects"
+            Icon = "projects/2"
+        
+        [[Search.Field.Value]]
+
+            Name = "3"
+            Text = "3 Projects"
+            Icon = "projects/3"
+        
+        [[Search.Field.Value]]
+
+            Name = "4"
+            Text = "4 Projects"
+            Icon = "projects/4"
+        
+[[Search]]
+
+    Name = "basics"
+    Desc = "Availability"
+    Icon = "events"
+    
+    # [[Search.Field]]
+
+    #     Name = "from"
+    #     Desc = "I want to search within"
+    #     Type = "radio"
+        
+    #     [[Search.Field.Value]]
+
+    #         Text = "The Database"
+    #         Icon = "database"
+    #         Default = true
+        
+    #     [[Search.Field.Value]]
+
+    #         Text = "A Collection"
+    #         Icon = "collection"
+            
+    # [[Search.Field]]
+    
+    #     Name = "group"
+    #     Desc = "I'm looking for"
+    #     Type = "checkbox"
+        
+    #     [[Search.Field.Value]]
+        
+    #         Text = "Individuals"
+    #         Icon = "individual"
+    #         Default = true
+        
+    #     [[Search.Field.Value]]
+        
+    #         Text = "Groups"
+    #         Icon = "group"
+            
+    [[Search.Field]]
+    
+        Name = "available"
+        Desc = "Current Availability"
+        Type = "checkbox"
+        
+        [[Search.Field.Value]]
+        
+            Name = "available"
+            Text = "Available"
+            Icon = "available"
+            Default = true
+    
+    [[Search.Field]]
+
+        Name = "duration"
+        Desc = "Available For"
+        Type = "range"
+        Shared = "durations"
+        Default = "days-years"
+        
+[[Search]]
+
+    Name = "project"
+    Desc = "Your Project"
+    Icon = "project"
+    
+    [[Search.Field]]
+
+        Name = "compensation"
+        Desc = "Compensation"
+        Type = "checkbox"
+        Shared = "compensation"
+            
+[[Search]]
+
+    Name = "medium"
+    Desc = "Communication"
+    Icon = "communication"
+    
+    [[Search.Field]]
+
+        Name = "medium"
+        # Desc = "I want to communicate with them via"
+        Type = "checkbox"
+        Shared = "mediums"

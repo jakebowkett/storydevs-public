@@ -1,0 +1,16 @@
+
+Name = "register_confirm"
+Title = "Register Account (2/2)"
+Class = "confirm"
+Msg = "A confirmation email has been sent. Follow the link or paste the code below."
+
+[[Field]]
+
+    Replace = "confirm"
+    
+[[Button]]
+
+    Text = "Confirm"
+    Icon = "submit"
+    Dest = "register/confirm"
+    Submit = true

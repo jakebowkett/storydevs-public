@@ -1,0 +1,42 @@
+
+[event_category]
+
+    Name = "category"
+    Desc = "Focus"
+    Type = "checkbox"
+    
+    [[event_category.Value]]
+
+        Name = "jam"
+        Text = "Jam"
+        Icon = "skill/community"
+
+    [[event_category.Value]]
+    
+        Name = "promo"
+        Text = "Self-Promotion"
+        Icon = "skill/marketing"
+    
+    [[event_category.Value]]
+    
+        Name = "entertainment"
+        Text = "Entertainment"
+        Icon = "skill/entertainment"
+    
+    [[event_category.Value]]
+    
+        Name = "workshop"
+        Text = "Workshop"
+        Icon = "dev"
+    
+    [[event_category.Value]]
+    
+        Name = "con"
+        Text = "Conference"
+        Icon = "skill/voice"
+
+    [[event_category.Value]]
+
+        Name = "release"
+        Text = "Title Release"
+        Icon = "3d"

@@ -1,0 +1,51 @@
+
+# [[Search]]
+
+#     Desc = "Basics"
+#     Icon = "basics"
+    
+    # [[Search.Field]]
+
+    #     Name = "from"
+    #     Desc = "I want to search within"
+    #     Type = "radio"
+        
+    #     [[Search.Field.Value]]
+
+    #         Text = "The Library"
+    #         Icon = "database"
+    #         Default = true
+        
+    #     [[Search.Field.Value]]
+
+    #         Text = "A Collection"
+    #         Icon = "collection"
+
+[[Search]]
+
+    Name = "search"
+    Desc = "Search Terms"
+    Icon = "search"
+                
+    [[Search.Field]]
+        Replace = "terms"
+        
+    # [[Search.Field]]
+    
+    #     Name = "kw"
+    #     Type = "keyworder"
+    #     Add = 3
+    #     Max = 32
+
+[[Search]]
+
+    Name = "categories"
+    Desc = "Category"
+    Icon = "library/category"
+    
+    [[Search.Field]]
+
+        Name = "category"
+        # Desc = "I'm looking for"
+        Type = "checkbox"
+        Shared = "entries"
